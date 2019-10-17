@@ -5,7 +5,7 @@ item_wallet = {
 
     "mass": 0.3,
 
-    
+
     "description":
     """ """
 }
@@ -59,12 +59,16 @@ item_tape = {
 
     "mass": 1,
 
-    "description": "This student handbook explains everything. Seriously."
+    "description": "You never know when this might come in handy."
 }
 
-items = {"pen":item_pen,
-        "id":item_id,
-        "laptop":item_laptop,
-        "money":item_money,
-        "biscuits":item_biscuits,
-        "handbook":item_handbook}
+item_salmon = {
+    "id":"salmon",
+
+    "name":"a fillet of salmon",
+
+    "mass": 0.5,
+
+    "description":"Sometimes, you just gotta treat yourself with some fish."
+}
+items = [item_wallet,item_money,item_luggage,item_ticket,item_phone,item_tape]
