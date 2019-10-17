@@ -133,6 +133,7 @@ item_helmet = {
 
     "description": " "
 }
+
 item_crayons = {
     "id":"crayons",
 
@@ -142,8 +143,77 @@ item_crayons = {
 
     "description":" "
 }
+
+item_matches ={
+    "id":"matches",
+
+    "name":"a box of matches",
+
+    "mass":0.3,
+
+    "description": " "
+
+}
+
+item_beer = {
+    "id":"beer",
+
+    "name":"beer",
+
+    "mass":0.2,
+
+    "description":" "
+}
+
+item_cereal = {
+    "id":"cereal",
+
+    "name":"cereal",
+
+    "mass":0.4,
+
+    "description":" "
+
+}
+
+item_protective_gear = {
+    "id":"gear",
+
+    "name":"protective gear",
+
+    "mass":2,
+
+    "description":" "
+}
+
+item_pan = {
+    "id":"pan",
+
+    "name":"a frying pan",
+
+    "mass":1,
+
+    "description": " "
+}
+item_egg = {
+    "id":"egg",
+
+    "name":"an egg",
+
+    "mass":0.1,
+
+    "description":" "
+}
+item_pork = {
+
+    "id":"pork",
+    "name":"porkchops",
+    "mass":0.2,
+    "description":""
+}
 items = [item_wallet,item_money,item_luggage,item_ticket,item_phone,item_tape,
  item_salmon, item_molotov, item_steel_ball, item_plank, item_pen,
- item_paper, item_helmet, item_crayons]
+ item_paper, item_helmet, item_crayons, item_matches, item_beer, item_cereal,
+ item_protective_gear, item_egg,item_pork]
 
 print(len(items))
