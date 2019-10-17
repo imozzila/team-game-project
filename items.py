@@ -1,24 +1,24 @@
-item_id = {
-    "id": "id",
+item_wallet = {
+    "id": "wallet",
 
-    "name": "id card",
+    "name": "a wallet",
 
     "mass": 0.3,
 
+    
     "description":
-    """You new shiny student ID card. Expires 1 June 2017.
-You wonder why they have printed a suicide hotline number on it?..."""
+    """ """
 }
 
-item_laptop = {
-    "id": "laptop",
+item_luggage = {
+    "id": "luggage",
 
-    "name": "laptop",
+    "name": "luggage",
 
     "mass": 2,
 
     "description":
-    "It has seen better days. At least it has a WiFi card!"
+    ""
 }
 
 item_money = {
@@ -29,33 +29,33 @@ item_money = {
     "name": "money",
 
     "description":
-    "This wad of cash is barely enough to pay your tuition fees."
+    ""
 }
 
-item_biscuits = {
-    "id": "biscuits",
+item_ticket = {
+    "id": "ticket",
 
-    "name": "a pack of biscuits",
+    "name": "a coach ticket",
 
-    "mass": 0.3,
+    "mass": 0.1,
 
-    "description": "A pack of biscuits."
+    "description": " "
 }
 
-item_pen = {
-    "id": "pen",
+item_phone = {
+    "id": "phone",
 
-    "name": "a pen",
+    "name": "a smartphone",
 
     "mass": 0.2,
 
-    "description": "A basic ballpoint pen."
+    "description": " "
 }
 
-item_handbook = {
-    "id": "handbook",
+item_tape = {
+    "id": "tape",
 
-    "name": "a student handbook",
+    "name": "duck tape",
 
     "mass": 1,
 
