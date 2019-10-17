@@ -78,20 +78,51 @@ item_molotov = {
 
     "name":"a molotov"
 
-    "mass":"0.7",
+    "mass":0.7,
 
     "description":"The solution to every problem is to create another problem."
 }
 
-item_steel_ball{
+item_steel_ball = {
     "id":"steel ball",
 
     "name":"a steel ball",
 
-    "mass":"0.5",
+    "mass":5,
 
-    "description":""
+    "description": " "
 }
 
+item_plank = {
+    "id":"plank",
+
+    "name":"a wooden plank",
+
+    "mass":2.5,
+
+    "description": " "
+}
+
+item_pen = {
+    "id":"pen",
+
+    "name":"a pen",
+
+    "mass": 0.1,
+
+    "description": " "
+}
+
+item_paper{
+    "id":"paper",
+
+    "name":"paper",
+
+    "mass":0.1,
+
+    "description": " "
+
+}
 items = [item_wallet,item_money,item_luggage,item_ticket,item_phone,item_tape,
- item_salmon, item_molotov]
+ item_salmon, item_molotov, item_steel_ball, item_plank, item_pen,
+ item_paper, ]
