@@ -76,7 +76,7 @@ item_salmon = {
 item_molotov = {
     "id":"molotov",
 
-    "name":"a molotov"
+    "name":"a molotov",
 
     "mass":0.7,
 
@@ -113,7 +113,7 @@ item_pen = {
     "description": " "
 }
 
-item_paper{
+item_paper = {
     "id":"paper",
 
     "name":"paper",
@@ -123,6 +123,27 @@ item_paper{
     "description": " "
 
 }
+
+item_helmet = {
+    "id":"helmet",
+
+    "name":"a helmet",
+
+    "mass": 0.5,
+
+    "description": " "
+}
+item_crayons = {
+    "id":"crayons",
+
+    "name":"a box of crayons",
+
+    "mass":0.2,
+
+    "description":" "
+}
 items = [item_wallet,item_money,item_luggage,item_ticket,item_phone,item_tape,
  item_salmon, item_molotov, item_steel_ball, item_plank, item_pen,
- item_paper, ]
+ item_paper, item_helmet, item_crayons]
+
+print(len(items))
