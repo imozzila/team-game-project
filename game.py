@@ -364,7 +364,7 @@ def move(exits, direction):
     # Next room to go to
     return rooms[exits[direction]]
 
-def check_victory(current_room, Victorious,items):
+def check_victory(current_room, Victorious):
     if current_room['name'] == "the lecture hall":
         Victorious = True
         print("You've attended your lecture, congratulations!")
@@ -373,7 +373,7 @@ def check_victory(current_room, Victorious,items):
     return Victorious
 
 # This is the entry point of our program
-def main(current_room, inventory,items):
+def main(current_room, inventory):
     # Main game loop
     Victorious = False
     while not Victorious:

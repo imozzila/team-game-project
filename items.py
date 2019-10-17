@@ -5,6 +5,7 @@ item_wallet = {
 
     "mass": 0.3,
 
+    "properties":["container","droppable","light"],
 
     "description":
     """ """
@@ -18,7 +19,7 @@ item_luggage = {
     "mass": 2,
 
     "description":
-    ""
+    """ """
 }
 
 item_money = {
@@ -71,4 +72,26 @@ item_salmon = {
 
     "description":"Sometimes, you just gotta treat yourself with some fish."
 }
-items = [item_wallet,item_money,item_luggage,item_ticket,item_phone,item_tape]
+
+item_molotov = {
+    "id":"molotov",
+
+    "name":"a molotov"
+
+    "mass":"0.7",
+
+    "description":"The solution to every problem is to create another problem."
+}
+
+item_steel_ball{
+    "id":"steel ball",
+
+    "name":"a steel ball",
+
+    "mass":"0.5",
+
+    "description":""
+}
+
+items = [item_wallet,item_money,item_luggage,item_ticket,item_phone,item_tape,
+ item_salmon, item_molotov]
