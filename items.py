@@ -302,4 +302,3 @@ add_item("milk",
     mass=0.1,
     properties=[],
     description="Tastes awful.")
-print(len(items))
