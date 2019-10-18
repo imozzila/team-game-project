@@ -8,60 +8,24 @@ from gameparser import *
 
 
 def list_of_items(items):
-    """This function takes a list of items (see items.py for the definition) and
-    returns a comma-separated list of item names (as a string). For example:
+    """An empty list is created, and all the item names are added to it
+    A string of all the item names are returned"""
+    item_list =  []
+    for item in items:
+        item_list.append(item["name"])
+    return ", ".join(item_list)
 
-    >>> list_of_items([item_pen, item_handbook])
-    'a pen, a student handbook'
 
-    >>> list_of_items([item_id])
-    'id card'
 
-    >>> list_of_items([])
-    ''
-
-    >>> list_of_items([item_money, item_handbook, item_laptop])
-    'money, a student handbook, laptop'
-
-    """
-    sentence = ""
-    number_of_items = len(items)
-
-    for index, item in enumerate(items):
-        if index < number_of_items-1:
-            sentence += item['name']+", "
-        else:
-            sentence += item['name']
-    return sentence
 
 
 def print_room_items(room):
-    """This function takes a room as an input and nicely displays a list of items
-    found in this room (followed by a blank line). If there are no items in
-    the room, nothing is printed. See map.py for the definition of a room, and
-    items.py for the definition of an item. This function uses list_of_items()
-    to produce a comma-separated list of item names. For example:
-
-    >>> print_room_items(rooms["Reception"])
-    There is a pack of biscuits, a student handbook here.
-    <BLANKLINE>
-
-    >>> print_room_items(rooms["Office"])
-    There is a pen here.
-    <BLANKLINE>
-
-    >>> print_room_items(rooms["Admins"])
-
-    (no output)
-
-    Note: <BLANKLINE> here means that doctest should expect a blank line.
-
-    """
     if room['items']:
         items = list_of_items(room['items'])
         print("There is %s here.\n" % items)
     else:
         pass
+
 
 def print_inventory_items(items):
     """This function takes a list of inventory items and displays it nicely, in a
@@ -81,50 +45,8 @@ def print_inventory_items(items):
 
 
 def print_room(room):
-    """This function takes a room as an input and nicely displays its name
-    and description. The room argument is a dictionary with entries "name",
-    "description" etc. (see map.py for the definition). The name of the room
-    is printed in all capitals and framed by blank lines. Then follows the
-    description of the room and a blank line again. If there are any items
-    in the room, the list of items is printed next followed by a blank line
-    (use print_room_items() for this). For example:
-
-    >>> print_room(rooms["Office"])
-    <BLANKLINE>
-    THE GENERAL OFFICE
-    <BLANKLINE>
-    You are standing next to the cashier's till at
-    30-36 Newport Road. The cashier looks at you with hope
-    in their eyes. If you go west you can return to the
-    Queen's Buildings.
-    <BLANKLINE>
-    There is a pen here.
-    <BLANKLINE>
-
-    >>> print_room(rooms["Reception"])
-    <BLANKLINE>
-    RECEPTION
-    <BLANKLINE>
-    You are in a maze of twisty little passages, all alike.
-    Next to you is the School of Computer Science and
-    Informatics reception. The receptionist, Matt Strangis,
-    seems to be playing an old school text-based adventure
-    game on his computer. There are corridors leading to the
-    south and east. The exit is to the west.
-    <BLANKLINE>
-    There is a pack of biscuits, a student handbook here.
-    <BLANKLINE>
-
-    >>> print_room(rooms["Admins"])
-    <BLANKLINE>
-    MJ AND SIMON'S ROOM
-    <BLANKLINE>
-    You are leaning agains the door of the systems managers'
-    room. Inside you notice Matt "MJ" John and Simon Jones. They
-    ignore you. To the north is the reception.
-    <BLANKLINE>
-
-    Note: <BLANKLINE> here means that doctest should expect a blank line.
+    """
+    WE NEED TO PRINT THE TIME AND THE WEATHER ASSOCIATED WITH THE TIME
     """
     # Display room name
     print()
@@ -244,6 +166,7 @@ def execute_go(direction, current_room):
         return new_room
     except KeyError:
         print("There is nothing %s of here." % direction)
+    #calculate time
 
 
 
@@ -284,6 +207,16 @@ def execute_drop(item_id, current_room, inventory):
     if not item_exists:
         print("You cannot drop that.")
     return current_room, inventory
+
+def remove_item_from_player(item, inventory):
+    """This remove the selected item from the players inventory"""
+
+def check_requirements(item_needed, inventory):
+    """This checks if the player has all the items needed in their inventory"""
+
+def calculate_time(player_properties, inventory, time):
+    """This calculates how long it'll take for the player to perform an action"""
+
 
 def calculate_mass(inventory, item):
     overall_mass = item['mass']

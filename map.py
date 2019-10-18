@@ -2,6 +2,7 @@ from items import *
 
 rooms = {}
 
+
 def add_room(id, name, description, connected_places, items):
     items[id] = {"name":name, "description":description, "connected_places":connected_places, "items":items}
 
@@ -18,6 +19,8 @@ add_room("coach",
         items = ["wagon wheels", "tape"]
 
         )
+
+
 
 add_room("victoria_coach_station",
 
@@ -52,5 +55,3 @@ add_room("taxi",
          name = "taxi"
 
          description = """You call for a Taxi, a cab driver stops for you."""
-
-         

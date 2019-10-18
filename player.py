@@ -5,3 +5,5 @@ inventory = ["wallet", "luggage", "ticket"]
 
 # Start game at the reception
 current_room = rooms["Reception"]
+
+properties = []

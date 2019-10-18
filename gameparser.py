@@ -1,41 +1,15 @@
 import string
 
 # List of "unimportant" words (feel free to add more)
-skip_words = ['a', 'about', 'all', 'an', 'another', 'any', 'around', 'at',
-              'bad', 'beautiful', 'been', 'better', 'big', 'can', 'every', 'for',
-              'from', 'good', 'have', 'her', 'here', 'hers', 'his', 'how',
-              'i', 'if', 'in', 'into', 'is', 'it', 'its', 'large', 'later',
-              'like', 'little', 'main', 'me', 'mine', 'more', 'my', 'now',
-              'of', 'off', 'oh', 'on', 'please', 'small', 'some', 'soon',
-              'that', 'the', 'then', 'this', 'those', 'through', 'till', 'to',
-              'towards', 'until', 'us', 'want', 'we', 'what', 'when', 'why',
-              'wish', 'with', 'would']
+key_words = []
 
 
-def filter_words(words, skip_words):
-    """This function takes a list of words and returns a copy of the list from
-    which all words provided in the list skip_words have been removed.
-    For example:
 
-    >>> filter_words(["help", "me", "please"], ["me", "please"])
-    ['help']
-
-    >>> filter_words(["go", "south"], skip_words)
-    ['go', 'south']
-
-    >>> filter_words(['how', 'about', 'i', 'go', 'through', 'that', 'little', 'passage', 'to', 'the', 'south'], skip_words)
-    ['go', 'passage', 'south']
-
+def filter_words(words, key_words):
+    """Takes words and returns only the key words
+    e.g filter_words(["dog", "mog", "fog"], ["dog"])
+        ["dog"]
     """
-    filtered_words = []
-
-    for word in words:
-        if word in skip_words:
-            pass
-        else:
-            filtered_words.append(word)
-
-    return filtered_words
 
 def remove_punct(text):
     """This function is used to remove all punctuation
