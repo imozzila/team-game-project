@@ -6,36 +6,36 @@ add_item("wallet",
     name = "a wallet",
     mass = 0.3,
     properties = [ "container", "droppable", "light"],
-    description=" ")
+    description="For all your essentials.")
 
 
 add_item("luggage",
     name= "luggage",
     mass =  2,
     properties = [],
-    description = "")
+    description ="All your clothes are in here.")
 
 
 add_item("money",
     name= "money",
     mass = 0.5,
     properties = [],
-    description ="")
+    description = "It's money.")
 
 add_item("ticket",
     name = "a coach ticket",
     mass = 0.1,
     properties = [],
-    description ="")
+    description = "Your key to London.")
 
 add_item("phone",
     name= "a smartphone",
     mass= 0.2,
     properties = [],
-    description="")
+    description="Everyone living in the moment.")
 
 add_item("tape",
-    name= "duck tape",
+    name= "duct tape",
     mass= 1,
     properties = [],
     description = "You never know when this might come in handy.")
@@ -56,55 +56,55 @@ add_item("steel ball",
     name = "a steel ball",
     mass = 5,
     properties = [],
-    description= "")
+    description= "It's a steel ball.")
 
 add_item("plank",
     name="a wooden plank",
     mass=2.5,
     properties = [],
-    description= "")
+    description= "Don't walk around with this on the pavement!")
 
 add_item("pen",
     name="a pen",
     mass= 0.1,
     properties = [],
-    description = "")
+    description = "Maybe if you had some paper, you could write something on it.")
 
 add_item("paper",
     name="paper",
     mass=0.1,
     properties = [],
-    description= "")
+    description= "If only you had a pen...")
 
 add_item("helmet",
     name="a helmet",
     mass= 0.5,
     properties = [],
-    description= "")
+    description= "To prevent your head from cracking.")
 
 add_item("crayons",
     name = "a box of crayons",
     mass = 0.2,
     properties = [],
-    description = "")
+    description = "I hear these taste good.")
 
 add_item("matches",
     name="a box of matches",
     mass=0.3,
     properties =[],
-    description= "")
+    description= "I wonder what these could be used for...")
 
 add_item("beer",
     name="beer",
     mass=0.2,
     properties = [],
-    description= "")
+    description= "Gives the best feeling ever.")
 
-add_item("cereal",
-    name="cereal",
+add_item("kraves",
+    name="kraves",
     mass=0.4,
     properties=[],
-    description= "")
+    description= "Can't go wrong with Kraves.")
 
 add_item("gear",
     name="protective gear",
@@ -164,7 +164,7 @@ add_item("butter",
     name="a block of butter",
     mass=0.1,
     properties=[],
-    description="")
+    description="Great for cooking, bad for fighting.")
 
 add_item("steering wheel",
     name="a steering wheel",
@@ -242,7 +242,7 @@ add_item("Helicopter",
     name="a helicopter",
     mass = 100,
     properties=[],
-    description="")
+    description="It can fly.")
 
 add_item("rubiks cube",
     name="a Rubik's cube",
@@ -266,7 +266,7 @@ add_item("gift card",
     name="a $10 roblox gift card",
     mass=0.1,
     properties=[],
-    description="")
+    description="A kid's dream.")
 
 add_item("teapot",
     name="a teapot",
@@ -290,17 +290,17 @@ add_item("weetabix",
     name="Weetabix",
     mass=0.2,
     properties=[],
-    description="")
+    description="We definitely aren't running out of ideas.")
 
 add_item("cornflakes",
     name="Corn Flakes",
     mass=0.2,
     properties=[],
     description="")
-    
+
 add_item("milk",
     name="expired milk",
     mass=0.1,
     properties=[],
-    description="")
+    description="Tastes awful.")
 print(len(items))
