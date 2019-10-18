@@ -110,13 +110,13 @@ add_item("gear",
     name="protective gear",
     mass=2,
     properties = [],
-    description="")
+    description="Perfect for violence, horrible for getting around.")
 
 add_item("pan",
     name="a frying pan",
     mass=1,
     properties = [],
-    description= "")
+    description= "This would be great for lamb chops")
 
 add_item("egg",
     name="an egg",
@@ -124,8 +124,8 @@ add_item("egg",
     properties = [],
     description= "")
 
-add_item("pork",
-    name="porkchops",
+add_item("lamb",
+    name="lambchops",
     mass=0.2,
     properties = [],
     description= "")
@@ -134,19 +134,19 @@ add_item("skateboard",
     name="skateboard",
     mass=0.3,
     properties=[],
-    description="")
+    description="This'll help you move faster")
 
 add_item("whiskey",
     name="whiskey",
     mass=0.2,
     properties=[],
-    description="")
+    description="Praise the lord for this great drink.")
 
 add_item("coffee",
     name="coffee",
     mass=0.2,
     properties=[],
-    description="")
+    description="I wonder what this is useful for..")
 
 add_item("wagon wheels",
     name="wagon wheels",
@@ -170,7 +170,7 @@ add_item("steering wheel",
     name="a steering wheel",
     mass=0.1,
     properties=[],
-    description="")
+    description="It has a Honda logo on it.")
 
 add_item("trainers",
     name="light-up trainers",
@@ -206,13 +206,13 @@ add_item("hdmi",
     name="an HDMI cable",
     mass=0.1,
     properties=[],
-    description="")
+    description="Perfect for everyday HDMI usage.")
 
 add_item("jar",
     name="a jar",
     mass=0.1,
     properties=[],
-    description="")
+    description="You could store anything in this.")
 
 add_item("racket",
     name="a tennis racket",
@@ -254,13 +254,13 @@ add_item("tissue box",
     name="an empty tissue box",
     mass=0.1,
     properties=[],
-    description="")
+    description="What's the point of this?")
 
 add_item("tin foil",
     name="tin foil",
     mass=0.2,
     properties=[],
-    description="")
+    description="Your paranoia is encouraged.")
 
 add_item("gift card",
     name="a $10 roblox gift card",
@@ -272,7 +272,7 @@ add_item("teapot",
     name="a teapot",
     mass=0.5,
     properties=[],
-    description="")
+    description="It's the Noir limited edition.")
 
 add_item("lime",
     name="a lime",
@@ -296,7 +296,7 @@ add_item("cornflakes",
     name="Corn Flakes",
     mass=0.2,
     properties=[],
-    description="")
+    description="Good with milk.")
 
 add_item("milk",
     name="expired milk",
