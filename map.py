@@ -1,23 +1,20 @@
 from items import *
 
-room_reception = {
-    "name": "Reception",
+location_bus = {
+    "name": "An idle bus outside the student union",
 
     "description":
-    """You are in a maze of twisty little passages, all alike.
-Next to you is the School of Computer Science and
-Informatics reception. The receptionist, Matt Strangis,
-seems to be playing an old school text-based adventure
-game on his computer. There are corridors leading to the
-south and east. The exit is to the west.""",
+    """ """,
 
-    "exits": {"south": "Admins", "east": "Tutor", "west": "Parking", "north":"Lecture Hall"},
+    "connected_places": {"Victoria_Coach_Station": 120},
 
-    "items": [item_biscuits, item_handbook]
+    "items": [item_tape],
+
+    ""
 }
 
-room_admins = {
-    "name": "MJ and Simon's room",
+location_coach_station = {
+    "name": "Victoria Coach Station",
 
     "description":
     """You are leaning agains the door of the systems managers'
