@@ -1,9 +1,17 @@
 from items import *
 from map import rooms
 
-inventory = ["wallet", "luggage", "ticket"]
+def add_character(id, name, status, inventory, current_room):
+    items[id] = {"name":name, "status":status, "inventory":inventory, "current_room":current_room}
 
-# Start game at the reception
-current_room = rooms["Reception"]
+characters = {}
 
-properties = []
+add_character("player",
+    name = "player",
+    status = [],
+    inventory = ["wallet", "luggage", "ticket"],
+    current_room = rooms["Reception"]
+    )
+
+
+"""Maybe change it so that you can pick a name"""

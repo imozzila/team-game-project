@@ -69,7 +69,7 @@ add_room("taxi",
 
          connected_places = {},
 
-         items = []
+         items = [],
 
          scenario_branch = []
 
