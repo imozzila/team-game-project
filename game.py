@@ -368,8 +368,8 @@ def check_victory(current_room, Victorious):
     if current_room['name'] == "the lecture hall":
         Victorious = True
         print("You've attended your lecture, congratulations!")
-    elif current_room['name'] == "Reception" and len(current_room['items']) == :
-
+    elif current_room['name'] == "Reception" and len(current_room['items']) == len(items):
+        print("You've collected all the items, congratulations!")
     return Victorious
 
 # This is the entry point of our program
