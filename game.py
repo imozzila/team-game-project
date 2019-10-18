@@ -218,6 +218,8 @@ def calculate_time(player_properties, inventory, time):
     """This calculates how long it'll take for the player to perform an action"""
 
 
+
+
 def calculate_mass(inventory, item):
     overall_mass = item['mass']
     for item in inventory:

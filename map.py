@@ -2,8 +2,13 @@ from items import *
 
 rooms = {}
 
+"""
 
-def add_room(id, name, description, connected_places, items):
+"""
+
+
+
+def add_room(id, name, description, connected_places, items, scenario_branch):
     items[id] = {"name":name, "description":description, "connected_places":connected_places, "items":items}
 
 add_room("coach",
@@ -16,7 +21,9 @@ add_room("coach",
 
         connected_places = {victoria_coach_station:120},
 
-        items = ["wagon wheels", "tape"]
+        items = ["wagon wheels", "tape"],
+
+        scenario_branch = []
 
         )
 
@@ -32,7 +39,9 @@ add_room("victoria_coach_station",
 
          connected_places = {wetherspoons:30, taxi:10, tube:20},
 
-         items = ["coffee", "luggage", "molotov", "crayons"]
+         items = ["coffee", "luggage", "molotov", "crayons"],
+
+         scenario_branch = []
 
          )
 
@@ -46,7 +55,9 @@ add_room("wetherspoons",
 
          connected_places = {victoria_coach_station:30}
 
-         items = ["beer", "whiskey", "coffee", "egg", "pork"]
+         items = ["beer", "whiskey", "coffee", "egg", "pork"],
+
+         scenario_branch = []
 
          )
 
@@ -54,4 +65,12 @@ add_room("taxi",
 
          name = "taxi"
 
-         description = """You call for a Taxi, a cab driver stops for you."""
+         description = """You call for a Taxi, a cab driver stops for you.""",
+
+         connected_places = {},
+
+         items = []
+
+         scenario_branch = []
+
+         }

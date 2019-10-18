@@ -5,9 +5,8 @@ def add_item(id, name, mass, properties, description):
 add_item("wallet",
     name = "a wallet",
     mass = 0.3,
-    properties = [ "container", "droppable", "light"],
+    properties = ["container", "droppable", "light"],
     description="For all your essentials.")
-
 
 add_item("luggage",
     name= "luggage",
