@@ -6,12 +6,10 @@ rooms = {}
 
 """
 
-
-
 def add_room(id, name, description, connected_places, items, scenario_branch):
     items[id] = {"name":name, "description":description, "connected_places":connected_places, "items":items}
 
-add_room("coach",
+add_room    ("coach",
 
         name="Coach outside cardiff uni",
 
@@ -63,7 +61,7 @@ add_room("wetherspoons",
 
 add_room("taxi",
 
-         name = "taxi"
+         name = "taxi",
 
          description = """You call for a Taxi, a cab driver stops for you.""",
 

@@ -15,3 +15,6 @@ add_character("player",
 
 
 """Maybe change it so that you can pick a name"""
+
+"""Due to the way we've changed how we represent the player, in order to call current_room we use characters["player"][current_room]"""
+    

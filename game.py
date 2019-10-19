@@ -15,17 +15,12 @@ def list_of_items(items):
         item_list.append(item["name"])
     return ", ".join(item_list)
 
-
-
-
-
 def print_room_items(room):
     if room['items']:
         items = list_of_items(room['items'])
         print("There is %s here.\n" % items)
     else:
         pass
-
 
 def print_inventory_items(items):
     """This function takes a list of inventory items and displays it nicely, in a
@@ -42,7 +37,6 @@ def print_inventory_items(items):
         print("You have %s.\n" % items)
     else:
         pass
-
 
 def print_room(room):
     """
