@@ -17,7 +17,7 @@ def list_of_items(items):
 
 def print_location_items(location):
     if location['items']:
-    #if the list is empty this line returns false
+
         items = list_of_items(location['items']['name'])
         print("There is %s here.\n" % items)
     else:
@@ -40,14 +40,7 @@ def print_location_details(characters, location):
 
 
 def print_inventory_items(items):
-    """This function takes a list of inventory items and displays it nicely, in a
-    manner similar to print_room_items(). The only difference is in formatting:
-    print "You have ..." instead of "There is ... here.". For example:
-
-    >>> print_inventory_items(inventory)
-    You have id card, laptop, money.
-    <BLANKLINE>
-
+    """
     """
     if items:
         items = list_of_items(items)
@@ -59,47 +52,24 @@ def print_location(characters, location):
     """
     WE NEED TO PRINT THE TIME AND THE WEATHER ASSOCIATED WITH THE TIME
     """
-    # Display room name
-
     print()
     print(location["name"].upper())
     print()
-    # Display room description
+
     print(location["description"])
     print()
     print_location_details(characters, location)
 
-    #
-    # COMPLETE ME!
-    #
+
 
 def exit_leads_to(exits, direction):
-    """This function takes a dictionary of exits and a direction (a particular
-    exit taken from this dictionary). It returns the name of the room into which
-    this exit leads. For example:
-
-    >>> exit_leads_to(rooms["Reception"]["exits"], "south")
-    "MJ and Simon's room"
-    >>> exit_leads_to(rooms["Reception"]["exits"], "east")
-    "your personal tutor's office"
-    >>> exit_leads_to(rooms["Tutor"]["exits"], "west")
-    'Reception'
+    """
     """
     return rooms[exits[direction]]["name"]
 
 
 def print_exit(direction, leads_to):
-    """This function prints a line of a menu of exits. It takes a direction (the
-    name of an exit) and the name of the room into which it leads (leads_to),
-    and should print a menu line in the following format:
-
-    GO <EXIT NAME UPPERCASE> to <where it leads>.
-
-    For example:
-    >>> print_exit("east", "you personal tutor's office")
-    GO EAST to you personal tutor's office.
-    >>> print_exit("south", "MJ and Simon's room")
-    GO SOUTH to MJ and Simon's room.
+    """
     """
     print("GO " + direction.upper() + " to " + leads_to + ".")
 
@@ -109,8 +79,7 @@ def print_menu(connected_places, characters, time):
 
     """
     print("You can:")
-    # Iterate over available exits
-    #GO TAKE DROP GIVE RIDE BUY FIGHT TALK 
+    #GO TAKE DROP GIVE RIDE BUY FIGHT TALK
     for place in connected_places:
         time_taken = calculate_time(characters["player"]["status"], characters["player"]["inventory"], time)
         print("You can GO to %s (%s MINS)" %(place, time_taken))
@@ -119,8 +88,7 @@ def print_menu(connected_places, characters, time):
         print("TAKE %s to take %s." %(room_item['id'].upper(),room_item['name']))
     for inv_item in inv_items:
         print("DROP %s to drop your %s." %(inv_item['id'].upper(),inv_item['name']))
-    # COMPLETE ME!
-    #
+
 
     print("What do you want to do?")
 
@@ -139,10 +107,11 @@ def execute_go(direction, current_location, player_properties, inventory, time,)
     try:
         new_room = move(current_location['exits'],direction)
         new_time = time + calculate_time(player_properties, inventory, time)
+        #This moves the player, it also calculates how long the movement is going to take and adds it to the current time
         return new_room, new_time
     except KeyError:
         print("There is nothing %s of here." % direction)
-    #calculate time
+
 
 
 def execute_give(item_id, inventory, npc_inventory):
@@ -150,10 +119,7 @@ def execute_give(item_id, inventory, npc_inventory):
 
 
 def execute_take(item_id, current_location, inventory):
-    """This function takes an item_id as an argument and moves this item from the
-    list of items in the current room to the player's inventory. However, if
-    there is no such item in the room, this function prints
-    "You cannot take that."
+    """
     """
     item_picked_up = False
 
@@ -171,9 +137,7 @@ def execute_take(item_id, current_location, inventory):
 
 
 def execute_drop(item_id, current_location, inventory):
-    """This function takes an item_id as an argument and moves this item from the
-    player's inventory to list of items in the current room. However, if there is
-    no such item in the inventory, this function prints "You cannot drop that."
+    """
     """
     item_exists = False
     for item in inventory:
@@ -197,11 +161,7 @@ def calculate_time(player_properties, inventory, time):
     """This calculates how long it'll take for the player to perform an action"""
 
 def execute_command(command, current_location, inventory):
-    """This function takes a command (a list of words as returned by
-    normalise_input) and, depending on the type of action (the first word of
-    the command: "go", "take", or "drop"), executes either execute_go,
-    execute_take, or execute_drop, supplying the second word as the argument.
-
+    """
     """
 
     if 0 == len(command):
@@ -230,11 +190,7 @@ def execute_command(command, current_location, inventory):
     return current_location, inventory
 
 def menu(exits, room_items, inv_items):
-    """This function, given a dictionary of possible exits from a room, and a list
-    of items found in the room and carried by the player, prints the menu of
-    actions using print_menu() function. It then prompts the player to type an
-    action. The players's input is normalised using the normalise_input()
-    function before being returned.
+    """
 
     """
 
@@ -251,16 +207,7 @@ def menu(exits, room_items, inv_items):
 
 
 def move(exits, direction):
-    """This function returns the room into which the player will move if, from a
-    dictionary "exits" of avaiable exits, they choose to move towards the exit
-    with the name given by "direction". For example:
-
-    >>> move(rooms["Reception"]["exits"], "south") == rooms["Admins"]
-    True
-    >>> move(rooms["Reception"]["exits"], "east") == rooms["Tutor"]
-    True
-    >>> move(rooms["Reception"]["exits"], "west") == rooms["Office"]
-    False
+    """
     """
 
     # Next room to go to
