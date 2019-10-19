@@ -1,15 +1,51 @@
 import string
+from map import locations
+from player import characters
+from items import items
 
-# List of "unimportant" words (feel free to add more)
-key_words = []
+#These 3 lists hold the key names that we do not want to skip.
+key_characters = []
+key_locations = []
+key_items = []
 
+for character in characters:
+    key_characters.append(characters[character]['name'])
 
+for item in items:
+    key_items.append(items[item]['name'])
 
-def filter_words(words, key_words):
+for location in locations:
+    key_locations.append(locations[location]['name'])
+key_nouns = []
+key_nouns.append(key_characters)
+key_nouns.append(key_items)
+key_nouns.append(key_locations)
+
+key_verbs = [["go","move","walk", "run","wander","stroll"],
+            ["take","seize","obtain","get","grab","grasp","collect","capture"],
+            ["drop","abandon","dump","release"],
+            ["give","transfer","hand","gift","deliver"],
+            ["ride"],
+            ["buy","purchase"],
+            ["fight","attack","challenge","struggle","wrestle","tussle","hit"],
+            ["talk","chat","speak","converse","tell","say"]]
+
+#add feature so both ID and name could be used in key_items
+def filter_nouns(words):
+    pass
+def filter_verbs(words, key_verbs, key_nouns):
     """Takes words and returns only the key words
     e.g filter_words(["dog", "mog", "fog"], ["dog"])
         ["dog"]
     """
+    filtered_words = []
+    for word in words:
+        for verbs_list in key_verbs:
+            if word in verbs_list:
+                filtered_words.append(verbs_list[0])
+            else:
+
+
 
 def remove_punct(text):
     """This function is used to remove all punctuation
@@ -74,3 +110,6 @@ def normalise_input(user_input):
     list_of_words = filter_words(list_of_words, skip_words)
 
     return list_of_words
+
+words = ["purchase","the","a $10 roblox gift card"]
+filter_verbs(words, key_verbs)
