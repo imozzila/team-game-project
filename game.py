@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-from map import rooms
+from map import locations
 from player import characters
 from items import *
 from gameparser import *
@@ -15,12 +15,29 @@ def list_of_items(items):
         item_list.append(item["name"])
     return ", ".join(item_list)
 
-def print_room_items(room):
-    if room['items']:
-        items = list_of_items(room['items'])
+def print_location_items(location):
+    if location['items']:
+    #if the list is empty this line returns false
+        items = list_of_items(location['items']['name'])
         print("There is %s here.\n" % items)
     else:
         pass
+
+def print_location_characters(characters, location):
+    character_list =  []
+    for character in characters:
+        if character["current_location"] == location:
+            character_list.append(character)
+
+    print(", ".join(character_list))
+
+def print_location_details(characters, location):
+    """ This combines the print functions to print all the details about a room"""
+    print_location_items(location)
+    print_location_characters(characters, location)
+
+
+
 
 def print_inventory_items(items):
     """This function takes a list of inventory items and displays it nicely, in a
@@ -38,18 +55,20 @@ def print_inventory_items(items):
     else:
         pass
 
-def print_room(room):
+def print_location(characters, location):
     """
     WE NEED TO PRINT THE TIME AND THE WEATHER ASSOCIATED WITH THE TIME
     """
     # Display room name
+
     print()
-    print(room["name"].upper())
+    print(location["name"].upper())
     print()
     # Display room description
-    print(room["description"])
+    print(location["description"])
     print()
-    print_room_items(room)
+    print_location_details(characters, location)
+
     #
     # COMPLETE ME!
     #
@@ -85,17 +104,18 @@ def print_exit(direction, leads_to):
     print("GO " + direction.upper() + " to " + leads_to + ".")
 
 
-def print_menu(connected_places, loc_items, inv_items, characters, time):
+def print_menu(connected_places, characters, time):
     """
 
     """
     print("You can:")
     # Iterate over available exits
+    #GO TAKE DROP GIVE RIDE BUY FIGHT TALK 
     for place in connected_places:
         time_taken = calculate_time(characters["player"]["status"], characters["player"]["inventory"], time)
         print("You can GO to %s (%s MINS)" %(place, time_taken))
 
-    for room_item in room_items:
+    for loc_item in loc_items:
         print("TAKE %s to take %s." %(room_item['id'].upper(),room_item['name']))
     for inv_item in inv_items:
         print("DROP %s to drop your %s." %(inv_item['id'].upper(),inv_item['name']))
@@ -106,32 +126,20 @@ def print_menu(connected_places, loc_items, inv_items, characters, time):
 
 
 def is_valid_exit(exits, chosen_exit):
-    """This function checks, given a dictionary "exits" (see map.py) and
-    a players's choice "chosen_exit" whether the player has chosen a valid exit.
-    It returns True if the exit is valid, and False otherwise. Assume that
-    the name of the exit has been normalised by the function normalise_input().
-    For example:
-
-    >>> is_valid_exit(rooms["Reception"]["exits"], "south")
-    True
-    >>> is_valid_exit(rooms["Reception"]["exits"], "up")
-    False
-    >>> is_valid_exit(rooms["Parking"]["exits"], "west")
-    False
-    >>> is_valid_exit(rooms["Parking"]["exits"], "east")
-    True
+    """
     """
     return chosen_exit in exits
 
 
-def execute_go(direction, current_room):
+def execute_go(direction, current_location, player_properties, inventory, time,):
     """This function, given the direction (e.g. "south") updates the current room
     to reflect the movement of the player if the direction is a valid exit
     (and prints the name of the room into which the player is)
     """
     try:
-        new_room = move(current_room['exits'],direction)
-        return new_room
+        new_room = move(current_location['exits'],direction)
+        new_time = time + calculate_time(player_properties, inventory, time)
+        return new_room, new_time
     except KeyError:
         print("There is nothing %s of here." % direction)
     #calculate time
@@ -141,7 +149,7 @@ def execute_give(item_id, inventory, npc_inventory):
     """Gives an item from your inventory to an npc's inventory"""
 
 
-def execute_take(item_id, current_room, inventory):
+def execute_take(item_id, current_location, inventory):
     """This function takes an item_id as an argument and moves this item from the
     list of items in the current room to the player's inventory. However, if
     there is no such item in the room, this function prints
@@ -149,20 +157,20 @@ def execute_take(item_id, current_room, inventory):
     """
     item_picked_up = False
 
-    for item in current_room['items']:
+    for item in current_location['items']:
         if item['id'] == item_id:
             if calculate_mass(inventory, item):
                 item_picked_up = True
                 inventory.append(item)
-                current_room['items'].remove(item)
+                current_location['items'].remove(item)
         else:
             pass
     if not item_picked_up:
         print("You cannot take that.")
-    return current_room, inventory
+    return current_location, inventory
 
 
-def execute_drop(item_id, current_room, inventory):
+def execute_drop(item_id, current_location, inventory):
     """This function takes an item_id as an argument and moves this item from the
     player's inventory to list of items in the current room. However, if there is
     no such item in the inventory, this function prints "You cannot drop that."
@@ -171,13 +179,13 @@ def execute_drop(item_id, current_room, inventory):
     for item in inventory:
         if item['id'] == item_id:
             item_exists = True
-            current_room['items'].append(item)
+            current_location['items'].append(item)
             inventory.remove(item)
         else:
             pass
     if not item_exists:
         print("You cannot drop that.")
-    return current_room, inventory
+    return current_location, inventory
 
 def remove_item_from_player(item, inventory):
     """This remove the selected item from the players inventory"""
@@ -188,19 +196,7 @@ def check_requirements(item_needed, inventory):
 def calculate_time(player_properties, inventory, time):
     """This calculates how long it'll take for the player to perform an action"""
 
-
-
-
-def calculate_mass(inventory, item):
-    overall_mass = item['mass']
-    for item in inventory:
-        overall_mass += item['mass']
-    if overall_mass > 3:
-        return False
-    else:
-        return True
-
-def execute_command(command, current_room, inventory):
+def execute_command(command, current_location, inventory):
     """This function takes a command (a list of words as returned by
     normalise_input) and, depending on the type of action (the first word of
     the command: "go", "take", or "drop"), executes either execute_go,
@@ -213,25 +209,25 @@ def execute_command(command, current_room, inventory):
 
     if command[0] == "go":
         if len(command) > 1:
-            current_room = execute_go(command[1],current_room)
+            current_location, time = execute_go(command[1],current_location)
         else:
             print("Go where?")
 
     elif command[0] == "take":
         if len(command) > 1:
-            current_room, inventory = execute_take(command[1], current_room, inventory)
+            current_location, inventory = execute_take(command[1], current_location, inventory)
         else:
             print("Take what?")
 
     elif command[0] == "drop":
         if len(command) > 1:
-            current_room, inventory = execute_drop(command[1], current_room, inventory)
+            current_location, inventory = execute_drop(command[1], current_location, inventory)
         else:
             print("Drop what?")
 
     else:
         print("This makes no sense.")
-    return current_room, inventory
+    return current_location, inventory
 
 def menu(exits, room_items, inv_items):
     """This function, given a dictionary of possible exits from a room, and a list
@@ -270,29 +266,23 @@ def move(exits, direction):
     # Next room to go to
     return rooms[exits[direction]]
 
-def check_victory(current_room, Victorious):
-    if current_room['name'] == "the lecture hall":
-        Victorious = True
-        print("You've attended your lecture, congratulations!")
-    elif current_room['name'] == "Reception" and len(current_room['items']) == len(items):
-        print("You've collected all the items, congratulations!")
-    return Victorious
-
 # This is the entry point of our program
-def main(current_room, inventory):
+def main(characters):
     # Main game loop
     Victorious = False
+    time = 0
     while not Victorious:
-        # Display game status (room description, inventory etc.)
-        print_room(current_room)
-        print_inventory_items(inventory)
+
+        print_location(characters, characters["player"]["current_location"])
+
+        print_inventory_items(characters["player"]["inventory"])
 
         # Show the menu with possible actions and ask the player
-        command = menu(current_room["exits"], current_room["items"], inventory)
+        command = menu(current_location["exits"], current_location["items"], inventory)
 
         # Execute the player's command
-        current_room, inventory = execute_command(command, current_room, inventory)
-        Victorious = check_victory(current_room, Victorious)
+        current_location, inventory = execute_command(command, current_location, inventory)
+        Victorious = check_victory(current_location, Victorious)
 
 
 
@@ -300,4 +290,4 @@ def main(current_room, inventory):
 # '__main__' is the name of the scope in which top-level code executes.
 # See https://docs.python.org/3.4/library/__main__.html for explanation
 if __name__ == "__main__":
-    main(current_room, inventory)
+    main(characters)
