@@ -31,7 +31,7 @@ add_room("coach",
 
 add_room("victoria_coach_station",
 
-         name="London Victoria coach station"
+         name="London Victoria coach station",
 
          description = """You've arrived at London Victoria Coach Station and it's a gloomy 8am.
          As you step out of the coach, and grab your luggage, you push through the cluster of people
@@ -47,13 +47,13 @@ add_room("victoria_coach_station",
 
 add_room("wetherspoons",
 
-         name = "Wetherspoons"
+         name = "Wetherspoons",
 
          description = """You enter the pub famed for its affordable food and drinks. The pub provides
          a classic English interior that makes you feel right at home. There are plenty of people around,
          causing a ruckus for the staff in this busy day.""",
 
-         connected_places = {victoria_coach_station:30}
+         connected_places = {victoria_coach_station:30},
 
          items = ["beer", "whiskey", "coffee", "egg", "pork"],
 
@@ -63,7 +63,7 @@ add_room("wetherspoons",
 
 add_room("taxi",
 
-         name = "taxi"
+         name = "taxi",
 
          description = """You call for a Taxi, a cab driver stops for you.""",
 
@@ -71,6 +71,4 @@ add_room("taxi",
 
          items = [],
 
-         scenario_branch = []
-
-         }
+         scenario_branch = [])

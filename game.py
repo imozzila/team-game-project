@@ -10,6 +10,7 @@ from gameparser import *
 def list_of_items(items):
     """An empty list is created, and all the item names are added to it
     A string of all the item names are returned"""
+
     item_list =  []
     for item in items:
         item_list.append(item["name"])

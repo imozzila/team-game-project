@@ -10,8 +10,7 @@ add_character("player",
     name = "player",
     status = [],
     inventory = ["wallet", "luggage", "ticket"],
-    current_room = rooms["Reception"]
-    )
+    current_room = rooms["Reception"])
 
 
 """Maybe change it so that you can pick a name"""
