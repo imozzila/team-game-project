@@ -80,12 +80,11 @@ def normalise_input(user_input, key_verbs, key_nouns):
     lower case. It then splits the string into a list of words (also removing
     any extra spaces between words) and further removes all "unimportant"
     words from the list of words using the filter_words() function. The
-    resulting list of "important" words is returned. 
+    resulting list of "important" words is returned.
     """
     # Remove punctuation and convert to lower case
     no_punct = remove_punct(user_input).lower()
 
-    #
     list_of_words = []
     word = ""
     for letter in no_punct:

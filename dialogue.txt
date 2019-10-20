@@ -1,0 +1,10 @@
+[coach]
+	[coach.bus_driver.getting_on]
+	good_mood="Take a seat, and enjoy the journey!"
+	bad_mood="Get on the bus already, I don't want to be late!"
+
+	[coach.bus_driver.getting_off]
+	good_mood="Enjoy your trip around London, I recommend taking the tube. The taxis 'round here are too pricey for me liking."
+	bad_mood="Get out of the bus, I hope I don't have to see you on your way back to Cardiff."
+
+	
