@@ -20,6 +20,18 @@ add_character("bus_driver",
               current_location = locations["coach"]
               )
 
+add_character("taxi_driver",
+    name="taxi driver",
+    status = [],
+    inventory = [],
+    current_location=locations["victoria_coach_station"]
+    )
+
+add_character("piers_morgan",
+    name="Piers Morgan",
+    status = [],
+    inventory =[],
+    current_location=locations["the_shard"])
 
 """Maybe change it so that you can pick a name"""
 

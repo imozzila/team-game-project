@@ -1,5 +1,5 @@
 import toml
 
 with open("dialogue.txt") as file:
-    dialogue = toml.load(file)
+    dialogues = toml.load(file)
 print(dialogue)
