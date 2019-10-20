@@ -10,12 +10,8 @@ add_character("player",
     name = "player",
     status = [],
     inventory = ["wallet", "luggage", "ticket"],
-<<<<<<< HEAD
-    current_room = rooms["Reception"])
-=======
     current_location = locations["coach"]
     )
->>>>>>> 02418b4419b7781add67b544eabbddf02c96b816
 
 add_character("bus_driver",
               name = "bus driver",

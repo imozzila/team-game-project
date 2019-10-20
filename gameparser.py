@@ -31,21 +31,28 @@ key_verbs = [["go","move","walk", "run","wander","stroll"],
             ["talk","chat","speak","converse","tell","say"]]
 
 #add feature so both ID and name could be used in key_items
-def filter_nouns(words):
-    pass
-def filter_verbs(words, key_verbs, key_nouns):
-    """Takes words and returns only the key words
-    e.g filter_words(["dog", "mog", "fog"], ["dog"])
-        ["dog"]
+def filter_nouns(word, key_nouns, filtered_words):
+    for nouns_list in key_nouns:
+        if word in nouns_list:
+            filtered_words.append(word)
+    return filtered_words
+
+def filter_verbs(word, key_verbs, key_nouns, filtered_words):
     """
+    """
+    for verbs_list in key_verbs:
+        if word in verbs_list:
+            filtered_words.append(verbs_list[0])
+        else:
+            pass
+    return filtered_words
+
+def filter_words(words, key_verbs, key_nouns):
     filtered_words = []
     for word in words:
-        for verbs_list in key_verbs:
-            if word in verbs_list:
-                filtered_words.append(verbs_list[0])
-            else:
-
-
+        filtered_words = filter_verbs(word, key_verbs, key_nouns, filtered_words)
+        filtered_words = filter_nouns(word, key_nouns, filtered_words)
+    return filtered_words
 
 def remove_punct(text):
     """This function is used to remove all punctuation
@@ -68,30 +75,12 @@ def remove_punct(text):
     return no_punct
 
 
-def normalise_input(user_input):
+def normalise_input(user_input, key_verbs, key_nouns):
     """This function removes all punctuation from the string and converts it to
     lower case. It then splits the string into a list of words (also removing
     any extra spaces between words) and further removes all "unimportant"
     words from the list of words using the filter_words() function. The
-    resulting list of "important" words is returned. For example:
-
-    >>> normalise_input("  Go   south! ")
-    ['go', 'south']
-    >>> normalise_input("!!!  tAkE,.    LAmp!?! ")
-    ['take', 'lamp']
-    >>> normalise_input("HELP!!!!!!!")
-    ['help']
-    >>> normalise_input("Now, drop the sword please.")
-    ['drop', 'sword']
-    >>> normalise_input("Kill ~ tHe :-  gObLiN,. wiTH my SWORD!!!")
-    ['kill', 'goblin', 'sword']
-    >>> normalise_input("I would like to drop my laptop here.")
-    ['drop', 'laptop']
-    >>> normalise_input("I wish to take this large gem now!")
-    ['take', 'gem']
-    >>> normalise_input("How about I go through that little passage to the south...")
-    ['go', 'passage', 'south']
-
+    resulting list of "important" words is returned. 
     """
     # Remove punctuation and convert to lower case
     no_punct = remove_punct(user_input).lower()
@@ -107,9 +96,6 @@ def normalise_input(user_input):
             word += letter
     if word:
         list_of_words.append(word)
-    list_of_words = filter_words(list_of_words, skip_words)
+    list_of_words = filter_words(words, key_verbs, key_nouns)
 
     return list_of_words
-
-words = ["purchase","the","a $10 roblox gift card"]
-filter_verbs(words, key_verbs)
