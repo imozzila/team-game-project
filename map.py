@@ -12,9 +12,9 @@ add_room("coach",
 
     name="Coach to London",
 
-    description = """You are in a run-down, dusty bus that looks like it could break down
-    at any moment. The drive is staring down at you with beady eyes awaiting you ticket. You're estatic to arrive at London to meet
-    our childhood friend, Alex.""",
+    description = """You are in a run-down, dusty bus that looks like it could break down at any moment.
+The driver is staring down at you with beady eyes awaiting your ticket.
+You're estatic to arrive at London to meet your childhood friend, Alex.""",
 
     connected_places = {"victoria_coach_station":120},
 

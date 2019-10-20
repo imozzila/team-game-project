@@ -2,82 +2,83 @@
 
 from map import locations
 from player import characters
-from items import *
+from items import items
 from gameparser import *
 
 
 
-def list_of_items(items):
+def list_of_items(item_list):
     """An empty list is created, and all the item names are added to it
-    A string of all the item names are returned"""
+    A string of all the item names are returned
 
-    item_list =  []
-    for item in items:
-        item_list.append(item["name"])
-    return ", ".join(item_list)
+    >>> list_of_items(["dog", "man", "food"])
+    "dog, man, food"
 
-def print_location_items(location):
-    if location['items']:
+    """
+    new_item_list =  []
+    for item in item_list:
+        new_item_list.append(item)
+    return ", ".join(new_item_list)
 
-        items = list_of_items(location['items']['name'])
-        print("There is %s here.\n" % items)
+def print_location_items(location, items):
+    """This takes in a location and the items dictionary.
+       It then adds all the items from the location and obtains the names using the items dictionary and prints them out"""
+    item_list = []
+    for item in location["items"]:
+        item_list.append(items[item]["name"])
+
+    if item_list:
+        items = list_of_items(item_list) # locations["items"] = ["wagon wheels", "tape"]
     else:
         pass
 
 def print_location_characters(characters, location):
+    """This takes in a character and the locations dictionary.
+       It then checks through all the characters and checks if they're in the current location.
+       If they're in the current location, then they're printed out.
+    """
     character_list =  []
+
     for character in characters:
-        if character["current_location"] == location:
-            character_list.append(character)
+        if characters[character]["current_location"] == location:
+            character_list.append(characters[character]["name"])
 
-    print(", ".join(character_list))
+    print("The " + ", ".join(character_list) + " are here")
 
-def print_location_details(characters, location):
-    """ This combines the print functions to print all the details about a room"""
-    print_location_items(location)
+def print_location_details(characters, location, items):
+    """This combines the print functions to print all the details about a room"""
+    print_location_items(location, items)
     print_location_characters(characters, location)
 
-
-
-
-def print_inventory_items(items):
+def print_inventory_items(player_inv, items): #items = ["wallet, luggage, ticket"]
     """
+    This takes in a player inventory and the items dictionary.
+    It iterates through the player's inventory and obtians the name of the item.
+    The names of the items are then printed out.
     """
-    if items:
-        items = list_of_items(items)
-        print("You have %s.\n" % items)
+    item_list=[]
+    for item in player_inv:
+        item_list.append(items[item]["name"])
+
+    if item_list:
+        print("You have " + list_of_items(item_list)  + ".")
     else:
-        pass
+        print("You have nothing in your inventory")
 
-def print_location(characters, location):
+def print_location(characters, location, items):
     """
     WE NEED TO PRINT THE TIME AND THE WEATHER ASSOCIATED WITH THE TIME
     """
     print()
     print(location["name"].upper())
     print()
-
     print(location["description"])
     print()
-    print_location_details(characters, location)
+    print_location_details(characters, location, items)
 
-
-
-def exit_leads_to(exits, direction):
+def print_menu(connected_places, characters, inventory, time):
     """
-    """
-    return rooms[exits[direction]]["name"]
-
-
-def print_exit(direction, leads_to):
-    """
-    """
-    print("GO " + direction.upper() + " to " + leads_to + ".")
-
-
-def print_menu(connected_places, characters, time):
-    """
-
+    NOT FINISHED WE'RE GOING TO ADD REST OF ACTIONS LATER
     """
     print("You can:")
     #GO TAKE DROP GIVE RIDE BUY FIGHT TALK
@@ -85,10 +86,10 @@ def print_menu(connected_places, characters, time):
         time_taken = calculate_time(characters["player"]["status"], characters["player"]["inventory"], time)
         print("You can GO to %s (%s MINS)" %(place, time_taken))
 
-    for loc_item in loc_items:
-        print("TAKE %s to take %s." %(room_item['id'].upper(),room_item['name']))
-    for inv_item in inv_items:
-        print("DROP %s to drop your %s." %(inv_item['id'].upper(),inv_item['name']))
+    #for loc_item in loc_items:
+        #print("TAKE %s to take %s." %(room_item['id'].upper(),room_item['name']))
+    #for inv_item in inv_items:
+        #print("DROP %s to drop your %s." %(inv_item['id'].upper(),inv_item['name']))
 
 
     print("What do you want to do?")
@@ -96,14 +97,13 @@ def print_menu(connected_places, characters, time):
 
 def is_valid_exit(exits, chosen_exit):
     """
+    NOT DONE
     """
     return chosen_exit in exits
 
 
 def execute_go(direction, current_location, player_properties, inventory, time,):
-    """This function, given the direction (e.g. "south") updates the current room
-    to reflect the movement of the player if the direction is a valid exit
-    (and prints the name of the room into which the player is)
+    """NOT DONE
     """
     try:
         new_room = move(current_location['exits'],direction)
@@ -121,6 +121,7 @@ def execute_give(item_id, inventory, npc_inventory):
 
 def execute_take(item_id, current_location, inventory):
     """
+    NOT DONE
     """
     item_picked_up = False
 
@@ -139,6 +140,7 @@ def execute_take(item_id, current_location, inventory):
 
 def execute_drop(item_id, current_location, inventory):
     """
+    NOT DONE
     """
     item_exists = False
     for item in inventory:
@@ -163,6 +165,7 @@ def calculate_time(player_properties, inventory, time):
 
 def execute_command(command, current_location, inventory):
     """
+    NOT DONE
     """
 
     if 0 == len(command):
@@ -192,6 +195,7 @@ def execute_command(command, current_location, inventory):
 
 def menu(exits, room_items, inv_items):
     """
+    NOT DONE
 
     """
 
@@ -209,28 +213,28 @@ def menu(exits, room_items, inv_items):
 
 def move(exits, direction):
     """
+
     """
 
     # Next room to go to
     return rooms[exits[direction]]
 
 # This is the entry point of our program
-def main(characters):
+def main(characters, items, locations):
     # Main game loop
     Victorious = False
     time = 0
     while not Victorious:
+        current_location = characters["player"]["current_location"]
 
-        print_location(characters, characters["player"]["current_location"])
+        print_location(characters, current_location, items)
 
-        print_inventory_items(characters["player"]["inventory"])
+        print_inventory_items(characters["player"]["inventory"], items)
+        command = menu(locations[current_location], locations[current_location]["items"], characters["player"]["inventory"], time) #NOT WORKING YET
 
-        # Show the menu with possible actions and ask the player
-        command = menu(current_location["exits"], current_location["items"], inventory)
-
-        # Execute the player's command
-        current_location, inventory = execute_command(command, current_location, inventory)
-        Victorious = check_victory(current_location, Victorious)
+        #current_location, inventory = execute_command(command, current_location, inventory)
+        #Victorious = check_victory(current_location, Victorious)
+        Victorious = True
 
 
 
@@ -238,4 +242,4 @@ def main(characters):
 # '__main__' is the name of the scope in which top-level code executes.
 # See https://docs.python.org/3.4/library/__main__.html for explanation
 if __name__ == "__main__":
-    main(characters)
+    main(characters, items, locations)
