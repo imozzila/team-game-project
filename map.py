@@ -70,14 +70,30 @@ add_location("taxi",
          scenario_branch = [])
 
 add_location("monument_indoors",
-        )
+        name="Monument Underground",
+        description="",
+        connected_places={},
+        items=[],
+        scenario_branch=[])
 
 add_location("monument_outdoors",
-        )
+        name="Monument",
+        description="",
+        connected_places={},
+        items=[],
+        scenario_branch=[])
 
 add_location("first_floor_shard",
-        )
+        name="First Floor of the Shard",
+        description="",
+        connected_places={},
+        items=[],
+        scenario_branch=[])
 
 
 add_location("top_floor_shard",
-        )
+        name="Top Floor of the Shard",
+        description="",
+        connected_places={},
+        items = [],
+        scenario_branch = [])

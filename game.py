@@ -76,14 +76,14 @@ def print_location(characters, location, items):
     print()
     print_location_details(characters, location, items)
 
-def print_menu(connected_places, characters, inventory, time):
+def print_menu(connected_places, player_status, player_inventory, time):
     """
     NOT FINISHED WE'RE GOING TO ADD REST OF ACTIONS LATER
     """
     print("You can:")
     #GO TAKE DROP GIVE RIDE BUY FIGHT TALK
     for place in connected_places:
-        time_taken = calculate_time(characters["player"]["status"], characters["player"]["inventory"], time)
+        time_taken = calculate_time(player_status, player_inventory, time)
         print("You can GO to %s (%s MINS)" %(place, time_taken))
 
     #for loc_item in loc_items:
@@ -102,7 +102,7 @@ def is_valid_exit(exits, chosen_exit):
     return chosen_exit in exits
 
 
-def execute_go(direction, current_location, player_properties, inventory, time,):
+def execute_go(direction, current_location, player_properties, inventory, time):
     """NOT DONE
     """
     try:
@@ -193,14 +193,16 @@ def execute_command(command, current_location, inventory):
         print("This makes no sense.")
     return current_location, inventory
 
-def menu(exits, room_items, inv_items):
+def menu(exits, room_items, player, time):
     """
     NOT DONE
 
     """
 
     # Display menu
-    print_menu(exits, room_items, inv_items)
+    player_status = player["status"]
+    player_inventory = player["inventory"]
+    print_menu(exits, player_status, room_items, time)
 
     # Read player's input
     user_input = input("> ")
@@ -220,17 +222,17 @@ def move(exits, direction):
     return rooms[exits[direction]]
 
 # This is the entry point of our program
-def main(characters, items, locations):
+def main(characters, items):
     # Main game loop
     Victorious = False
     time = 0
     while not Victorious:
-        current_location = characters["player"]["current_location"]
-
+        player = characters["player"]
+        current_location = player["current_location"]
         print_location(characters, current_location, items)
 
         print_inventory_items(characters["player"]["inventory"], items)
-        command = menu(locations[current_location], locations[current_location]["items"], characters["player"]["inventory"], time) #NOT WORKING YET
+        command = menu(current_location["connected_places"], current_location["items"], player, time) #NOT WORKING YET
 
         #current_location, inventory = execute_command(command, current_location, inventory)
         #Victorious = check_victory(current_location, Victorious)
@@ -242,4 +244,4 @@ def main(characters, items, locations):
 # '__main__' is the name of the scope in which top-level code executes.
 # See https://docs.python.org/3.4/library/__main__.html for explanation
 if __name__ == "__main__":
-    main(characters, items, locations)
+    main(characters, items)

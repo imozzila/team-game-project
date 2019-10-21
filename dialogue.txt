@@ -15,7 +15,7 @@
 	monument="Oh, that'll be 'round 5 quid. Cheapest you'll get here."
 	other_location="That'll be £20, sir."
 	
-	[victoria_coach_staiton.taxi_driver.scam]
+	[victoria_coach_station.taxi_driver.scam]
 	dialogue="Welcome to your first lesson in London, mate. Don't get scammed."
 	
 
