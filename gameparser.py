@@ -28,7 +28,8 @@ key_verbs = [["go","move","walk", "run","wander","stroll"],
             ["ride"],
             ["buy","purchase"],
             ["fight","attack","challenge","struggle","wrestle","tussle","hit"],
-            ["talk","chat","speak","converse","tell","say"]]
+            ["talk","chat","speak","converse","tell","say"],
+            ["help"]]
 
 #add feature so both ID and name could be used in key_items
 #def filter_nouns(word, key_nouns, filtered_words):
