@@ -33,7 +33,7 @@ add_location("victoria_coach_station",
     As you step out of the coach, and grab your luggage, you push through the cluster of people
     in the coach station and head outside. You have agreed to meet Kirill at the top floor of the Shard.""",
 
-    connected_places = {"wetherspoons":30, "taxi":5, "tube":20},
+    connected_places = {"wetherspoons":30, "taxi":5, "victoria_tube":20},
 
     items = ["coffee", "luggage", "molotov", "crayons"],
 
@@ -51,7 +51,7 @@ add_location("wetherspoons",
          connected_places = {"victoria_coach_station":30},
 
 
-         items = ["beer", "whiskey", "coffee", "egg", "pork"],
+         items = ["beer", "whiskey", "coffee", "egg", "lamb"],
 
          scenario_branch = []
 
@@ -96,7 +96,7 @@ add_location("monument_indoors",
 
         connected_places={},
 
-        items=["money, keys"],
+        items=["money", "keys"],
 
         scenario_branch=[])
 

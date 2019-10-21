@@ -104,13 +104,13 @@ def is_valid_exit(connected_places, locations, chosen_location):
     """
     valid = False
     for connected_place in connected_places:
-        if chosen_location == locations[connected_place]['name']:
+        if chosen_location == locations[connected_place]['name'].lower():
             valid = True
     return valid
 
 def get_location_id(location, locations):
     for location_id in locations:
-        if locations[location_id]['name'] == location:
+        if locations[location_id]['name'].lower() == location:
             return locations[location_id]
         else:
             pass
@@ -121,6 +121,7 @@ def execute_go(new_location, current_location, locations, player_properties, inv
     """
     try:
         if is_valid_exit(current_location['connected_places'], locations, new_location):
+            print("valid")
             current_location = get_location_id(new_location, locations)
         #time += calculate_time(player_properties, inventory, current_location["connected_places"])
         #new_room = move(current_location["connected_places"], new_location)
@@ -225,7 +226,7 @@ def execute_command(command, locations, current_location, inventory, player, tim
 
     elif command[0] == "go":
         if len(command) > 1:
-            current_location, time = execute_go(command[1], current_location,locations,  player_status, inventory, time)
+            current_location, time = execute_go(command[1], current_location, locations,  player_status, inventory, time)
         else:
             print("Go where?")
 
@@ -292,9 +293,9 @@ def main(characters, locations, items, key_nouns, key_verbs):
         print_location(characters, current_location, items)
 
         print_inventory_items(player["inventory"], items)
+        print(current_location["connected_places"])
         command = menu(current_location["connected_places"], current_location["items"], player, time, key_nouns, key_verbs) #NOT WORKING YET
         player["current_location"], player["inventory"] = execute_command(command, locations, current_location, player["inventory"], player, time)
-        #current_location, inventory = execute_command(command, current_location, inventory)
         #Victorious = check_victory(current_location, Victorious)
 
 
