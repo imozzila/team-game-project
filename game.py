@@ -251,7 +251,7 @@ def execute_command(command, locations, characters, time, dialogues):
 
     elif command[0] == "go":
         if len(command) > 1:
-            current_location, time = execute_go(command[1], current_location, locations,  player_status, inventory, time)
+            current_location, time = execute_go(command[1], current_location, locations,  player_status, player_inventory, time)
         else:
             print("Go where?")
 
@@ -263,7 +263,7 @@ def execute_command(command, locations, characters, time, dialogues):
 
     elif command[0] == "drop":
         if len(command) > 1:
-            current_location, inventory = execute_drop(command[1], current_location, inventory)
+            current_location, inventory = execute_drop(command[1], current_location, player_inventory)
         else:
             print("Drop what?")
 
@@ -285,14 +285,15 @@ def execute_command(command, locations, characters, time, dialogues):
             print("Buy what?")
     elif command[0] == "talk":
         if len(command) > 1:
-
-            npc_id = get_id(command[1],characters)
-            current_location_id = get_id(current_location['name'], locations)
-            if is_valid_player(characters[npc_id], current_location):
-                execute_talk(npc_id, current_location_id, dialogues)
-            else:
-                print("%s is not here." % npc_id)
-
+            try:
+                npc_id = get_id(command[1],characters)
+                current_location_id = get_id(current_location['name'], locations)
+                if is_valid_player(characters[npc_id], current_location):
+                    execute_talk(npc_id, current_location_id, dialogues)
+                else:
+                    print("%s is not here." % npc_id)
+            except KeyError:
+                print("You cannot talk to that person")
     elif command[0] == "help":
         print_menu(current_location["connected_places"], player_status, player_inventory, player_location, time)
 
