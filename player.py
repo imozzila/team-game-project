@@ -14,11 +14,11 @@ add_character("player",
     )
 
 add_character("bus_driver",
-              name = "bus driver",
-              status = [],
-              inventory = [],
-              current_location = locations["coach"]
-              )
+    name = "bus driver",
+    status = [],
+    inventory = [],
+    current_location = locations["coach"]
+    )
 
 add_character("taxi_driver",
     name="taxi driver",
@@ -28,11 +28,25 @@ add_character("taxi_driver",
     )
 
 add_character("piers_morgan",
-    name="Piers Morgan",
+    name = "Piers Morgan",
     status = [],
     inventory =[],
-    current_location=locations["the_shard"])
+    current_location = locations["top_floor_shard"]
+    )
 
+add_character("waiter",
+    name="Waiter",
+    status = [],
+    inventory = [],
+    current_location = locations["wetherspoons"]
+    )
+
+add_character("policeman",
+    name="Policeman",
+    status = [],
+    inventory = [],
+    current_location = locations["wetherspoons"])
+    
 """Maybe change it so that you can pick a name"""
 
 """Due to the way we've changed how we represent the player, in order to call current_location we use characters["player"][current_location]"""
