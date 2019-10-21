@@ -77,7 +77,7 @@ add_location("victoria_tube",
 
              description = """You enter a humid, busy tube station and descend down the escalator,
                             you see a sign showing different lines for the tube. There is a guy
-                            playing saxophone, giving the tube station a jazzy vibe."""
+                            playing saxophone, giving the tube station a jazzy vibe.""",
 
              connected_places = {"monument_indoors":10},
 
@@ -108,7 +108,7 @@ add_location("monument_outdoors",
                     the Great Fire of London. The area is riddles with offices and buildings, with a
                     Boots store conveniently nearby. A stampede of Chinese tourists walk by with a tour guide.""",
 
-        connected_places={"boots":5, "first_floor_shard":10"},
+        connected_places={"boots":5, "first_floor_shard":10},
 
         items=["steel ball", "pen", "gift card", "laces"],
 
@@ -159,7 +159,7 @@ add_location("cannon_floor_shard",
 
                             He lights the cannon fuse and laughs maniacally...""",
 
-             connected_places = {"casino_floor_shard":10, "cooking_floor_shard":10}
+             connected_places = {"casino_floor_shard":10, "cooking_floor_shard":10},
 
              items = ["salmon", "steel ball", "weetabix", "corn flakes", "milk", "teapot", "tissue box", "racket", "frying pan"],
 
@@ -174,16 +174,23 @@ add_location("cooking_floor_shard",
                             a huge, advanced kitchen. A man wearing a 60cm tall chef's hat approaches you
                             brandishing a spatula, and roars at you
 
+<<<<<<< HEAD
                             "THIS IS KIRILL'S KITCHEN, WEAR YOUR APRON OR YOUR LUNCH WILL BE A KNUCKLE SANDWICH!" """
 
             connected_places = {"cannon_floor_shard":10, "piers_floor_shard":10}
 
              items = ["tin foil", "salmon", "frying pan", "egg", "lambchops", "butter", "jar", "lime"],
 
+=======
+                            "THIS IS KIRILL'S KITCHEN, WEAR YOUR APRON OR YOUR LUNCH WILL BE A KNUCKLE SANDWICH!" """,
+             connected_places = {},
+             items = [],
+>>>>>>> fc5049c7ecc0eea4fba6fb9351c48958b71b85f6
              scenario_branch = [])
 
 add_location("piers_floor_shard",
              name = "Spooky Floor",
+<<<<<<< HEAD
              description = """Stained with eggs, meat juices, flour and other assorted foods, you make it to the
                             staircase once again. Clambering up the carpeted steps, you feel a cold chill down your
                             spine. There is an ominous wind around you and a single wooden door covered in claw-marks
@@ -198,6 +205,10 @@ add_location("piers_floor_shard",
 
             connected_places = {"cooking_floor_shard":10, "top_floor_shard":10}
 
+=======
+             description = "",
+             connected_places = {},
+>>>>>>> fc5049c7ecc0eea4fba6fb9351c48958b71b85f6
              items = [],
 
              scenario_branch = [])
