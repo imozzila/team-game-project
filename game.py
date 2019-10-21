@@ -91,6 +91,9 @@ def print_menu(connected_places, player_status, player_inventory, player_locatio
     for item in player_inventory:
         print("DROP %s" %(items[item]["name"]))
     #This shows the player a list of items they can drop
+    for item in player_location["items"]:
+        if "purchasable" in item["properties"]:
+            print("BUY %s" %(items[item]["name"]))
 
 
 
