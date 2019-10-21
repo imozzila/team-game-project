@@ -159,10 +159,17 @@ def execute_drop(item_id, current_location, inventory):
 
 def remove_item_from_player(item, inventory):
     """This remove the selected item from the players inventory"""
+    inventory.remove(item)
 
 
 def check_requirements(character, item_needed, inventory):
     """This checks if the player has all the items needed in their inventory"""
+    for c in inventory:
+        if inventory(c) == item_needed:
+            return True
+        else:
+            return False
+
 
 
 def calculate_time(player_properties, inventory,connected_places, place):
