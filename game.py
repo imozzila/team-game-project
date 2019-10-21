@@ -5,8 +5,6 @@ from player import characters
 from items import items
 from gameparser import *
 
-
-
 def list_of_items(item_list):
     """An empty list is created, and all the item names are added to it
     A string of all the item names are returned
@@ -76,23 +74,25 @@ def print_location(characters, location, items):
     print()
     print_location_details(characters, location, items)
 
-def print_menu(connected_places, player_status, player_inventory, time):
+def print_menu(connected_places, player_status, player_inventory, player_location, time):
     """
     NOT FINISHED WE'RE GOING TO ADD REST OF ACTIONS LATER
+
     """
     print("You can:")
     #GO TAKE DROP GIVE RIDE BUY FIGHT TALK
+    """
     for place in connected_places:
         time_taken = calculate_time(player_status, player_inventory,connected_places, place)
-        print("You can GO to %s (%s MINS)" %(place, time_taken))
+        print("GO to %s (%s Minutes)" %(locations[place]["name"], time_taken))
 
-    #for loc_item in loc_items:
-        #print("TAKE %s to take %s." %(room_item['id'].upper(),room_item['name']))
-    #for inv_item in inv_items:
-        #print("DROP %s to drop your %s." %(inv_item['id'].upper(),inv_item['name']))
+    for item in player_location["items"]:
+        print("TAKE %s" %(items[item]["name"]))
 
+    for item in player_inventory:
+        print("DROP %s" %(items[item]["name"]))
+    """
 
-    print("What do you want to do?")
 
 
 def is_valid_exit(exits, chosen_exit):
@@ -212,7 +212,8 @@ def menu(exits, room_items, player, time, key_nouns, key_verbs):
     # Display menu
     player_status = player["status"]
     player_inventory = player["inventory"]
-    print_menu(exits, player_status, room_items, time)
+    player_location = player["current_location"]
+    print_menu(exits, player_status, player_inventory, player_location, time)
 
     # Read player's input
     user_input = input("> ")
