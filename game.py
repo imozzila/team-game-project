@@ -96,12 +96,21 @@ def print_menu(connected_places, player_status, player_inventory, player_locatio
         if "purchasable" in item["properties"]:
             print("BUY %s" %(items[item]["name"]))
 
+def is_valid_player(npc, current_location):
+    valid = False
+    if npc['current_location'] == current_location:
+        valid = True
+    else:
+        pass
+    return valid
 
 
 def is_valid_exit(connected_places, locations, chosen_location):
+
     """
     NOT DONE
     """
+
     valid = False
     for connected_place in connected_places:
         if chosen_location == locations[connected_place]['name'].lower():
@@ -119,6 +128,7 @@ def execute_go(new_location, current_location, locations, player_properties, inv
     """
     NOT DONE
     """
+
     try:
         if is_valid_exit(current_location['connected_places'], locations, new_location):
             print("valid")
@@ -140,7 +150,8 @@ def execute_fight():
     pass
 
 def execute_talk():
-    pass
+    if is_valid_player():
+        pass
 
 
 def execute_give(item_id, inventory, npc_inventory):
