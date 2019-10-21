@@ -23,16 +23,3 @@ def JumbleText(Message):
         word[1:LengthOfWord-1] = middle
         word = ''.join(word)
         print(word)
-
-def drink(Player):
-    NoOfDrinks += 1
-    if NoOfDrinks >= 2:
-        Player['DrunkenState'] = "Tipsy"
-    elif NoOfDrinks >= 6:
-        Player['DrunkenState'] = "Drunk"
-    elif NoOfDrinks >= 10:
-        Player['DrunkenState'] = "Wasted"
-    else:
-        Player['DrunkenState'] = "Sober"
-
-JumbleText("Wouldnt I be sweet")
