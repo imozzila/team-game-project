@@ -1,15 +1,16 @@
-﻿[coach]
+[coach]
+
 	[coach.bus_driver.getting_on]
-	good_mood="Take a seat, and enjoy the journey!"
-	bad_mood="Get on the bus already, I don't want to be late!"
+		good_mood="Take a seat, and enjoy the journey!"
+		bad_mood="Get on the bus already, I don't want to be late!"
 
 	[coach.bus_driver.getting_off]
-	good_mood="Enjoy your trip around London, I recommend taking the tube. The taxis 'round here are too pricey for me liking."
-	bad_mood="Get out of the bus, I hope I don't have to see you on your way back to Cardiff."
+		good_mood="Enjoy your trip around London, I recommend taking the tube. The taxis 'round here are too pricey for me liking."
+		bad_mood="Get out of the bus, I hope I don't have to see you on your way back to Cardiff."
 
-[victoria_coach_station]
+	[victoria_coach_station]
 	[victoria_coach_station.taxi_driver.ask]
-	dialogue="Welcome to London, the name's Sam. Where you off to then?"
+		dialogue="Welcome to London, the name's Sam. Where you off to then?"
 
 	[victoria_coach_station.taxi_driver.dealing]
 	monument="Oh, that'll be 'round 5 quid. Cheapest you'll get here."
@@ -47,7 +48,8 @@
 
 	[monument_indoors.pikachu.struggle]
 	default="Please Please Please Please Please give me change."
-	aggresive="GIVE ME SOME CHANGE!!! You millenials are so ungrateful."
+	bad_mood="GIVE ME SOME CHANGE!!! You millenials are so ungrateful."
 
 	[monument_indoors.pikachu.hit]
 	default="Ouch, what are you doing that for?"
+	second_hit="..."

@@ -109,7 +109,17 @@ def execute_go(direction, current_location, player_properties, inventory, time):
         return new_room, new_time
     except KeyError:
         print("There is nothing %s of here." % direction)
+def execute_buy():
+    pass
+    
+def execute_ride():
+    pass
 
+def execute_fight():
+    pass
+
+def execute_talk():
+    pass
 
 
 def execute_give(item_id, inventory, npc_inventory):
