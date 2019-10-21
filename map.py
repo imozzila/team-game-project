@@ -45,8 +45,8 @@ add_location("wetherspoons",
          name = "Wetherspoons",
 
          description = """You enter the pub famed for its affordable food and drinks. The pub provides
-         a classic English interior that makes you feel right at home. There are plenty of people around,
-         causing a ruckus for the staff in this busy day.""",
+a classic English interior that makes you feel right at home. There are plenty of people around,
+causing a ruckus for the staff in this busy day.""",
 
          connected_places = {"victoria_coach_station":30},
 

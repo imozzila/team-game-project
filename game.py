@@ -20,13 +20,19 @@ def print_location_items(location, items):
     """This takes in a location and the items dictionary.
        It then adds all the items from the location and obtains the names using the items dictionary and prints them out"""
     item_list = []
-    for item in location["items"]:
+    for item in location["items"][:-1]:
+        #Iterate through every item except the last one
         item_list.append(items[item]["name"])
 
-    if item_list:
-        items = list_of_items(item_list) # locations["items"] = ["wagon wheels", "tape"]
+    #TODO Fixing grammar
+    if len(item_list) == 1:
+        print("There is %s here." %(item_list[0]))
+    elif len(item_list) == 2:
+        print("There is $s and %s here." %(item_list[0], item_list[1]))
+    elif len(item_list) >= 3:
+        print("There is %s and %s" %(list_of_items(item_list), location["items"][-1])) #There is a fish, a dog and a cat here.
     else:
-        pass
+        print("There's nothing on the floor to pick up.")
 
 def print_location_characters(characters, location):
     """This takes in a character and the locations dictionary.
@@ -93,7 +99,7 @@ def print_menu(connected_places, player_status, player_inventory, player_locatio
         print("DROP %s" %(items[item]["name"]))
     #This shows the player a list of items they can drop
     for item in player_location["items"]:
-        if "purchasable" in item["properties"]:
+        if "purchasable" in items[item]["properties"]:
             print("BUY %s" %(items[item]["name"]))
 
 def is_valid_player(npc, current_location):
