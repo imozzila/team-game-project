@@ -83,7 +83,7 @@ def print_menu(connected_places, player_status, player_inventory, time):
     print("You can:")
     #GO TAKE DROP GIVE RIDE BUY FIGHT TALK
     for place in connected_places:
-        time_taken = calculate_time(player_status, player_inventory, time)
+        time_taken = calculate_time(player_status, player_inventory,connected_places, place)
         print("You can GO to %s (%s MINS)" %(place, time_taken))
 
     #for loc_item in loc_items:
@@ -107,7 +107,7 @@ def execute_go(direction, current_location, player_properties, inventory, time):
     """
     try:
         new_room = move(current_location['exits'],direction)
-        new_time = time + calculate_time(player_properties, inventory, time)
+        new_time = time + calculate_time(player_properties, inventory, current_location['exits'])
         #This moves the player, it also calculates how long the movement is going to take and adds it to the current time
         return new_room, new_time
     except KeyError:
@@ -160,8 +160,10 @@ def remove_item_from_player(item, inventory):
 def check_requirements(item_needed, inventory):
     """This checks if the player has all the items needed in their inventory"""
 
-def calculate_time(player_properties, inventory, time):
+def calculate_time(player_properties, inventory,connected_places, place):
     """This calculates how long it'll take for the player to perform an action"""
+    time = connected_places[place] #simply a quick fix, we still need to worry about modifiers
+    return time
 
 def execute_command(command, current_location, inventory):
     """

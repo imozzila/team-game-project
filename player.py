@@ -45,8 +45,14 @@ add_character("policeman",
     name="Policeman",
     status = [],
     inventory = [],
-    current_location = locations["wetherspoons"])
-    
+    current_location = locations["wetherspoons"]
+)
+
+add_character("pikachu",
+    name="Pikachu",
+    status=[],
+    inventory = [],
+    current_location=locations["monument_indoors"])
 """Maybe change it so that you can pick a name"""
 
 """Due to the way we've changed how we represent the player, in order to call current_location we use characters["player"][current_location]"""

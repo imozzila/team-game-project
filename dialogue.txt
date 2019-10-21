@@ -16,13 +16,13 @@
 	other_location="That'll be £20, sir."
 	
 	[victoria_coach_station.taxi_driver.scam]
-	dialogue="Welcome to your first lesson in London, mate. Don't get scammed."
+	default="Welcome to your first lesson in London, mate. Don't get scammed."
 	
 
 [wetherspoons]
 
 	[wetherspoons.waiter.ask]
-	dialogue="Hello, what would you like to have today?"
+	default="Hello, what would you like to have today?"
 	
 	[wetherspoons.waiter.order_taken]
 	beer = "Beer? Really? At this time? Uh.. sure. Here you go. That's gonna slow you down for the day."
@@ -43,3 +43,5 @@
 
 [monument_indoors]
 	[monument_indoors.pikachu.ask]
+	default="Hello, can you please spare some change for a guy like me?"
+	
