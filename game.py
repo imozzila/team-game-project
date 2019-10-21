@@ -110,6 +110,17 @@ def execute_go(direction, current_location, player_properties, inventory, time):
     except KeyError:
         print("There is nothing %s of here." % direction)
 
+def execute_buy():
+    pass
+
+def execute_ride():
+    pass
+
+def execute_fight():
+    pass
+
+def execute_talk():
+    pass
 
 
 def execute_give(item_id, inventory, npc_inventory):
@@ -118,8 +129,6 @@ def execute_give(item_id, inventory, npc_inventory):
         if inventory[x] == item_id:
             inventory.remove(item_id)
             npc_inventory.append(item_id)
-
-
 
 
 def execute_take(item_id, current_location, inventory):

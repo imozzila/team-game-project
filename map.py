@@ -27,7 +27,7 @@ You're estatic to arrive at London to meet your childhood friend, Kirill.""",
 
 add_location("victoria_coach_station",
 
-     name="London Victoria coach station",
+     name="coach station",
 
     description = """You've arrived at London Victoria Coach Station and it's a gloomy 8am.
     As you step out of the coach, and grab your luggage, you push through the cluster of people
@@ -87,53 +87,53 @@ add_location("victoria_tube",
 
 
 add_location("monument_indoors",
-             
+
         name = "Monument Underground",
-             
+
         description="""You enter a grimy, loud and crowded station. As you hop off your carriage
                     you get harassed by a man in a Pikachu suit. He grips you with the strength
                     of a boulder. You struggle to escape but he won't let yo go.""",
-             
+
         connected_places={},
-             
+
         items=["money, keys"],
-             
+
         scenario_branch=[])
 
 add_location("monument_outdoors",
-             
+
         name="Monument",
-             
+
         description="""You walk outside of the station to find the iconic monument which commemorates
                     the Great Fire of London. The area is riddles with offices and buildings, with a
                     Boots store conveniently nearby. A stampede of Chinese tourists walk by with a tour guide.""",
-             
+
         connected_places={"boots":5, "first_floor_shard":10"},
-             
+
         items=["steel ball", "pen", "gift card", "laces"],
 
         scenario_branch=[])
 
 add_location("first_floor_shard",
-             
+
         name = "First Floor of the Shard",
-             
+
         description="""You look up at the towering building in amazement. You feel like you're
                     almost at the end and are excited to meet your friend. You enter the building
                     to find yourself completely out of place. You're surrounded by businessmen in
                     well-attired clothing. You're completely lost in the ground floor and have no
                     idea where the elevator or stairs are.""",
-             
+
         connected_places={"casino_floor_shard":10},
-             
+
         items=["pen", "paper", "coffee", "lego yoda", "tissue box", "fan"],
-             
+
         scenario_branch=[])
 
 add_location("casino_floor_shard",
-             
+
              name = "Casino Floor",
-             
+
              description="""You enter the casino floor and are immediately greeted by the smell
                          of places where dreams come to die. There is a Honda Civic rotating on a
                          plate as a grand prize. The sound of slot machines giving people false hope
@@ -141,15 +141,15 @@ add_location("casino_floor_shard",
                          past in the direction of some peculiar looking stairs.""",
 
              connected_places = {"cannon_floor_shard":10, "first_floor_shard":10},
-             
+
              items = ["Honda Civic", "whiskey", "beer", "phone", "cigarettes"],
-             
+
              scenario_branch = [])
 
 add_location("cannon_floor_shard",
-             
+
              name = "Weird Floor",
-             
+
              description = """This floor definitely has a weird feeling to it. You look around
                             for any signs of movement. The floor has six great pillars supporting the ceiling.
                             As you notice all the food remains scattered acorss the floor, a man holding a giant
@@ -160,19 +160,19 @@ add_location("cannon_floor_shard",
                             He lights the cannon fuse and laughs maniacally...""",
 
              connected_places = {"casino_floor_shard":10, "cooking_floor_shard":10}
-             
+
              items = ["salmon", "steel ball", "weetabix", "corn flakes", "milk", "teapot", "tissue box", "racket", "frying pan"],
-             
+
              scenario_branch = [])
-             
+
 add_location("cooking_floor_shard",
-             
+
              name = "Sizzling Floor",
-             
+
              description = """You survive the cannon man and beeline it for the stairs again, going up
                             another floor. You can smell the source of some fine dining and follow the scent into
                             a huge, advanced kitchen. A man wearing a 40cm tall chef's hat approaches you
-                            brandishing a spatula like a war axe. He shouts at you in French,
+                            brandishing a spatula like a war axe. He shouts at you in French,"""
              items = [],
              scenario_branch = [])
 

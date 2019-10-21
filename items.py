@@ -14,8 +14,8 @@ add_item("luggage",
 
 
 add_item("money",
-    name= "money",
-    properties = [],
+    name= "£50",
+    properties = [50],
     description = "It's money.")
 
 add_item("ticket",
@@ -80,7 +80,7 @@ add_item("matches",
 
 add_item("beer",
     name="beer",
-    properties = [],
+    properties = [7],
     description= "Gives the best feeling ever.")
 
 add_item("kraves",
@@ -105,7 +105,7 @@ add_item("egg",
 
 add_item("lamb",
     name="lambchops",
-    properties = [],
+    properties = [10],
     description= "")
 
 add_item("skateboard",
@@ -115,12 +115,12 @@ add_item("skateboard",
 
 add_item("whiskey",
     name="whiskey",
-    properties=[],
+    properties=[10],
     description="Praise the lord for this great drink.")
 
 add_item("coffee",
     name="coffee",
-    properties=[],
+    properties=[5],
     description="I wonder what this is useful for..")
 
 add_item("wagon wheels",
