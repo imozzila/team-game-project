@@ -1,4 +1,4 @@
-[coach]
+﻿[coach]
 	[coach.bus_driver.getting_on]
 	good_mood="Take a seat, and enjoy the journey!"
 	bad_mood="Get on the bus already, I don't want to be late!"
@@ -43,5 +43,10 @@
 
 [monument_indoors]
 	[monument_indoors.pikachu.ask]
-	default="Hello, can you please spare some change for a guy like me?"
+	default="Hello, can you please spare some change for me?"
+	
+	[monument_indoors.pikachu.struggle]
+	default="GIVE ME SOME CHANGE!!! You millenials are so ungrateful."
+	
+	
 	

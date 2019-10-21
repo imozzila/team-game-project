@@ -31,13 +31,13 @@ key_verbs = [["go","move","walk", "run","wander","stroll"],
             ["talk","chat","speak","converse","tell","say"]]
 
 #add feature so both ID and name could be used in key_items
-def filter_nouns(word, key_nouns, filtered_words):
-    for nouns_list in key_nouns:
-        if word in nouns_list:
-            filtered_words.append(word)
-    return filtered_words
+#def filter_nouns(word, key_nouns, filtered_words):
+    #for nouns_list in key_nouns:
+        #if word in nouns_list:
+            #filtered_words.append(word)
+    #return filtered_words
 
-def filter_sentences(words, key_nouns, filtered_words):
+def filter_nouns(words, key_nouns, filtered_words):
     while words:
         word =" ".join(words)
         for nouns_list in key_nouns:
@@ -62,8 +62,7 @@ def filter_words(words, key_verbs, key_nouns):
     filtered_words = []
     for word in words:
         filtered_words = filter_verbs(word, key_verbs, filtered_words)
-        filtered_words = filter_nouns(word, key_nouns, filtered_words)
-    filtered_words = filter_sentences(words, key_nouns, filtered_words)
+    filtered_words = filter_nouns(words, key_nouns, filtered_words)
 
     return filtered_words
 

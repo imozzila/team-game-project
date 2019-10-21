@@ -142,6 +142,7 @@ def execute_drop(item_id, current_location, inventory):
     """
     NOT DONE
     """
+
     item_exists = False
     for item in inventory:
         if item['id'] == item_id:
@@ -190,7 +191,9 @@ def execute_command(command, current_location, inventory, time):
             current_location, inventory = execute_drop(command[1], current_location, inventory)
         else:
             print("Drop what?")
-
+    elif command[0] == "give":
+        if len(command) > 1:
+            pass
     else:
         print("This makes no sense.")
     return current_location, inventory
@@ -234,8 +237,9 @@ def main(characters, items, key_nouns, key_verbs):
         print_location(characters, current_location, items)
 
         print_inventory_items(player["inventory"], items)
-        command = menu(current_location["connected_places"], current_location["items"], player, time, key_nouns, key_verbs) #NOT WORKING YET
-        execute_command(command, current_location, player["inventory"], time)
+        command = menu(current_location["connected_places"], current_location["items"], player, time, key_nouns, key_verbs)
+        print(command)
+        execute_command(command, current_location, player["inventory"], time)#NOT WORKING YET
         #current_location, inventory = execute_command(command, current_location, inventory)
         #Victorious = check_victory(current_location, Victorious)
         Victorious = True
