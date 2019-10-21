@@ -122,10 +122,8 @@ def execute_go(new_location, current_location, locations, player_properties, inv
     try:
         if is_valid_exit(current_location['connected_places'], locations, new_location):
             current_location = get_location_id(new_location, locations)
-            print(current_location)
         #time += calculate_time(player_properties, inventory, current_location["connected_places"])
-        new_room = move(current_location["connected_places"], new_location)
-        new_time = time + calculate_time(player_properties, inventory, current_location["connected_places"])
+        #new_room = move(current_location["connected_places"], new_location)
         #This moves the player, it also calculates how long the movement is going to take and adds it to the current time
     except KeyError:
         print("You can't go to", new_location)
@@ -202,6 +200,8 @@ def check_requirements(character, item_needed, inventory):
         else:
             return False
 
+def move():
+    pass
 
 
 def calculate_time(player_properties, inventory,connected_places, place):
@@ -226,8 +226,6 @@ def execute_command(command, locations, current_location, inventory, player, tim
     elif command[0] == "go":
         if len(command) > 1:
             current_location, time = execute_go(command[1], current_location,locations,  player_status, inventory, time)
-            print(current_location)
-            current_location, time = execute_go(command[1], current_location, player_status, inventory, time)
         else:
             print("Go where?")
 
@@ -265,6 +263,8 @@ def execute_command(command, locations, current_location, inventory, player, tim
 
     return current_location, inventory
 
+
+
 def menu(exits, room_items, player, time, key_nouns, key_verbs):
     """
     NOT DONE
@@ -297,7 +297,6 @@ def main(characters, locations, items, key_nouns, key_verbs):
         #current_location, inventory = execute_command(command, current_location, inventory)
         #Victorious = check_victory(current_location, Victorious)
 
-        Victorious = True
 
 
 
