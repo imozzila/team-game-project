@@ -176,7 +176,6 @@ def execute_command(command, current_location, inventory, time):
     if command[0] == "go":
         if len(command) > 1:
             current_location, time = execute_go(command[1], current_location, player_properties, inventory, time)
-            print("it works")
         else:
             print("Go where?")
 
