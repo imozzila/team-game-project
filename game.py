@@ -4,12 +4,11 @@ from map import locations
 from player import characters
 from items import items
 from gameparser import *
-<<<<<<< HEAD
+
 from fileparser import dialogues
 from figlet import f
 
-=======
->>>>>>> 94aaa9a2bb7422324b0137e95b0d94ed9a1285fe
+
 
 def list_of_items(item_list):
     """An empty list is created, and all the item names are added to it

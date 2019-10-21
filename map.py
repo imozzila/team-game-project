@@ -77,7 +77,7 @@ add_location("victoria_tube",
 
              description = """You enter a humid, busy tube station and descend down the escalator,
                             you see a sign showing different lines for the tube. There is a guy
-                            playing saxophone, giving the tube station a jazzy vibe."""
+                            playing saxophone, giving the tube station a jazzy vibe.""",
 
              connected_places = {"monument_indoors":10},
 
@@ -108,7 +108,7 @@ add_location("monument_outdoors",
                     the Great Fire of London. The area is riddles with offices and buildings, with a
                     Boots store conveniently nearby. A stampede of Chinese tourists walk by with a tour guide.""",
 
-        connected_places={"boots":5, "first_floor_shard":10"},
+        connected_places={"boots":5, "first_floor_shard":10},
 
         items=["steel ball", "pen", "gift card", "laces"],
 
@@ -130,8 +130,6 @@ add_location("first_floor_shard",
 
         scenario_branch=[])
 
-<<<<<<< HEAD
-=======
 add_location("casino_floor_shard",
 
              name = "Casino Floor",
@@ -161,7 +159,7 @@ add_location("cannon_floor_shard",
 
                             He lights the cannon fuse and laughs maniacally...""",
 
-             connected_places = {"casino_floor_shard":10, "cooking_floor_shard":10}
+             connected_places = {"casino_floor_shard":10, "cooking_floor_shard":10},
 
              items = ["salmon", "steel ball", "weetabix", "corn flakes", "milk", "teapot", "tissue box", "racket", "frying pan"],
 
@@ -176,13 +174,15 @@ add_location("cooking_floor_shard",
                             a huge, advanced kitchen. A man wearing a 60cm tall chef's hat approaches you
                             brandishing a spatula, and roars at you
 
-                            "THIS IS KIRILL'S KITCHEN, WEAR YOUR APRON OR YOUR LUNCH WILL BE A KNUCKLE SANDWICH!" """
+                            "THIS IS KIRILL'S KITCHEN, WEAR YOUR APRON OR YOUR LUNCH WILL BE A KNUCKLE SANDWICH!" """,
+             connected_places = {},
              items = [],
              scenario_branch = [])
 
 add_location("piers_floor_shard",
              name = "Spooky Floor",
              description = "",
+             connected_places = {},
              items = [],
              scenario_branch = [])
 
