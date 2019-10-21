@@ -97,24 +97,45 @@ def print_menu(connected_places, player_status, player_inventory, player_locatio
 
 
 
-def is_valid_exit(exits, chosen_exit):
+def is_valid_exit(connected_places, locations, chosen_location):
     """
     NOT DONE
     """
-    return chosen_exit in exits
+    valid = False
+    for connected_place in connected_places:
+        if chosen_location == locations[connected_place]['name']:
+            valid = True
+    return valid
 
+def get_location_id(location, locations):
+    for location_id in locations:
+        if locations[location_id]['name'] == location:
+            return locations[location_id]
+        else:
+            pass
 
-def execute_go(new_location, current_location, player_properties, inventory, time):
+def execute_go(new_location, current_location, locations, player_properties, inventory, time):
     """
     NOT DONE
     """
     try:
+<<<<<<< HEAD
+        if is_valid_exit(current_location['connected_places'], locations, new_location):
+            current_location = get_location_id(new_location, locations)
+            print(current_location)
+        #time += calculate_time(player_properties, inventory, current_location["connected_places"])
+=======
         new_room = move(current_location["connected_places"], new_location)
         new_time = time + calculate_time(player_properties, inventory, current_location["connected_places"])
+>>>>>>> 695d9071c96194d39f43424a1256e9e6e5045782
         #This moves the player, it also calculates how long the movement is going to take and adds it to the current time
-        return new_room, new_time
     except KeyError:
+<<<<<<< HEAD
+        print("You can't go to", new_location)
+    return current_location, time
+=======
         print("There is nothing %s of here." % direction)
+>>>>>>> 695d9071c96194d39f43424a1256e9e6e5045782
 
 def execute_buy():
     pass
@@ -194,7 +215,7 @@ def calculate_time(player_properties, inventory,connected_places, place):
     time = connected_places[place] #simply a quick fix, we still need to worry about modifiers
     return time
 
-def execute_command(command, current_location, inventory, player, time):
+def execute_command(command, locations, current_location, inventory, player, time):
     """
     NOT DONE
     """
@@ -210,7 +231,12 @@ def execute_command(command, current_location, inventory, player, time):
 
     elif command[0] == "go":
         if len(command) > 1:
+<<<<<<< HEAD
+            current_location, time = execute_go(command[1], current_location,locations,  player_status, inventory, time)
+            print(current_location)
+=======
             current_location, time = execute_go(command[1], current_location, player_status, inventory, time)
+>>>>>>> 695d9071c96194d39f43424a1256e9e6e5045782
         else:
             print("Go where?")
 
@@ -271,21 +297,27 @@ def move(exits, direction):
     return rooms[exits[direction]
 
 # This is the entry point of our program
-def main(characters, items, key_nouns, key_verbs):
+def main(characters, locations, items, key_nouns, key_verbs):
     # Main game loop
     Victorious = False
     time = 0
+
     while not Victorious:
         player = characters["player"]
         current_location = player["current_location"]
+        print(current_location)
         print_location(characters, current_location, items)
 
         print_inventory_items(player["inventory"], items)
         command = menu(current_location["connected_places"], current_location["items"], player, time, key_nouns, key_verbs) #NOT WORKING YET
-        execute_command(command, current_location, player["inventory"], player, time)
+        player["current_location"], player["inventory"] = execute_command(command, locations, current_location, player["inventory"], player, time)
         #current_location, inventory = execute_command(command, current_location, inventory)
         #Victorious = check_victory(current_location, Victorious)
+<<<<<<< HEAD
+
+=======
         Victorious = True
+>>>>>>> 695d9071c96194d39f43424a1256e9e6e5045782
 
 
 
@@ -293,4 +325,4 @@ def main(characters, items, key_nouns, key_verbs):
 # '__main__' is the name of the scope in which top-level code executes.
 # See https://docs.python.org/3.4/library/__main__.html for explanation
 if __name__ == "__main__":
-    main(characters, items, key_nouns, key_verbs)
+    main(characters, locations, items, key_nouns, key_verbs)
