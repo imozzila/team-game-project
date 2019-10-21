@@ -34,7 +34,7 @@
 	
 	[wetherspoons.waiter.hit]
 	first_hit = "Woah, what are you doing? I just got surgery!"
-	second_hit ="Oww. My nose bleeding."
+	second_hit ="Oww. My nose is bleeding."
 	third_hit= "..."
 	
 	[wetherspoons.policeman.waiter_death]
