@@ -178,17 +178,16 @@ def execute_give(item_id, inventory, npc_inventory):
 
 def execute_take(item_id, current_location, inventory):
     """
-    NOT DONE
+    SOMEWHAT DONE
     """
 
     item_picked_up = False
-
     for item in current_location['items']:
-        if item['id'] == item_id:
-            if calculate_mass(inventory, item):
-                item_picked_up = True
-                inventory.append(item)
-                current_location['items'].remove(item)
+        if item == items[item_id]['name']:
+            #if calculate_mass(inventory, item):
+            item_picked_up = True
+            inventory.append(item)
+            current_location['items'].remove(item)
         else:
             pass
     if not item_picked_up:
@@ -201,11 +200,12 @@ def execute_drop(item_id, current_location, inventory):
     NOT DONE
     """
     item_exists = False
+
     for item in inventory:
-        if item['id'] == item_id:
+        if item == item_id:
             item_exists = True
-            current_location['items'].append(item)
             inventory.remove(item)
+            current_location['items'].append(item)
         else:
             pass
     if not item_exists:
@@ -257,7 +257,7 @@ def execute_command(command, locations, characters, time, dialogues):
 
     elif command[0] == "take":
         if len(command) > 1:
-            current_location, inventory = execute_take(command[1], current_location, inventory)
+            current_location, inventory = execute_take(command[1], current_location, player_inventory)
         else:
             print("Take what?")
 
@@ -269,7 +269,7 @@ def execute_command(command, locations, characters, time, dialogues):
 
     elif command[0] == "give":
         if len(command) > 1:
-            npc_inventory, inventory = execute_give(command[1], inventory, npc_inventory)
+            npc_inventory, inventory = execute_give(command[1], player_inventory, npc_inventory)
         else:
             print("Give what?")
 

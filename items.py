@@ -3,7 +3,7 @@ def add_item(id, name, properties, description):
     items[id] = {"name":name, "properties":properties, "description":description}
 
 add_item("wallet",
-    name = "a wallet",
+    name = "wallet",
     properties = ["container", "droppable", "light"],
     description="For all your essentials.")
 

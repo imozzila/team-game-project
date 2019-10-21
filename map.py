@@ -5,8 +5,8 @@ locations = {}
 
 """
 
-def add_location(id, name, description, connected_places, items, scenario_branch):
-    locations[id] = {"name":name, "description":description, "connected_places":connected_places, "items":items}
+def add_location(id, name, description, connected_places, items, entry_requirements):
+    locations[id] = {"name":name, "description":description, "connected_places":connected_places, "items":items, "entry_requirements":entry_requirements}
 
 add_location("coach",
 
@@ -20,7 +20,7 @@ You're estatic to arrive at London to meet your childhood friend, Kirill.""",
 
     items = ["wagon wheels", "tape"],
 
-    scenario_branch = []
+    entry_requirements = []
 )
 
 
@@ -37,7 +37,7 @@ add_location("victoria_coach_station",
 
     items = ["coffee", "luggage", "molotov", "crayons"],
 
-    scenario_branch = []
+    entry_requirements = []
 )
 
 add_location("wetherspoons",
@@ -53,7 +53,7 @@ causing a ruckus for the staff in this busy day.""",
 
          items = ["beer", "whiskey", "coffee", "egg", "lamb"],
 
-         scenario_branch = []
+         entry_requirements = []
 
          )
 
@@ -69,7 +69,7 @@ add_location("taxi",
 
          items = [],
 
-         scenario_branch = [])
+        entry_requirements = [])
 
 add_location("victoria_tube",
 
@@ -83,7 +83,7 @@ add_location("victoria_tube",
 
              items = ["beer", "skateboard", "cornetto", "tin foil", "milk"],
 
-             scenario_branch = [])
+             entry_requirements = [])
 
 
 add_location("monument_indoors",
@@ -98,7 +98,7 @@ add_location("monument_indoors",
 
         items=["money", "keys"],
 
-        scenario_branch=[])
+        entry_requirements = [])
 
 add_location("monument_outdoors",
 
@@ -112,7 +112,7 @@ add_location("monument_outdoors",
 
         items=["steel ball", "pen", "gift card", "laces"],
 
-        scenario_branch=[])
+        entry_requirements = [])
 
 add_location("first_floor_shard",
 
@@ -128,7 +128,7 @@ add_location("first_floor_shard",
 
         items=["pen", "paper", "coffee", "lego yoda", "tissue box", "fan"],
 
-        scenario_branch=[])
+        entry_requirements = [])
 
 add_location("casino_floor_shard",
 
@@ -144,7 +144,7 @@ add_location("casino_floor_shard",
 
              items = ["Honda Civic", "whiskey", "beer", "phone", "cigarettes"],
 
-             scenario_branch = [])
+             entry_requirements = [])
 
 add_location("cannon_floor_shard",
 
@@ -163,7 +163,7 @@ add_location("cannon_floor_shard",
 
              items = ["salmon", "steel ball", "weetabix", "corn flakes", "milk", "teapot", "tissue box", "racket", "frying pan"],
 
-             scenario_branch = [])
+             entry_requirements = [])
 
 add_location("cooking_floor_shard",
 
@@ -180,9 +180,10 @@ add_location("cooking_floor_shard",
 
              items = ["tin foil", "salmon", "frying pan", "egg", "lambchops", "butter", "jar", "lime"],
 
-             scenario_branch = [])
+             entry_requirements = [])
 
 add_location("piers_floor_shard",
+
              name = "Spooky Floor",
 
 
@@ -202,7 +203,7 @@ add_location("piers_floor_shard",
 
              items = [],
 
-             scenario_branch = [])
+             entry_requirements = [])
 
 add_location("top_floor_shard",
 
@@ -214,4 +215,4 @@ add_location("top_floor_shard",
 
         items = [],
 
-        scenario_branch = [])
+        entry_requirements = [])
