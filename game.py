@@ -83,7 +83,6 @@ def print_location(characters, location, items):
 def print_menu(connected_places, player_status, player_inventory, player_location, time):
     """
     NOT FINISHED WE'RE GOING TO ADD REST OF ACTIONS LATER
-
     """
     print("You can:")
     #GO TAKE DROP GIVE RIDE BUY FIGHT TALK
@@ -125,25 +124,26 @@ def is_valid_exit(connected_places, locations, chosen_location):
             valid = True
     return valid
 
-def get_dialogue():
-    pass
+def get_dialogue(npc, current_location_id, dialogues, scenario="default", mood="default"):
+    dialogue = dialogues[current_location_id][npc][scenario][mood]
+    return dialogue
 
-def get_location_id(location, locations):
-    for location_id in locations:
-        if locations[location_id]['name'].lower() == location:
-            return locations[location_id]
+def get_id(object, objects):
+    for object_id in objects:
+        if objects[object_id]['name'].lower() == object.lower():
+            return object_id
         else:
             pass
 
 def execute_go(new_location, current_location, locations, player_properties, inventory, time):
     """
-    NOT DONE
+    Almost done, just need to add the timer.
     """
 
     try:
         if is_valid_exit(current_location['connected_places'], locations, new_location):
-            print("valid")
-            current_location = get_location_id(new_location, locations)
+            current_location_id = get_id(new_location, locations)
+            current_location = locations[current_location_id]
         #time += calculate_time(player_properties, inventory, current_location["connected_places"])
         #new_room = move(current_location["connected_places"], new_location)
         #This moves the player, it also calculates how long the movement is going to take and adds it to the current time
@@ -160,11 +160,11 @@ def execute_ride():
 def execute_fight():
     pass
 
-def execute_talk():
-    if is_valid_player(npc, current_location):
-        get_dialogue(npc, current_location)
-    else:
-        print("%s is not here." % npc)
+def execute_talk(npc_id, current_location_id, dialogues):
+
+    dialogue = get_dialogue(npc_id, current_location_id, dialogues, "talk")
+    print("\n'"+dialogue+"'\n")
+
 
 def execute_give(item_id, inventory, npc_inventory):
     """Gives an item from your inventory to an npc's inventory"""
@@ -180,6 +180,7 @@ def execute_take(item_id, current_location, inventory):
     """
     NOT DONE
     """
+
     item_picked_up = False
 
     for item in current_location['items']:
@@ -233,14 +234,15 @@ def calculate_time(player_properties, inventory,connected_places, place):
     time = connected_places[place] #simply a quick fix, we still need to worry about modifiers
     return time
 
-def execute_command(command, locations, current_location, inventory, player, time):
+def execute_command(command, locations, characters, time, dialogues):
     """
     NOT DONE
     """
 
+    player = characters['player']
     player_status = player["status"]
     player_inventory = player["inventory"]
-    player_location = player["current_location"]
+    current_location = player["current_location"]
 
 
 
@@ -281,19 +283,29 @@ def execute_command(command, locations, current_location, inventory, player, tim
             player["money"], inventory = execute_buy()
         else:
             print("Buy what?")
+    elif command[0] == "talk":
+        if len(command) > 1:
+
+            npc_id = get_id(command[1],characters)
+            current_location_id = get_id(current_location['name'], locations)
+            if is_valid_player(characters[npc_id], current_location):
+                execute_talk(npc_id, current_location_id, dialogues)
+            else:
+                print("%s is not here." % npc_id)
 
     elif command[0] == "help":
         print_menu(current_location["connected_places"], player_status, player_inventory, player_location, time)
 
-    return current_location, inventory
+    return current_location, player_inventory
 
 
 
-def menu(exits, room_items, player, time, key_nouns, key_verbs):
+def menu(exits, room_items, player, time):
     """
     NOT DONE
 
     """
+
     # Read player's input
     user_input = input("> ")
 
@@ -305,7 +317,7 @@ def menu(exits, room_items, player, time, key_nouns, key_verbs):
 
 
 # This is the entry point of our program
-def main(characters, locations, items, key_nouns, key_verbs, dialogues):
+def main(characters, locations, items, dialogues):
     # Main game loop
     Victorious = False
     time = 0
@@ -313,16 +325,15 @@ def main(characters, locations, items, key_nouns, key_verbs, dialogues):
     while not Victorious:
         player = characters["player"]
         current_location = player["current_location"]
-
+        inventory = player["inventory"]
         if not announced:
             print_location(characters, current_location, items)
             announced = True
 
         print_inventory_items(player["inventory"], items)
-        print(current_location["connected_places"])
 
-        command = menu(current_location["connected_places"], current_location["items"], player, time, key_nouns, key_verbs) #NOT WORKING YET
-        player["current_location"], player["inventory"] = execute_command(command, locations, current_location, player["inventory"], player, time)
+        command = menu(current_location["connected_places"], current_location["items"], player, time) #NOT WORKING YET
+        player["current_location"], player["inventory"] = execute_command(command, locations, characters, time, dialogues)
 
         if player["current_location"] != current_location:
             announced = False
@@ -335,4 +346,4 @@ def main(characters, locations, items, key_nouns, key_verbs, dialogues):
 # '__main__' is the name of the scope in which top-level code executes.
 # See https://docs.python.org/3.4/library/__main__.html for explanation
 if __name__ == "__main__":
-    main(characters, locations, items, key_nouns, key_verbs, dialogues)
+    main(characters, locations, items, dialogues)
