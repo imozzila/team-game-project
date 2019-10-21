@@ -171,8 +171,10 @@ add_location("cooking_floor_shard",
 
              description = """You survive the cannon man and beeline it for the stairs again, going up
                             another floor. You can smell the source of some fine dining and follow the scent into
-                            a huge, advanced kitchen. A man wearing a 40cm tall chef's hat approaches you
-                            brandishing a spatula like a war axe. He shouts at you in French,"""
+                            a huge, advanced kitchen. A man wearing a 60cm tall chef's hat approaches you
+                            brandishing a spatula, and roars at you
+
+                            "THIS IS KIRILL'S KITCHEN, WEAR YOUR APRON OR YOUR LUNCH WILL BE A KNUCKLE SANDWICH!" """
              items = [],
              scenario_branch = [])
 
