@@ -10,7 +10,7 @@
 		good_mood="Enjoy your trip around London, I recommend taking the tube. The taxis 'round here are too pricey for me liking."
 		bad_mood="Get out of the bus, I hope I don't have to see you on your way back to Cardiff."
 
-	[victoria_coach_station]
+[victoria_coach_station]
 
 	[victoria_coach_station.taxi_driver.talk]
 		dialogue="Welcome to London, the name's Sam. Where you off to then?"

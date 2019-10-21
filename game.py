@@ -5,6 +5,8 @@ from player import characters
 from items import items
 from gameparser import *
 from figlet import f
+from fileparser import dialogues
+
 
 def list_of_items(item_list):
     """An empty list is created, and all the item names are added to it
@@ -123,6 +125,9 @@ def is_valid_exit(connected_places, locations, chosen_location):
             valid = True
     return valid
 
+def get_dialogue():
+    pass
+
 def get_location_id(location, locations):
     for location_id in locations:
         if locations[location_id]['name'].lower() == location:
@@ -156,9 +161,10 @@ def execute_fight():
     pass
 
 def execute_talk():
-    if is_valid_player():
-        pass
-
+    if is_valid_player(npc, current_location):
+        get_dialogue(npc, current_location)
+    else:
+        print("%s is not here." % npc)
 
 def execute_give(item_id, inventory, npc_inventory):
     """Gives an item from your inventory to an npc's inventory"""
@@ -299,20 +305,27 @@ def menu(exits, room_items, player, time, key_nouns, key_verbs):
 
 
 # This is the entry point of our program
-def main(characters, locations, items, key_nouns, key_verbs):
+def main(characters, locations, items, key_nouns, key_verbs, dialogues):
     # Main game loop
     Victorious = False
     time = 0
-
+    announced = False
     while not Victorious:
         player = characters["player"]
         current_location = player["current_location"]
-        print_location(characters, current_location, items)
+
+        if not announced:
+            print_location(characters, current_location, items)
+            announced = True
 
         print_inventory_items(player["inventory"], items)
         print(current_location["connected_places"])
+
         command = menu(current_location["connected_places"], current_location["items"], player, time, key_nouns, key_verbs) #NOT WORKING YET
         player["current_location"], player["inventory"] = execute_command(command, locations, current_location, player["inventory"], player, time)
+
+        if player["current_location"] != current_location:
+            announced = False
         #Victorious = check_victory(current_location, Victorious)
 
 
@@ -322,4 +335,4 @@ def main(characters, locations, items, key_nouns, key_verbs):
 # '__main__' is the name of the scope in which top-level code executes.
 # See https://docs.python.org/3.4/library/__main__.html for explanation
 if __name__ == "__main__":
-    main(characters, locations, items, key_nouns, key_verbs)
+    main(characters, locations, items, key_nouns, key_verbs, dialogues)
