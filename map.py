@@ -27,7 +27,7 @@ You're estatic to arrive at London to meet your childhood friend, Kirill.""",
 
 add_location("victoria_coach_station",
 
-     name="London Victoria coach station",
+     name="coach station",
 
     description = """You've arrived at London Victoria Coach Station and it's a gloomy 8am.
     As you step out of the coach, and grab your luggage, you push through the cluster of people
@@ -84,13 +84,14 @@ add_location("monument_outdoors",
         scenario_branch=[])
 
 add_location("first_floor_shard",
-        name="First Floor of the Shard",
+        name="First Floor",
         description="",
         connected_places={},
         items=[],
         scenario_branch=[])
 
-
+add_location("second_floor_shard",
+    name="Second Floor")
 add_location("top_floor_shard",
         name="Top Floor of the Shard",
         description="",
