@@ -5,11 +5,6 @@ from player import characters
 from items import items
 from gameparser import *
 
-from fileparser import dialogues
-from figlet import f
-
-
-
 def list_of_items(item_list):
     """An empty list is created, and all the item names are added to it
     A string of all the item names are returned
@@ -70,8 +65,7 @@ def print_location(characters, location, items):
     WE NEED TO PRINT THE TIME AND THE WEATHER ASSOCIATED WITH THE TIME
     """
     print()
-    print(f.renderText(location["name"].upper()))
-    #print(location["name"].upper())
+    print(location["name"].upper())
     print()
     print(location["description"])
     print()
@@ -88,12 +82,15 @@ def print_menu(connected_places, player_status, player_inventory, player_locatio
     for place in connected_places:
         time_taken = calculate_time(player_status, player_inventory,connected_places, place)
         print("GO to %s (%s Minutes)" %(locations[place]["name"], time_taken))
+    #This shows the player a list of places they can go
 
     for item in player_location["items"]:
         print("TAKE %s" %(items[item]["name"]))
+    #This shows the player a list of items they can take
 
     for item in player_inventory:
         print("DROP %s" %(items[item]["name"]))
+    #This shows the player a list of items they can drop
 
 
 
@@ -119,14 +116,23 @@ def execute_go(new_location, current_location, locations, player_properties, inv
     NOT DONE
     """
     try:
+<<<<<<< HEAD
         if is_valid_exit(current_location['connected_places'], locations, new_location):
             current_location = get_location_id(new_location, locations)
             print(current_location)
         #time += calculate_time(player_properties, inventory, current_location["connected_places"])
+=======
+        new_room = move(current_location["connected_places"], new_location)
+        new_time = time + calculate_time(player_properties, inventory, current_location["connected_places"])
+>>>>>>> 695d9071c96194d39f43424a1256e9e6e5045782
         #This moves the player, it also calculates how long the movement is going to take and adds it to the current time
     except KeyError:
+<<<<<<< HEAD
         print("You can't go to", new_location)
     return current_location, time
+=======
+        print("There is nothing %s of here." % direction)
+>>>>>>> 695d9071c96194d39f43424a1256e9e6e5045782
 
 def execute_buy():
     pass
@@ -147,6 +153,8 @@ def execute_give(item_id, inventory, npc_inventory):
         if inventory[x] == item_id:
             inventory.remove(item_id)
             npc_inventory.append(item_id)
+
+
 
 
 def execute_take(item_id, current_location, inventory):
@@ -211,14 +219,21 @@ def execute_command(command, locations, current_location, inventory, player, tim
 
     player_status = player["status"]
     player_inventory = player["inventory"]
+    player_location = player["current_location"]
+
+
 
     if len(command) == 0:
         print("This is not a valid command type in help for a lits of valid commands")
 
     elif command[0] == "go":
         if len(command) > 1:
+<<<<<<< HEAD
             current_location, time = execute_go(command[1], current_location,locations,  player_status, inventory, time)
             print(current_location)
+=======
+            current_location, time = execute_go(command[1], current_location, player_status, inventory, time)
+>>>>>>> 695d9071c96194d39f43424a1256e9e6e5045782
         else:
             print("Go where?")
 
@@ -252,7 +267,7 @@ def execute_command(command, locations, current_location, inventory, player, tim
             print("Buy what?")
 
     elif command[0] == "help":
-        print_menu(current_location["connected_places"], player_status, player_inventory, current_location, time)
+        print_menu(current_location["connected_places"], player_status, player_inventory, player_location, time)
 
     return current_location, inventory
 
@@ -269,9 +284,14 @@ def menu(exits, room_items, player, time, key_nouns, key_verbs):
 
     return normalised_user_input
 
-def check_victory():
-    """Todo FINISHED this """
-    return false
+
+def move(exits, direction):
+    """
+
+    """
+
+    # Next room to go to
+    return rooms[exits[direction]
 
 # This is the entry point of our program
 def main(characters, locations, items, key_nouns, key_verbs):
@@ -290,7 +310,11 @@ def main(characters, locations, items, key_nouns, key_verbs):
         player["current_location"], player["inventory"] = execute_command(command, locations, current_location, player["inventory"], player, time)
         #current_location, inventory = execute_command(command, current_location, inventory)
         #Victorious = check_victory(current_location, Victorious)
+<<<<<<< HEAD
 
+=======
+        Victorious = True
+>>>>>>> 695d9071c96194d39f43424a1256e9e6e5045782
 
 
 

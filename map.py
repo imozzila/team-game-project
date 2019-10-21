@@ -184,6 +184,10 @@ add_location("cooking_floor_shard",
 
 add_location("piers_floor_shard",
              name = "Spooky Floor",
+<<<<<<< HEAD
+=======
+
+>>>>>>> 695d9071c96194d39f43424a1256e9e6e5045782
              description = """Stained with eggs, meat juices, flour and other assorted foods, you make it to the
                             staircase once again. Clambering up the carpeted steps, you feel a cold chill down your
                             spine. There is an ominous wind around you and a single wooden door covered in claw-marks
