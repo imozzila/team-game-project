@@ -185,7 +185,6 @@ add_location("piers_floor_shard",
              description = "",
              items = [],
              scenario_branch = [])
->>>>>>> 94aaa9a2bb7422324b0137e95b0d94ed9a1285fe
 
 add_location("top_floor_shard",
         name="Top Floor",
