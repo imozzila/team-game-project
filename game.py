@@ -15,10 +15,7 @@ def list_of_items(item_list):
     "dog, man, food"
 
     """
-    new_item_list =  []
-    for item in item_list:
-        new_item_list.append(item)
-    return ", ".join(new_item_list)
+    return ", ".join(item_list)
 
 def print_location_items(location, items):
     """This takes in a location and the items dictionary.

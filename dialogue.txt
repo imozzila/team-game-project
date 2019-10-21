@@ -14,16 +14,16 @@
 	[victoria_coach_station.taxi_driver.dealing]
 	monument="Oh, that'll be 'round 5 quid. Cheapest you'll get here."
 	other_location="That'll be £20, sir."
-	
+
 	[victoria_coach_station.taxi_driver.scam]
 	default="Welcome to your first lesson in London, mate. Don't get scammed."
-	
+
 
 [wetherspoons]
 
 	[wetherspoons.waiter.ask]
 	default="Hello, what would you like to have today?"
-	
+
 	[wetherspoons.waiter.order_taken]
 	beer = "Beer? Really? At this time? Uh.. sure. Here you go. That's gonna slow you down for the day."
 	coffee = "Good choice, gets you energised for the morning."
@@ -31,12 +31,12 @@
 	second_alcohol = "Seriously? Fine. Promise you won't have another drink."
 	third_alcohol = "WHAT IS WRONG WITH YOU? Okay, sure this is your last drink though."
 	fourth_alcohol ="Nope, get out. I've had it with you."
-	
+
 	[wetherspoons.waiter.hit]
 	first_hit = "Woah, what are you doing? I just got surgery!"
 	second_hit ="Oww. My nose is bleeding."
 	third_hit= "..."
-	
+
 	[wetherspoons.policeman.waiter_death]
 	arrest ="Sir, I'm going to have to arrest you for the murder of the waiter over there."
 	escape ="How dare you escape? I'll hunt you down."
@@ -44,9 +44,10 @@
 [monument_indoors]
 	[monument_indoors.pikachu.ask]
 	default="Hello, can you please spare some change for me?"
-	
+
 	[monument_indoors.pikachu.struggle]
-	default="GIVE ME SOME CHANGE!!! You millenials are so ungrateful."
-	
-	
-	
+	default="Please Please Please Please Please give me change."
+	aggresive="GIVE ME SOME CHANGE!!! You millenials are so ungrateful."
+
+	[monument_indoors.pikachu.hit]
+	default="Ouch, what are you doing that for?"
