@@ -1,5 +1,6 @@
 [coach]
-
+	[coach.bus_driver.talk]
+	default="This is the coach to cardiff, have you got a ticket?"
 	[coach.bus_driver.getting_on]
 		good_mood="Take a seat, and enjoy the journey!"
 		bad_mood="Get on the bus already, I don't want to be late!"
@@ -53,3 +54,7 @@
 	[monument_indoors.pikachu.hit]
 	default="Ouch, what are you doing that for?"
 	second_hit="..."
+
+[monument_outdoors]
+	[monument_outdoors.tourist.ask]
+	default=""
