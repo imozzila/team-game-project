@@ -174,23 +174,17 @@ add_location("cooking_floor_shard",
                             a huge, advanced kitchen. A man wearing a 60cm tall chef's hat approaches you
                             brandishing a spatula, and roars at you
 
-<<<<<<< HEAD
-                            "THIS IS KIRILL'S KITCHEN, WEAR YOUR APRON OR YOUR LUNCH WILL BE A KNUCKLE SANDWICH!" """
+                            "THIS IS KIRILL'S KITCHEN, WEAR YOUR APRON OR YOUR LUNCH WILL BE A KNUCKLE SANDWICH!" """,
 
-            connected_places = {"cannon_floor_shard":10, "piers_floor_shard":10}
+            connected_places = {"cannon_floor_shard":10, "piers_floor_shard":10},
 
              items = ["tin foil", "salmon", "frying pan", "egg", "lambchops", "butter", "jar", "lime"],
 
-=======
-                            "THIS IS KIRILL'S KITCHEN, WEAR YOUR APRON OR YOUR LUNCH WILL BE A KNUCKLE SANDWICH!" """,
-             connected_places = {},
-             items = [],
->>>>>>> fc5049c7ecc0eea4fba6fb9351c48958b71b85f6
              scenario_branch = [])
 
 add_location("piers_floor_shard",
              name = "Spooky Floor",
-<<<<<<< HEAD
+
              description = """Stained with eggs, meat juices, flour and other assorted foods, you make it to the
                             staircase once again. Clambering up the carpeted steps, you feel a cold chill down your
                             spine. There is an ominous wind around you and a single wooden door covered in claw-marks
@@ -203,12 +197,8 @@ add_location("piers_floor_shard",
 
                             "Do you eat cereal with or without water?" """,
 
-            connected_places = {"cooking_floor_shard":10, "top_floor_shard":10}
+            connected_places = {"cooking_floor_shard":10, "top_floor_shard":10},
 
-=======
-             description = "",
-             connected_places = {},
->>>>>>> fc5049c7ecc0eea4fba6fb9351c48958b71b85f6
              items = [],
 
              scenario_branch = [])
