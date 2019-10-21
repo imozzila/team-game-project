@@ -27,6 +27,7 @@ def print_location_items(location, items):
         items = list_of_items(item_list) # locations["items"] = ["wagon wheels", "tape"]
     else:
         pass
+    print("There are " + item_list + "dotted around for you to pick up.")
 
 def print_location_characters(characters, location):
     """This takes in a character and the locations dictionary.
