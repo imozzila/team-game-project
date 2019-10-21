@@ -98,16 +98,18 @@ def is_valid_exit(exits, chosen_exit):
     return chosen_exit in exits
 
 
-def execute_go(direction, current_location, player_properties, inventory, time):
-    """NOT DONE
+def execute_go(new_location, current_location, player_properties, inventory, time):
+    """
+    NOT DONE
     """
     try:
-        new_room = move(current_location['exits'],direction)
-        new_time = time + calculate_time(player_properties, inventory, current_location['exits'])
+        new_room = current_location["connected_places"][new_location]
+        new_time = time + calculate_time(player_properties, inventory, current_location["connected_places"])
         #This moves the player, it also calculates how long the movement is going to take and adds it to the current time
         return new_room, new_time
     except KeyError:
-        print("There is nothing %s of here." % direction)
+        print("You can't go to", new_location)
+
 def execute_buy():
     pass
 
@@ -193,16 +195,13 @@ def execute_command(command, current_location, inventory, player, time):
 
     player_status = player["status"]
     player_inventory = player["inventory"]
-    player_location = player["current_location"]
-
-
 
     if len(command) == 0:
-        print("Type in a command...")
+        print("This is not a valid command type in help for a lits of valid commands")
 
     elif command[0] == "go":
         if len(command) > 1:
-            current_location, time = execute_go(command[1], current_location, player_properties, inventory, time)
+            characters["player"]["current_location"], time = execute_go(command[1], current_location, player_status, inventory, time)
         else:
             print("Go where?")
 
@@ -217,19 +216,26 @@ def execute_command(command, current_location, inventory, player, time):
             current_location, inventory = execute_drop(command[1], current_location, inventory)
         else:
             print("Drop what?")
+
     elif command[0] == "give":
         if len(command) > 1:
             npc_inventory, inventory = execute_give(command[1], inventory, npc_inventory)
+        else:
+            print("Give what?")
+
     elif command[0] == "ride":
         if len(command) > 1:
             current_location = execute_ride()
+        else:
+            print("Ride what?")
     elif command[0] == "buy":
         if len(command) > 1:
-            inventory["money"]["properties"][0], inventory = execute_buy()
+            player["money"], inventory = execute_buy()
+        else:
+            print("Buy what?")
+
     elif command[0] == "help":
-        print_menu(current_location[connected_places], player_status, player_inventory, player_location, time)
-    else:
-        print("This is not a valid command type in help for a list of available actions")
+        print_menu(current_location["connected_places"], player_status, player_inventory, current_location, time)
 
     return current_location, inventory
 
@@ -246,14 +252,9 @@ def menu(exits, room_items, player, time, key_nouns, key_verbs):
 
     return normalised_user_input
 
-
-def move(exits, direction):
-    """
-
-    """
-
-    # Next room to go to
-    return rooms[exits[direction]]
+def check_victory():
+    """Todo FINISHED this """
+    return false
 
 # This is the entry point of our program
 def main(characters, items, key_nouns, key_verbs):
@@ -269,8 +270,8 @@ def main(characters, items, key_nouns, key_verbs):
         command = menu(current_location["connected_places"], current_location["items"], player, time, key_nouns, key_verbs) #NOT WORKING YET
         execute_command(command, current_location, player["inventory"], player, time)
         #current_location, inventory = execute_command(command, current_location, inventory)
-        #Victorious = check_victory(current_location, Victorious)
-        Victorious = True
+        Victorious = check_victory(current_location, Victorious)
+
 
 
 
