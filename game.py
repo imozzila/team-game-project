@@ -24,10 +24,13 @@ def print_location_items(location, items):
         item_list.append(items[item]["name"])
 
     if item_list:
-        items = list_of_items(item_list) # locations["items"] = ["wagon wheels", "tape"]
+        item_string = list_of_items(item_list) # locations["items"] = ["wagon wheels", "tape"]
     else:
-        pass
-    print("There are " + items + " dotted around for you to pick up.")
+        item_string = []
+    if item_string:
+        print("There are " + item_string + " dotted around for you to pick up.")
+    else:
+        print("There's nothing on the floor to pick up.")
 
 def print_location_characters(characters, location):
     """This takes in a character and the locations dictionary.
@@ -94,7 +97,7 @@ def print_menu(connected_places, player_status, player_inventory, player_locatio
         print("DROP %s" %(items[item]["name"]))
     #This shows the player a list of items they can drop
     for item in player_location["items"]:
-        if "purchasable" in item["properties"]:
+        if "purchasable" in items[item]["properties"]:
             print("BUY %s" %(items[item]["name"]))
 
 
