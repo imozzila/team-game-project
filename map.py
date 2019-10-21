@@ -175,18 +175,41 @@ add_location("cooking_floor_shard",
                             brandishing a spatula, and roars at you
 
                             "THIS IS KIRILL'S KITCHEN, WEAR YOUR APRON OR YOUR LUNCH WILL BE A KNUCKLE SANDWICH!" """
-             items = [],
+
+            connected_places = {"cannon_floor_shard":10, "piers_floor_shard":10}
+
+             items = ["tin foil", "salmon", "frying pan", "egg", "lambchops", "butter", "jar", "lime"],
+
              scenario_branch = [])
 
 add_location("piers_floor_shard",
              name = "Spooky Floor",
-             description = "",
+             description = """Stained with eggs, meat juices, flour and other assorted foods, you make it to the
+                            staircase once again. Clambering up the carpeted steps, you feel a cold chill down your
+                            spine. There is an ominous wind around you and a single wooden door covered in claw-marks
+                            in front of you. The door does not appear to be locked, so you turn the handle and enter.
+                            The room has bookshelves across both walls, a great mahogany desk in the middle, and a
+                            tall, leather chair facing away from you out the window. The air you exhale curls up in
+                            front of you from the cold, and the chair begins to slowly rotate...
+
+                            Piers Morgan now faces you, staring straight through you with a vacant gaze.
+
+                            "Do you eat cereal with or without water?" """,
+
+            connected_places = {"cooking_floor_shard":10, "top_floor_shard":10}
+
              items = [],
+
              scenario_branch = [])
 
 add_location("top_floor_shard",
+
         name="Top Floor",
+
         description="",
-        connected_places={},
+
+        connected_places = {"piers_floor_shard":10},
+
         items = [],
+
         scenario_branch = [])
