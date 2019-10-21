@@ -4,9 +4,12 @@ from map import locations
 from player import characters
 from items import items
 from gameparser import *
+<<<<<<< HEAD
 from fileparser import dialogues
 from figlet import f
 
+=======
+>>>>>>> 94aaa9a2bb7422324b0137e95b0d94ed9a1285fe
 
 def list_of_items(item_list):
     """An empty list is created, and all the item names are added to it
@@ -75,23 +78,24 @@ def print_location(characters, location, items):
     print()
     print_location_details(characters, location, items)
 
-def print_menu(connected_places, player_status, player_inventory, time):
+def print_menu(connected_places, player_status, player_inventory, player_location, time):
     """
     NOT FINISHED WE'RE GOING TO ADD REST OF ACTIONS LATER
+
     """
     print("You can:")
     #GO TAKE DROP GIVE RIDE BUY FIGHT TALK
+
     for place in connected_places:
         time_taken = calculate_time(player_status, player_inventory,connected_places, place)
-        print("You can GO to %s (%s MINS)" %(place, time_taken))
+        print("GO to %s (%s Minutes)" %(locations[place]["name"], time_taken))
 
-    #for loc_item in loc_items:
-        #print("TAKE %s to take %s." %(room_item['id'].upper(),room_item['name']))
-    #for inv_item in inv_items:
-        #print("DROP %s to drop your %s." %(inv_item['id'].upper(),inv_item['name']))
+    for item in player_location["items"]:
+        print("TAKE %s" %(items[item]["name"]))
 
+    for item in player_inventory:
+        print("DROP %s" %(items[item]["name"]))
 
-    print("What do you want to do?")
 
 
 def is_valid_exit(exits, chosen_exit):
@@ -101,16 +105,17 @@ def is_valid_exit(exits, chosen_exit):
     return chosen_exit in exits
 
 
-def execute_go(direction, current_location, player_properties, inventory, time):
-    """NOT DONE
+def execute_go(new_location, current_location, player_properties, inventory, time):
+    """
+    NOT DONE
     """
     try:
-        new_room = move(current_location['exits'],direction)
-        new_time = time + calculate_time(player_properties, inventory, current_location['exits'])
+        new_room = current_location["connected_places"][new_location]
+        new_time = time + calculate_time(player_properties, inventory, current_location["connected_places"])
         #This moves the player, it also calculates how long the movement is going to take and adds it to the current time
         return new_room, new_time
     except KeyError:
-        print("There is nothing %s of here." % direction)
+        print("You can't go to", new_location)
 
 def execute_buy():
     pass
@@ -188,17 +193,20 @@ def calculate_time(player_properties, inventory,connected_places, place):
     time = connected_places[place] #simply a quick fix, we still need to worry about modifiers
     return time
 
-def execute_command(command, current_location, inventory, time):
+def execute_command(command, current_location, inventory, player, time):
     """
     NOT DONE
     """
 
-    if 0 == len(command):
-        return
+    player_status = player["status"]
+    player_inventory = player["inventory"]
 
-    if command[0] == "go":
+    if len(command) == 0:
+        print("This is not a valid command type in help for a lits of valid commands")
+
+    elif command[0] == "go":
         if len(command) > 1:
-            current_location, time = execute_go(command[1], current_location, player_properties, inventory, time)
+            characters["player"]["current_location"], time = execute_go(command[1], current_location, player_status, inventory, time)
         else:
             print("Go where?")
 
@@ -214,8 +222,26 @@ def execute_command(command, current_location, inventory, time):
         else:
             print("Drop what?")
 
-    else:
-        print("This makes no sense.")
+    elif command[0] == "give":
+        if len(command) > 1:
+            npc_inventory, inventory = execute_give(command[1], inventory, npc_inventory)
+        else:
+            print("Give what?")
+
+    elif command[0] == "ride":
+        if len(command) > 1:
+            current_location = execute_ride()
+        else:
+            print("Ride what?")
+    elif command[0] == "buy":
+        if len(command) > 1:
+            player["money"], inventory = execute_buy()
+        else:
+            print("Buy what?")
+
+    elif command[0] == "help":
+        print_menu(current_location["connected_places"], player_status, player_inventory, current_location, time)
+
     return current_location, inventory
 
 def menu(exits, room_items, player, time, key_nouns, key_verbs):
@@ -223,12 +249,6 @@ def menu(exits, room_items, player, time, key_nouns, key_verbs):
     NOT DONE
 
     """
-
-    # Display menu
-    player_status = player["status"]
-    player_inventory = player["inventory"]
-    print_menu(exits, player_status, room_items, time)
-
     # Read player's input
     user_input = input("> ")
 
@@ -237,14 +257,9 @@ def menu(exits, room_items, player, time, key_nouns, key_verbs):
 
     return normalised_user_input
 
-
-def move(exits, direction):
-    """
-
-    """
-
-    # Next room to go to
-    return rooms[exits[direction]]
+def check_victory():
+    """Todo FINISHED this """
+    return false
 
 # This is the entry point of our program
 def main(characters, items, key_nouns, key_verbs):
@@ -258,10 +273,10 @@ def main(characters, items, key_nouns, key_verbs):
 
         print_inventory_items(player["inventory"], items)
         command = menu(current_location["connected_places"], current_location["items"], player, time, key_nouns, key_verbs) #NOT WORKING YET
-        execute_command(command, current_location, player["inventory"], time)
+        execute_command(command, current_location, player["inventory"], player, time)
         #current_location, inventory = execute_command(command, current_location, inventory)
-        #Victorious = check_victory(current_location, Victorious)
-        Victorious = True
+        Victorious = check_victory(current_location, Victorious)
+
 
 
 

@@ -252,3 +252,8 @@ add_item("milk",
     name="expired milk",
     properties=[],
     description="Tastes awful.")
+
+add_item("cigarettes",
+    name="cigarettes",
+    properties=[],
+    description="SMOKING KILLS.")
