@@ -90,8 +90,7 @@ add_location("first_floor_shard",
         items=[],
         scenario_branch=[])
 
-add_location("second_floor_shard",
-    name="Second Floor")
+
 add_location("top_floor_shard",
         name="Top Floor of the Shard",
         description="",

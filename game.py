@@ -4,7 +4,8 @@ from map import locations
 from player import characters
 from items import items
 from gameparser import *
-
+from fileparser import dialogues
+from figlet import f
 
 
 def list_of_items(item_list):
@@ -67,7 +68,8 @@ def print_location(characters, location, items):
     WE NEED TO PRINT THE TIME AND THE WEATHER ASSOCIATED WITH THE TIME
     """
     print()
-    print(location["name"].upper())
+    print(f.renderText(location["name"].upper()))
+    #print(location["name"].upper())
     print()
     print(location["description"])
     print()
