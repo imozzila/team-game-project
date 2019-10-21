@@ -20,15 +20,17 @@ def print_location_items(location, items):
     """This takes in a location and the items dictionary.
        It then adds all the items from the location and obtains the names using the items dictionary and prints them out"""
     item_list = []
-    for item in location["items"]:
+    for item in location["items"][:-1]:
+        #Iterate through every item except the last one
         item_list.append(items[item]["name"])
 
-    if item_list:
-        item_string = list_of_items(item_list) # locations["items"] = ["wagon wheels", "tape"]
-    else:
-        item_string = []
-    if item_string:
-        print("There are " + item_string + " dotted around for you to pick up.")
+    #TODO Fixing grammar
+    if len(item_list) == 1:
+        print("There is %s here." %(item_list[0]))
+    elif len(item_list) == 2:
+        print("There is $s and %s here." %(item_list[0], item_list[1]))
+    elif len(item_list) >= 3:
+        print("There is %s and %s" %(list_of_items(item_list), location["items"][-1])) #There is a fish, a dog and a cat here.
     else:
         print("There's nothing on the floor to pick up.")
 
