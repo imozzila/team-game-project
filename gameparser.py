@@ -9,13 +9,13 @@ key_locations = []
 key_items = []
 
 for character in characters:
-    key_characters.append(characters[character]['name'])
+    key_characters.append(characters[character]['name'].lower())
 
 for item in items:
-    key_items.append(items[item]['name'])
+    key_items.append(items[item]['name'].lower())
 
 for location in locations:
-    key_locations.append(locations[location]['name'])
+    key_locations.append(locations[location]['name'].lower())
 key_nouns = []
 key_nouns.append(key_characters)
 key_nouns.append(key_items)
@@ -37,7 +37,18 @@ def filter_nouns(word, key_nouns, filtered_words):
             filtered_words.append(word)
     return filtered_words
 
-def filter_verbs(word, key_verbs, key_nouns, filtered_words):
+def filter_sentences(words, key_nouns, filtered_words):
+    while words:
+        word =" ".join(words)
+        for nouns_list in key_nouns:
+            if word in nouns_list:
+                filtered_words.append(word)
+            else:
+                pass
+        words=words[1:]
+    return filtered_words
+
+def filter_verbs(word, key_verbs, filtered_words):
     """
     """
     for verbs_list in key_verbs:
@@ -50,8 +61,10 @@ def filter_verbs(word, key_verbs, key_nouns, filtered_words):
 def filter_words(words, key_verbs, key_nouns):
     filtered_words = []
     for word in words:
-        filtered_words = filter_verbs(word, key_verbs, key_nouns, filtered_words)
+        filtered_words = filter_verbs(word, key_verbs, filtered_words)
         filtered_words = filter_nouns(word, key_nouns, filtered_words)
+    filtered_words = filter_sentences(words, key_nouns, filtered_words)
+
     return filtered_words
 
 def remove_punct(text):
@@ -95,6 +108,6 @@ def normalise_input(user_input, key_verbs, key_nouns):
             word += letter
     if word:
         list_of_words.append(word)
-    list_of_words = filter_words(words, key_verbs, key_nouns)
+    list_of_words = filter_words(list_of_words, key_nouns, key_verbs)
 
     return list_of_words

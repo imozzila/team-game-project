@@ -165,7 +165,7 @@ def calculate_time(player_properties, inventory,connected_places, place):
     time = connected_places[place] #simply a quick fix, we still need to worry about modifiers
     return time
 
-def execute_command(command, current_location, inventory):
+def execute_command(command, current_location, inventory, time):
     """
     NOT DONE
     """
@@ -175,7 +175,8 @@ def execute_command(command, current_location, inventory):
 
     if command[0] == "go":
         if len(command) > 1:
-            current_location, time = execute_go(command[1],current_location)
+            current_location, time = execute_go(command[1], current_location, player_properties, inventory, time)
+            print("it works")
         else:
             print("Go where?")
 
@@ -195,7 +196,7 @@ def execute_command(command, current_location, inventory):
         print("This makes no sense.")
     return current_location, inventory
 
-def menu(exits, room_items, player, time):
+def menu(exits, room_items, player, time, key_nouns, key_verbs):
     """
     NOT DONE
 
@@ -210,7 +211,7 @@ def menu(exits, room_items, player, time):
     user_input = input("> ")
 
     # Normalise the input
-    normalised_user_input = normalise_input(user_input)
+    normalised_user_input = normalise_input(user_input, key_nouns, key_verbs)
 
     return normalised_user_input
 
@@ -224,7 +225,7 @@ def move(exits, direction):
     return rooms[exits[direction]]
 
 # This is the entry point of our program
-def main(characters, items):
+def main(characters, items, key_nouns, key_verbs):
     # Main game loop
     Victorious = False
     time = 0
@@ -233,9 +234,9 @@ def main(characters, items):
         current_location = player["current_location"]
         print_location(characters, current_location, items)
 
-        print_inventory_items(characters["player"]["inventory"], items)
-        command = menu(current_location["connected_places"], current_location["items"], player, time) #NOT WORKING YET
-
+        print_inventory_items(player["inventory"], items)
+        command = menu(current_location["connected_places"], current_location["items"], player, time, key_nouns, key_verbs) #NOT WORKING YET
+        execute_command(command, current_location, player["inventory"], time)
         #current_location, inventory = execute_command(command, current_location, inventory)
         #Victorious = check_victory(current_location, Victorious)
         Victorious = True
@@ -246,4 +247,4 @@ def main(characters, items):
 # '__main__' is the name of the scope in which top-level code executes.
 # See https://docs.python.org/3.4/library/__main__.html for explanation
 if __name__ == "__main__":
-    main(characters, items)
+    main(characters, items, key_nouns, key_verbs)
