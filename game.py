@@ -131,8 +131,6 @@ def execute_give(item_id, inventory, npc_inventory):
             npc_inventory.append(item_id)
 
 
-
-
 def execute_take(item_id, current_location, inventory):
     """
     NOT DONE
