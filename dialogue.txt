@@ -57,5 +57,3 @@
 [monument_outdoors]
 	[monument_outdoors.tourist.talk]
 	default=""
-
-	[]
