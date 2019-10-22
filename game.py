@@ -102,6 +102,22 @@ def print_menu(connected_places, player_status, player_inventory, player_locatio
     for item in player_location["items"]:
         if "purchasable" in items[item]["properties"]:
             print("BUY %s" %(items[item]["name"]))
+    #ride, fight, talk
+    for character in characters:
+        if (characters[character]["current_location"] == current_location) and (characters[character]["id"] != "player"):
+            if "aggressive" in characters[character]["status"]:
+                print("Fight %s" %(characters[character]["name"]))
+    #This shows the player a list of characters they can fight
+
+    for character in characters:
+        if (characters[character]["current_location"] == current_location) and (characters[character]["id"] != "player"):
+            if "interactable" in characters[character]["status"]:
+                print("Talk to %s" %(characters[character]["name"]))
+    #This shows the player a list of characters they can talk to
+
+
+
+
 
 def is_valid_player(npc, current_location):
     valid = False
