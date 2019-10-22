@@ -224,7 +224,9 @@ def execute_take(item_id, current_location, player_inventory):
 
 def execute_drop(item_id, current_location, player_inventory):
     """
-    NOT DONE
+    This takes in an item, the player's current_location and the player's inventory.
+    It first checks whether the item is inside the player's inventory.
+    If it is, then the item is removed from the player's inventory and is placed inside the current location's item list.
     """
     item_exists = False
     for item in player_inventory:
@@ -252,13 +254,11 @@ def check_requirements(character, item_needed, player_inventory):
         else:
             return False
 
-def move():
-    pass
-
-
 def calculate_time(player_properties, inventory,connected_places, place):
-    """This calculates how long it'll take for the player to perform an action"""
-    time = connected_places[place] #simply a quick fix, we still need to worry about modifiers
+    """This calculates how long it'll take for the player to perform an action
+        NOT FINSIHED YET
+    """
+    time = connected_places[place]
     for item in inventory:
         if "PLACEHOLDER" in items[item][properties]:
             time = time * 0.5
@@ -268,15 +268,14 @@ def calculate_time(player_properties, inventory,connected_places, place):
 
 def execute_command(command, locations, characters, time, dialogues):
     """
-    NOT DONE
+    This takes in a list. The list contains 2 parts. The verb and the noun.
+    The verb is checked for what action it performs and the corresponding function is executed on the second part of the list (the noun).
     """
 
     player = characters['player']
     player_status = player["status"]
     player_inventory = player["inventory"]
     current_location = player["current_location"]
-
-
 
     if len(command) == 0:
         print("This is not a valid command type in help for a lits of valid commands")
