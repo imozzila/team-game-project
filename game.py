@@ -237,23 +237,28 @@ def remove_item_from_player(item, player_inventory):
     """This remove the selected item from the players inventory"""
     player_inventory.remove(item)
 
-def print_requirements(name, location):
-    print("%s does not have %s." % (name, location))
-    
+def print_requirements(name, items):
+    items = list_of_items(items)
+    print("%s does not have %s." % (name, items))
+
 def check_requirements(location):
     """This checks if the player has all the items needed in their inventory"""
+    location_id = get_id(location, locations)
 
-    npc_id = get_id(location[0], characters)
+    requirements = locations[location_id]['entry_requirements']
+
+    npc_id = get_id(requirements[0], characters)
     npc = characters[npc_id]
 
     valid = False
     valid_items = 0
     items = 0
-    requirements = location['entry_requirements']
+
 
     for item in requirements[1:]:
         items += 1
         if item in npc['inventory']:
+            print(item)
             valid_items += 1
         else:
             pass
@@ -261,7 +266,7 @@ def check_requirements(location):
     if items == valid_items:
         valid = True
     else:
-        print_requirements(npc['name'],location)
+        print_requirements(npc['name'],requirements[1:])
     return valid
 
 
@@ -293,8 +298,9 @@ def execute_command(command, locations, characters, time, dialogues):
 
     elif command[0] == "go":
         if len(command) > 1:
-            check_requirements(command[1])
-            current_location, time = execute_go(command[1], current_location, locations,  player_status, player_inventory, time)
+
+            if check_requirements(command[1]):
+                current_location, time = execute_go(command[1], current_location, locations,  player_status, player_inventory, time)
         else:
             print("Go where?")
 
