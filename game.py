@@ -319,7 +319,7 @@ def execute_command(command, locations, characters, time, dialogues):
             except KeyError:
                 print("You cannot talk to that person")
     elif command[0] == "help":
-        print_menu(current_location["connected_places"], player_status, player_inventory, player_location, time)
+        print_menu(current_location["connected_places"], player_status, player_inventory, current_location, time)
 
     return current_location, player_inventory
 
