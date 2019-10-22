@@ -54,14 +54,14 @@ def print_location_details(characters, location, items):
     print_location_items(location, items)
     print_location_characters(characters, location)
 
-def print_inventory_items(player_inv, items): #items = ["wallet, luggage, ticket"]
+def print_inventory_items(player_inventory, items): #items = ["wallet, luggage, ticket"]
     """
     This takes in a player inventory and the items dictionary.
     It iterates through the player's inventory and obtians the name of the item.
     The names of the items are then printed out.
     """
     item_list=[]
-    for item in player_inv:
+    for item in player_inventory:
         item_list.append(items[item]["name"])
 
     if item_list:
@@ -176,7 +176,7 @@ def execute_give(item_id, inventory, npc_inventory):
 
 
 
-def execute_take(item_id, current_location, inventory):
+def execute_take(item_id, current_location, player_inventory):
     """
     SOMEWHAT DONE
     """
@@ -186,40 +186,40 @@ def execute_take(item_id, current_location, inventory):
         if item == items[item_id]['name']:
             #if calculate_mass(inventory, item):
             item_picked_up = True
-            inventory.append(item)
+            player_inventory.append(item)
             current_location['items'].remove(item)
         else:
             pass
     if not item_picked_up:
         print("You cannot take that.")
-    return current_location, inventory
+    return current_location, player_inventory
 
 
-def execute_drop(item_id, current_location, inventory):
+def execute_drop(item_id, current_location, player_inventory):
     """
     NOT DONE
     """
     item_exists = False
-
-    for item in inventory:
+    for item in player_inventory:
+        print(item, item_id)
         if item == item_id:
             item_exists = True
-            inventory.remove(item)
+            player_inventory.remove(item)
             current_location['items'].append(item)
         else:
             pass
     if not item_exists:
         print("You cannot drop that.")
-    return current_location, inventory
+    return current_location, player_inventory
 
-def remove_item_from_player(item, inventory):
+def remove_item_from_player(item, player_inventory):
     """This remove the selected item from the players inventory"""
-    inventory.remove(item)
+    player_inventory.remove(item)
 
 
-def check_requirements(character, item_needed, inventory):
+def check_requirements(character, item_needed, player_inventory):
     """This checks if the player has all the items needed in their inventory"""
-    for c in inventory:
+    for c in player_inventory:
         if inventory(c) == item_needed:
             return True
         else:
@@ -257,19 +257,22 @@ def execute_command(command, locations, characters, time, dialogues):
 
     elif command[0] == "take":
         if len(command) > 1:
-            current_location, inventory = execute_take(command[1], current_location, player_inventory)
+            current_location, player_inventory = execute_take(command[1], current_location, player_inventory)
         else:
             print("Take what?")
 
     elif command[0] == "drop":
         if len(command) > 1:
-            current_location, inventory = execute_drop(command[1], current_location, player_inventory)
+            current_location, player_inventory = execute_drop(command[1], current_location, player_inventory)
         else:
             print("Drop what?")
 
     elif command[0] == "give":
         if len(command) > 1:
-            npc_inventory, inventory = execute_give(command[1], player_inventory, npc_inventory)
+            print(command)
+            npc_id = get_id(command[2], characters)
+            npc_inventory = characters[npc_id]['inventory']
+            npc_inventory, player_inventory = execute_give(command[1], player_inventory, npc_inventory)
         else:
             print("Give what?")
 

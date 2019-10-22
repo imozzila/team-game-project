@@ -19,7 +19,7 @@ add_item("money",
     description = "It's money.")
 
 add_item("ticket",
-    name = "a coach ticket",
+    name = "ticket",
     properties = [],
     description = "Your key to London.")
 

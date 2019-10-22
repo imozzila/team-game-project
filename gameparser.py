@@ -40,10 +40,12 @@ key_verbs = [["go","move","walk", "run","wander","stroll"],
 
 def filter_nouns(words, key_nouns, filtered_words):
     while words:
-        word =" ".join(words)
         for nouns_list in key_nouns:
+            word = " ".join(words[:2])
             if word in nouns_list:
                 filtered_words.append(word)
+            elif words[0] in nouns_list:
+                filtered_words.append(words[0])
             else:
                 pass
         words=words[1:]
