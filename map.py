@@ -42,7 +42,7 @@ add_location("victoria_coach_station",
 
     items = ["coffee", "luggage", "molotov", "crayons"],
 
-    entry_requirements = []
+    entry_requirements = ["bus driver","ticket"]
 )
 
 add_location("wetherspoons",
@@ -60,7 +60,7 @@ serve alcohol at any time of day here. """,
 
          items = ["beer", "whiskey", "coffee", "egg", "lamb"],
 
-         entry_requirements = []
+         entry_requirements = ["player", "ticket"]
 
          )
 

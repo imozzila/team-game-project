@@ -1,9 +1,6 @@
 import random
 
 
-Player['DrunkenState'] = "Sober"
-NoOfDrinks = 0
-
 def JumbleText(Message):
     word = ""
     Words = []
