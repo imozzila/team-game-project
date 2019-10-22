@@ -111,6 +111,15 @@ def is_valid_player(npc, current_location):
         pass
     return valid
 
+def is_valid_item(item_chosen, inventory):
+    valid = False
+    for item in inventory:
+        if item_chosen == item:
+            valid = True
+        else:
+            pass
+
+    return valid
 
 def is_valid_exit(connected_places, locations, chosen_location):
 
@@ -166,12 +175,18 @@ def execute_talk(npc_id, current_location_id, dialogues):
     print("\n'"+dialogue+"'\n")
 
 
-def execute_give(item_id, inventory, npc_inventory):
+def execute_give(item_name, player_inventory, npc_inventory):
     """Gives an item from your inventory to an npc's inventory"""
-    for x in inventory:
-        if inventory[x] == item_id:
-            inventory.remove(item_id)
-            npc_inventory.append(item_id)
+    print(player_inventory)
+    print()
+    print(npc_inventory)
+    player_inventory.remove(item_name)
+    npc_inventory.append(item_name)
+    print(player_inventory)
+    print()
+    print(npc_inventory)
+
+    return player_inventory, npc_inventory
 
 
 
@@ -269,10 +284,16 @@ def execute_command(command, locations, characters, time, dialogues):
 
     elif command[0] == "give":
         if len(command) > 1:
-            print(command)
+            item_id = get_id(command[1], items)
+            print(item_id)
             npc_id = get_id(command[2], characters)
             npc_inventory = characters[npc_id]['inventory']
-            npc_inventory, player_inventory = execute_give(command[1], player_inventory, npc_inventory)
+
+            if is_valid_item(items[item_id]['name'], player_inventory) and is_valid_player(characters[npc_id], current_location):
+                player_inventory, npc_inventory = execute_give(items[item_id]['name'], player_inventory, npc_inventory)
+                print("You have given %s your %s" %(characters[npc_id]["name"],command[1]))
+            else:
+                print("You cannot give that.")
         else:
             print("Give what?")
 
