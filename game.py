@@ -115,10 +115,6 @@ def print_menu(connected_places, player_status, player_inventory, player_locatio
                 print("Talk to %s" %(characters[character]["name"]))
     #This shows the player a list of characters they can talk to
 
-
-
-
-
 def is_valid_player(npc, current_location):
     valid = False
     if npc['current_location'] == current_location:
@@ -263,6 +259,11 @@ def move():
 def calculate_time(player_properties, inventory,connected_places, place):
     """This calculates how long it'll take for the player to perform an action"""
     time = connected_places[place] #simply a quick fix, we still need to worry about modifiers
+    for item in inventory:
+        if "PLACEHOLDER" in items[item][properties]:
+            time = time * 0.5
+    if "PLACEHOLDER" in player_properties:
+        time = time * 0.5
     return time
 
 def execute_command(command, locations, characters, time, dialogues):
