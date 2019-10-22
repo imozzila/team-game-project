@@ -31,7 +31,7 @@ add_character("piers_morgan",
     name = "Piers Morgan",
     status = {},
     inventory =[],
-    current_location = locations["top_floor_shard"]
+    current_location = locations["piers_floor_shard"]
     )
 
 add_character("waiter",

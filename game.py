@@ -129,6 +129,16 @@ def is_valid_item(item_chosen, inventory):
 
     return valid
 
+def convert_command(command, current_location):
+    character_id = get_id(command[1],characters)
+    if character_id:
+        temp_command = command[2]
+        command[2] = command[1]
+        command[1] = temp_command
+    else:
+        pass
+    return command
+
 def is_valid_exit(connected_places, locations, chosen_location):
 
     """
@@ -293,6 +303,8 @@ def execute_command(command, locations, characters, time, dialogues):
     player_inventory = player["inventory"]
     current_location = player["current_location"]
 
+
+
     if len(command) == 0:
         print("This is not a valid command type in help for a lits of valid commands")
 
@@ -317,12 +329,13 @@ def execute_command(command, locations, characters, time, dialogues):
             print("Drop what?")
 
     elif command[0] == "give":
-        if len(command) > 1:
+        if len(command) > 2:
+            command = convert_command(command, current_location)
             item_id = get_id(command[1], items)
             print(item_id)
             npc_id = get_id(command[2], characters)
             npc_inventory = characters[npc_id]['inventory']
-
+            print(npc_id)
             if is_valid_item(items[item_id]['name'], player_inventory) and is_valid_player(characters[npc_id], current_location):
                 player_inventory, npc_inventory = execute_give(items[item_id]['name'], player_inventory, npc_inventory)
                 print("You have given %s your %s" %(characters[npc_id]["name"],command[1]))
