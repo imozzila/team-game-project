@@ -14,7 +14,8 @@ add_location("coach",
 
     description = """You are in a run-down, dusty bus that looks like it could break down at any moment.
 The driver is staring down at you with beady eyes awaiting your ticket.
-You're estatic to arrive at London to meet your childhood friend, Kirill.""",
+You're estatic to arrive at London to meet your childhood friend, Kirill.
+You can give the ticket to the bus driver to board the coach to London""",
 
     connected_places = {"victoria_coach_station":120},
 
@@ -92,7 +93,7 @@ add_location("monument_indoors",
 
         description="""You enter a grimy, loud and crowded station. As you hop off your carriage
                     you get harassed by a man in a Pikachu suit. He grips you with the strength
-                    of a boulder. You struggle to escape but he won't let yo go.""",
+                    of a boulder. You struggle to escape but he won't let you go.""",
 
         connected_places={},
 
