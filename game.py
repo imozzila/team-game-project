@@ -102,6 +102,18 @@ def print_menu(connected_places, player_status, player_inventory, player_locatio
     for item in player_location["items"]:
         if "purchasable" in items[item]["properties"]:
             print("BUY %s" %(items[item]["name"]))
+    #ride, fight, talk
+    for character in characters:
+        if (characters[character]["current_location"] == current_location) and (characters[character]["id"] != "player"):
+            if "aggressive" in characters[character]["status"]:
+                print("Fight %s" %(characters[character]["name"]))
+    #This shows the player a list of characters they can fight
+
+    for character in characters:
+        if (characters[character]["current_location"] == current_location) and (characters[character]["id"] != "player"):
+            if "interactable" in characters[character]["status"]:
+                print("Talk to %s" %(characters[character]["name"]))
+    #This shows the player a list of characters they can talk to
 
 def is_valid_player(npc, current_location):
     valid = False
@@ -247,6 +259,11 @@ def move():
 def calculate_time(player_properties, inventory,connected_places, place):
     """This calculates how long it'll take for the player to perform an action"""
     time = connected_places[place] #simply a quick fix, we still need to worry about modifiers
+    for item in inventory:
+        if "PLACEHOLDER" in items[item][properties]:
+            time = time * 0.5
+    if "PLACEHOLDER" in player_properties:
+        time = time * 0.5
     return time
 
 def execute_command(command, locations, characters, time, dialogues):
@@ -319,7 +336,7 @@ def execute_command(command, locations, characters, time, dialogues):
             except KeyError:
                 print("You cannot talk to that person")
     elif command[0] == "help":
-        print_menu(current_location["connected_places"], player_status, player_inventory, player_location, time)
+        print_menu(current_location["connected_places"], player_status, player_inventory, current_location, time)
 
     return current_location, player_inventory
 
