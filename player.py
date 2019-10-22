@@ -8,49 +8,49 @@ characters = {}
 
 add_character("player",
     name = "player",
-    status = [],
+    status = {},
     inventory = ["wallet", "luggage", "ticket"],
     current_location = locations["coach"]
     )
 
 add_character("bus_driver",
     name = "bus driver",
-    status = [],
+    status = {"mood":"good"},
     inventory = [],
     current_location = locations["coach"]
     )
 
 add_character("taxi_driver",
     name="taxi driver",
-    status = [],
+    status = {},
     inventory = [],
     current_location=locations["victoria_coach_station"]
     )
 
 add_character("piers_morgan",
     name = "Piers Morgan",
-    status = [],
+    status = {},
     inventory =[],
     current_location = locations["top_floor_shard"]
     )
 
 add_character("waiter",
     name="Waiter",
-    status = [],
+    status = {},
     inventory = [],
     current_location = locations["wetherspoons"]
     )
 
 add_character("policeman",
     name="Policeman",
-    status = [],
+    status = {},
     inventory = [],
     current_location = locations["wetherspoons"]
 )
 
 add_character("pikachu",
     name="Pikachu",
-    status=[],
+    status={},
     inventory = [],
     current_location=locations["monument_indoors"])
 

@@ -27,12 +27,8 @@ def print_location_items(location, items):
         item_list.append(items[item]["name"])
 
     #TODO Fixing grammar
-    if len(item_list) == 1:
-        print("There is %s here." %(item_list[0]))
-    elif len(item_list) == 2:
-        print("There is $s and %s here." %(item_list[0], item_list[1]))
-    elif len(item_list) >= 3:
-        print("There is %s and %s" %(list_of_items(item_list), location["items"][-1])) #There is a fish, a dog and a cat here.
+    if len(item_list) >= 1:
+        print("The following items are here:\n%s and %s\n" %(list_of_items(item_list), location["items"][-1])) #There is a fish, a dog and a cat here.
     else:
         print("There's nothing on the floor to pick up.")
 
@@ -44,10 +40,10 @@ def print_location_characters(characters, location):
     character_list =  []
 
     for character in characters:
-        if characters[character]["current_location"] == location:
+        if characters[character]["current_location"] == location and characters[character]["name"] != "player":
             character_list.append(characters[character]["name"])
 
-    print("The " + ", ".join(character_list) + " are here")
+    print("The following characters are here:\n%s\n" %(list_of_items(character_list)))
 
 def print_location_details(characters, location, items):
     """This combines the print functions to print all the details about a room"""
@@ -189,14 +185,10 @@ def execute_talk(npc_id, current_location_id, dialogues):
 
 def execute_give(item_name, player_inventory, npc_inventory):
     """Gives an item from your inventory to an npc's inventory"""
-    print(player_inventory)
-    print()
-    print(npc_inventory)
+
     player_inventory.remove(item_name)
     npc_inventory.append(item_name)
-    print(player_inventory)
-    print()
-    print(npc_inventory)
+
 
     return player_inventory, npc_inventory
 
@@ -228,12 +220,12 @@ def execute_drop(item_id, current_location, player_inventory):
     It first checks whether the item is inside the player's inventory.
     If it is, then the item is removed from the player's inventory and is placed inside the current location's item list.
     """
+
     item_exists = False
     for item in player_inventory:
-        print(item, item_id)
         if item == item_id:
             item_exists = True
-            player_inventory.remove(item)
+            remove_item_from_player(item, player_inventory)
             current_location['items'].append(item)
         else:
             pass
@@ -245,14 +237,33 @@ def remove_item_from_player(item, player_inventory):
     """This remove the selected item from the players inventory"""
     player_inventory.remove(item)
 
-
-def check_requirements(character, item_needed, player_inventory):
+def print_requirements(name, location):
+    print("%s does not have %s." % (name, location))
+    
+def check_requirements(location):
     """This checks if the player has all the items needed in their inventory"""
-    for c in player_inventory:
-        if inventory(c) == item_needed:
-            return True
+
+    npc_id = get_id(location[0], characters)
+    npc = characters[npc_id]
+
+    valid = False
+    valid_items = 0
+    items = 0
+    requirements = location['entry_requirements']
+
+    for item in requirements[1:]:
+        items += 1
+        if item in npc['inventory']:
+            valid_items += 1
         else:
-            return False
+            pass
+
+    if items == valid_items:
+        valid = True
+    else:
+        print_requirements(npc['name'],location)
+    return valid
+
 
 def calculate_time(player_properties, inventory,connected_places, place):
     """This calculates how long it'll take for the player to perform an action
@@ -282,6 +293,7 @@ def execute_command(command, locations, characters, time, dialogues):
 
     elif command[0] == "go":
         if len(command) > 1:
+            check_requirements(command[1])
             current_location, time = execute_go(command[1], current_location, locations,  player_status, player_inventory, time)
         else:
             print("Go where?")

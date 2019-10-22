@@ -39,15 +39,17 @@ key_verbs = [["go","move","walk", "run","wander","stroll"],
     #return filtered_words
 
 def filter_nouns(words, key_nouns, filtered_words):
-    while words:
+    #this function checks if key phrases and words was input by the user
+    while words: #continues until word is empty
         for nouns_list in key_nouns:
-            word = " ".join(words[:2])
-            if word in nouns_list:
-                filtered_words.append(word)
-            elif words[0] in nouns_list:
-                filtered_words.append(words[0])
-            else:
-                pass
+            length = len(words) # gets the length of the list
+            while length >= 0:
+                word = " ".join(words[:length]) #converts the list of words into a sentence
+                if word in nouns_list: #checks if the sentence is in the nouns_list
+                    filtered_words.append(word)
+                else:
+                    pass
+                length -= 1
         words=words[1:]
     return filtered_words
 

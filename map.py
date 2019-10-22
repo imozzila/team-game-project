@@ -38,7 +38,7 @@ add_location("victoria_coach_station",
 
     items = ["coffee", "luggage", "molotov", "crayons"],
 
-    entry_requirements = []
+    entry_requirements = ["bus driver","ticket"]
 )
 
 add_location("wetherspoons",
@@ -54,7 +54,7 @@ causing a ruckus for the staff in this busy day.""",
 
          items = ["beer", "whiskey", "coffee", "egg", "lamb"],
 
-         entry_requirements = []
+         entry_requirements = ["player", "ticket"]
 
          )
 
