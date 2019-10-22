@@ -57,6 +57,3 @@ add_character("pikachu",
 """Maybe change it so that you can pick a name"""
 
 """Due to the way we've changed how we represent the player, in order to call current_location we use characters["player"][current_location]"""
-
-for character in characters:
-    characters[character]['name']
