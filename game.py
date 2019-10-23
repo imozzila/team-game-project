@@ -6,7 +6,7 @@ from items import items
 from gameparser import *
 from figlet import f
 from fileparser import dialogues
-
+from events import *
 
 def list_of_items(item_list):
     """An empty list is created, and all the item names are added to it
@@ -161,6 +161,10 @@ def get_id(object, objects):
             return object_id
         else:
             pass
+def lock_in_player(location):
+    for connected_place in location['connected_places']:
+        for i in range(2):
+            locations[connected_place]['entry_requirements'].append('padlock')
 
 def execute_go(new_location, current_location, locations, player_properties, inventory, time):
     """
@@ -254,29 +258,32 @@ def print_requirements(name, items):
 def check_requirements(location):
     """This checks if the player has all the items needed in their inventory"""
     location_id = get_id(location, locations)
-
-    requirements = locations[location_id]['entry_requirements']
-
-    npc_id = get_id(requirements[0], characters)
-    npc = characters[npc_id]
-
     valid = False
-    valid_items = 0
-    items = 0
+    requirements = locations[location_id]['entry_requirements']
+    if requirements:
+        npc_id = get_id(requirements[0], characters)
+        npc = characters[npc_id]
 
 
-    for item in requirements[1:]:
-        items += 1
-        if item in npc['inventory']:
-            print(item)
-            valid_items += 1
+        valid_items = 0
+        items = 0
+
+
+        for item in requirements[1:]:
+            items += 1
+            if item in npc['inventory']:
+                valid_items += 1
+            else:
+                pass
+
+        if items == valid_items:
+
+            valid = True
         else:
+            #print_requirements(npc['name'],requirements[1:])
             pass
-
-    if items == valid_items:
-        valid = True
     else:
-        print_requirements(npc['name'],requirements[1:])
+        valid = True
     return valid
 
 
@@ -332,10 +339,8 @@ def execute_command(command, locations, characters, time, dialogues):
         if len(command) > 2:
             command = convert_command(command, current_location)
             item_id = get_id(command[1], items)
-            print(item_id)
             npc_id = get_id(command[2], characters)
             npc_inventory = characters[npc_id]['inventory']
-            print(npc_id)
             if is_valid_item(items[item_id]['name'], player_inventory) and is_valid_player(characters[npc_id], current_location):
                 player_inventory, npc_inventory = execute_give(items[item_id]['name'], player_inventory, npc_inventory)
                 print("You have given %s your %s" %(characters[npc_id]["name"],command[1]))
@@ -394,21 +399,26 @@ def main(characters, locations, items, dialogues):
     Victorious = False
     time = 0
     announced = False
+    occurred_events = []
     while not Victorious:
         player = characters["player"]
         current_location = player["current_location"]
         inventory = player["inventory"]
+
         if not announced:
             print_location(characters, current_location, items)
             announced = True
 
+        occurred_events = listenForEvents(occurred_events)
+
         print_inventory_items(player["inventory"], items)
+        print("What will you do?\n")
 
         command = menu(current_location["connected_places"], current_location["items"], player, time) #NOT WORKING YET
         player["current_location"], player["inventory"] = execute_command(command, locations, characters, time, dialogues)
-
         if player["current_location"] != current_location:
             announced = False
+
         #Victorious = check_victory(current_location, Victorious)
 
 

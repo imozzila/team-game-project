@@ -54,6 +54,11 @@ add_character("pikachu",
     inventory = [],
     current_location=locations["monument_indoors"])
 
+add_character("padlock",
+    name="padlock",
+    status={},
+    inventory=[],
+    current_location="")
 """Maybe change it so that you can pick a name"""
 
 """Due to the way we've changed how we represent the player, in order to call current_location we use characters["player"][current_location]"""

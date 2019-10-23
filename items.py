@@ -257,3 +257,8 @@ add_item("cigarettes",
     name="cigarettes",
     properties=[],
     description="SMOKING KILLS.")
+
+add_item("padlock",
+    name="padlock",
+    properties=[],
+    description="")

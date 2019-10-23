@@ -15,7 +15,9 @@ add_location("coach",
     description = """You are in a run-down, dusty bus that looks like it could break down at any moment.
 The driver is staring down at you with beady eyes awaiting your ticket.
 You're estatic to arrive at London to meet your childhood friend, Kirill.
-You can give the ticket to the bus driver to board the coach to London""",
+
+
+You must give the ticket to the bus driver to board the coach to London""",
 
     connected_places = {"victoria_coach_station":120},
 
@@ -60,7 +62,7 @@ serve alcohol at any time of day here. """,
 
          items = ["beer", "whiskey", "coffee", "egg", "lamb"],
 
-         entry_requirements = ["player", "ticket"]
+         entry_requirements = []
 
          )
 
@@ -102,11 +104,9 @@ add_location("monument_indoors",
 
         description="""You enter a grimy, loud and crowded station. As you hop off your carriage
                     and look around, you get harassed by a man in a Pikachu suit. He grips you
-                    with the strength of a boulder. You struggle to escape but he won't let you go.
+                    with the strength of a boulder. You struggle to escape but he won't let you go.""",
 
-                    "Give me your money! I need to buy more lewd body pillows!" """,
-
-        connected_places={},
+        connected_places={"monument_outdoors":5, "victoria_tube":10},
 
         items=["money", "keys"],
 
@@ -190,7 +190,7 @@ add_location("cannon_floor_shard",
                             #Don't know what sort of encounter we want here
              connected_places = {"casino_floor_shard":10, "cooking_floor_shard":10},
 
-             items = ["salmon", "steel ball", "weetabix", "corn flakes", "milk", "teapot", "tissue box", "racket", "frying pan"],
+             items = ["salmon", "steel ball", "weetabix", "cornflakes", "milk", "teapot", "tissue box", "racket"],
 
              entry_requirements = [])
 
@@ -212,7 +212,7 @@ add_location("cooking_floor_shard",
 
             connected_places = {"cannon_floor_shard":10, "piers_floor_shard":10},
 
-             items = ["tin foil", "salmon", "frying pan", "egg", "lambchops", "butter", "jar", "lime"],
+             items = ["tin foil", "salmon", "pan", "egg", "lamb", "butter", "jar", "lime"],
 
              entry_requirements = [])
 
@@ -251,7 +251,7 @@ add_location("good_top_floor_shard",
                         hours of the evening. You end the meeting with a fist-bump and grab your jacket
                         to leave. It's 7:30pm, now you just have to get home...
                         The End. :)
-                        """, 
+                        """,
 
             connected_places = {"piers_floor_shard":10},
 

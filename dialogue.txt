@@ -2,6 +2,9 @@
 	[coach.bus_driver.talk]
 	default="This is the coach to cardiff, have you got a ticket?"
 
+	[coach.bus_driver.ticket]
+	default="Hmm okay. Your ticket is valid. Hop on inside the coach when you're ready"
+
 	[coach.bus_driver.getting_on]
 		good_mood="Take a seat, and enjoy the journey!"
 		bad_mood="Get on the bus already, I don't want to be late!"
@@ -48,9 +51,12 @@
 	default="Hello, can you please spare some change for me?"
 
 	[monument_indoors.pikachu.struggle]
-	default="Please Please Please Please Please give me change."
+	default="Give me your money! I need to buy more lewd body pillows!"
 	bad_mood="GIVE ME SOME CHANGE!!! You millenials are so ungrateful."
 
+	[monument_indoors.pikachu.money]
+	default="THANK YOU SO MUCH. PIKA PIKA. I can buy even more fursuits with this!"
+	
 	[monument_indoors.pikachu.hit]
 	hit=["Ouch, what are you doing that for?", "..."]
 
