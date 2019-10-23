@@ -76,7 +76,7 @@ def print_location(characters, location, items):
     print()
     print_location_details(characters, location, items)
 
-def print_menu(connected_places, player_status, player_inventory, player_location, time):
+def print_menu(connected_places, player_inventory, player_location, time):
     """
     NOT FINISHED WE'RE GOING TO ADD REST OF ACTIONS LATER
     """
@@ -84,6 +84,7 @@ def print_menu(connected_places, player_status, player_inventory, player_locatio
     #GO TAKE DROP GIVE RIDE BUY FIGHT TALK
 
     for place in connected_places:
+        print(player_inventory)
         time_taken = calculate_time(player_inventory, connected_places , place)
         print("GO to %s (%s Minutes)" %(locations[place]["name"], time_taken))
     #This shows the player a list of places they can go
@@ -205,9 +206,9 @@ def execute_go(new_location, current_location, locations, player_properties, inv
     try:
 
         if is_valid_exit(current_location['connected_places'], locations, new_location):
-            time += calculate_time(player_properties, inventory, current_location["connected_places"], new_location)
-            current_location_id = get_id(new_location, locations)
-            current_location = locations[current_location_id]
+            new_location_id = get_id(new_location, locations)
+            time += calculate_time(inventory, current_location["connected_places"], new_location_id)
+            current_location = locations[new_location_id]
 
             play_location_sound(current_location['name'])
         #This moves the player, it also calculates how long the movement is going to take and adds it to the current time
@@ -345,6 +346,8 @@ def check_requirements(location):
 
 def has_modifiers(inventory):
     valid = False
+    print("inventory: \n\n")
+    print(inventory)
     for item in inventory:
         item_id = get_id(item,items)
         if 'fast' in items[item_id]['properties']:
@@ -363,9 +366,7 @@ def calculate_time(inventory, connected_places, chosen_location):
             30
 
     """
-    location_id = get_id(chosen_location, locations)
-    print(locations[location_id])
-    time = connected_places[location_id]
+    time = connected_places[chosen_location]
     if has_modifiers(inventory):
         time = time * 0.5
 
