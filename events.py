@@ -4,6 +4,8 @@ from map import locations
 from items import items
 from fileparser import dialogues
 from game import *
+from QTE import *
+from casino import *
 
 def is_valid_event(event, events_occurred):
     valid = False
@@ -35,6 +37,8 @@ def listenForEvents(victorious, events_occurred, time):
     elif is_unconscious("businessman") and is_valid_event("businessman_unconscious", events_occurred):
         events_occurred.append("businessman_unconscious")
         handle_businessman_unconscious_event(current_location)
+    elif location_name == "casino floor":
+        handle_casino_event(current_location)
     elif location_name == "sizzling floor":
         handle_cooking_event(current_location)
     elif location_name=="top floor" and time > 230:
@@ -107,7 +111,9 @@ def handle_piers_event(current_location):
 
     return time
 
-
+def handle_casino_event(current_location):
+    inventory = characters['player']['inventory']
+    high_lower(inventory)
 
 def handle_good_ending_event(current_location):
     print("""You have chosen..... wisely.

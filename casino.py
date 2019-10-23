@@ -16,12 +16,10 @@ def high_lower(inventory):
             count+=1
         elif count > 5:
             print("You took more than 5 turns...")
-            print("You win a think python 2e book!")
+            print("You lost. Thousands of kids gather around in a circle around you can point their fingers at you laughing. You pathetic loser.")
         else:
             print("You Win!")
-            print("You lost. Thousands of kids gather around in a circle around you can point their fingers at you laughing. You pathetic loser.")
+            print("You win a think python 2e book!")
+
             win = True
-    if count > 5:
-        money = money /2
-    else:
-        money
+    return win
