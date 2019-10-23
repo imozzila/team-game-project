@@ -72,3 +72,6 @@
 
 	[first_floor_shard.bodyguard.talk]
 	default="Welcome to the shard. There elevator is on the other side, you can get to it if you can somehow get through this crowd. The stairs could work, but it'll take a lot longer."
+
+	[first_floor_shard.businessman.hit]
+	default=["What are you just suddenly attacking me for?","Oh, you want to get into this elevator? Why should I move after you just attacked me?", "..."]
