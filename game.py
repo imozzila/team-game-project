@@ -162,6 +162,9 @@ def is_unconscious(npc_name):
         pass
     return valid
 
+def print_time_left(time):
+    time_left = 230 - time
+    print("You've got %s minutes left" %time_left)
 
 def update_status(npc):
     npc['status']['alive'] = False
@@ -489,6 +492,7 @@ def main(characters, locations, items, dialogues):
 
         if not announced:
             print_location(characters, current_location, items)
+            print_time_left(time)
             announced = True
 
         Victorious, occurred_events = listenForEvents(Victorious, occurred_events, time)

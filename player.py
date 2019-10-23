@@ -10,8 +10,7 @@ add_character("player",
     name = "player",
     status = {},
     inventory = ["wallet", "luggage", "ticket"],
-    #current_location = locations["coach"]
-    current_location = locations["monument_outdoors"]
+    current_location = locations["coach"]
     )
 
 add_character("bus_driver",

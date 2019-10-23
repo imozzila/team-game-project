@@ -5,7 +5,7 @@ def egg_flip():
     startTime = time.time()
     playerInput = input("Type 'flip egg' to flip the egg.")
 
-    if playerInput == "flip egg":
+    if str(playerInput) == "flip egg":
         endTime = round(time.time() - startTime, 0)
         if endTime > 5:
             print("Too slow!!")
@@ -28,7 +28,7 @@ def cannon():
     time.sleep(1)
     print("GO!!!")
     startTime = time.time()
-    playerInput = input("PRESS ENTER!!!!")
+    input("PRESS ENTER!!!!")
     endTime = round(time.time() - startTime, 0)
     if endTime < 2:
         print("Well done, a flying pirate soars across the room smashing the wall.")

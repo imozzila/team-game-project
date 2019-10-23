@@ -39,7 +39,7 @@ def listenForEvents(victorious, events_occurred, time):
         handle_businessman_unconscious_event(current_location)
     elif location_name == "casino floor" and is_valid_event("casino_floor", events_occurred):
         events_occurred.append("casino_floor")
-        handle_casino_event(current_location)
+        victorious = handle_casino_event(current_location)
     elif location_name == "sizzling floor" and is_valid_event("sizzling_floor", events_occurred):
         events_occurred.append("sizzling_floor")
         handle_cooking_event(current_location)
@@ -101,24 +101,29 @@ def handle_piers_event(current_location):
     print("A: I'll go with water.")
     print("B: Milk all the way!")
     print("C: I prefer the cereal on its own.")
-
     playerInput = input("Pick A B or C to try and convince piers to let you up.")
-
-    if (playerInput == "A" or "a"):
-        print("Good choice. He gets up off of his chair. 'Congratulations' A circle of people come out of the shadow and start applauding.")
-        time = 0
-    elif (playerInput == "B" or "b"):
-        print("What. Get out. You walk away in shame.")
-        time = 20
-    elif (playerInput == "C" or "c"):
-        print("Hmmmm. I'll let you pass. But you have wait 5 minutes.")
-        time = 5
+    valid = False
+    while not valid:
+        if (playerInput == "A" or "a"):
+            print("Good choice. He gets up off of his chair. 'Congratulations' A circle of people come out of the shadow and start applauding.")
+            time = 0
+            valid = True
+        elif (playerInput == "B" or "b"):
+            print("What. Get out. You walk away in shame.")
+            time = 20
+            valid = True
+        elif (playerInput == "C" or "c"):
+            print("Hmmmm. I'll let you pass. But you have wait 5 minutes.")
+            time = 5
+            valid = True
+        else:
+            print("Please enter a valid input")
 
     return time
 
 def handle_casino_event(current_location):
-    inventory = characters['player']['inventory']
-    high_lower(inventory)
+    victorious = high_lower()
+    return not victorious
 
 def handle_good_ending_event(current_location):
     print("""You have chosen..... wisely.
