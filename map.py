@@ -14,7 +14,7 @@ add_location("coach",
 
     description = """You are in a run-down, dusty bus that looks like it could break down at any moment.
 The driver is staring down at you with beady eyes awaiting your ticket.
-You're estatic to arrive at London to meet your childhood friend, Kirill.
+You're ecstatic to arrive at London to meet your childhood friend, Kirill.
 
 
 You must give the ticket to the bus driver to board the coach to London""",
@@ -36,7 +36,7 @@ add_location("victoria_coach_station",
     As you step out of the coach, and grab your luggage, you push through the cluster of people
     in the coach station and head outside. You have agreed to meet Kirill at the top floor of the Shard.
     There is a huge Wetherspoons in the distance, no doubt full of responsible parents letting their
-    children drink Dark Fruits. A homeless person is dancing a little ways down the road beneath
+    children drink Dark Fruits. A homeless person is dancing a little way down the road beneath
     the sign indicating Victoria Tube Station, and there is a line of taxis outside the coach station
     with very...reasonable rates. """,
 
@@ -53,7 +53,7 @@ add_location("wetherspoons",
 
          description = """You enter the pub famed for its affordable food and drinks. The pub provides
 a classic English interior that makes you feel right at home. There are plenty of people around,
-causing a ruckus for the staff in this busy day. The menu has some great offers and there are a few
+causing a ruckus for the staff on this busy day. The menu has some great offers and there are a few
 tables around that are available. You probably shouldn't eat before lunch with Kirill, but they
 serve alcohol at any time of day here. """,
 
@@ -201,7 +201,7 @@ add_location("cooking_floor_shard",
              description = """You survived the cannon man and beeline it for the stairs again, going up
                             another floor. You can smell the source of some fine dining and follow the scent into
                             a huge, advanced kitchen. A woman appears in front of you before you can blink and
-                            waves her spatula in front of you menacingly. Her nametag says "J. Wu", and her
+                            waves her spatula at you menacingly. Her nametag says "J. Wu", and her
                             hat is almost 60cm tall, indicating some serious cooking prestige.
 
                             "ARE YOU THE IDIOT WHO COOKED THIS SQUID?! IT'S SO RAW I CAN STILL HEAR IT
@@ -221,13 +221,12 @@ add_location("piers_floor_shard",
              name = "Spooky Floor",
 
 
-             description = """Stained with eggs, meat juices, flour and other assorted foods, you make it to the
-                            staircase once again. Clambering up the carpeted steps, you feel a cold chill down your
-                            spine. There is an ominous wind around you and a single wooden door covered in claw-marks
-                            in front of you. The door does not appear to be locked, so you turn the handle and enter.
-                            The room has bookshelves across both walls, a great mahogany desk in the middle, and a
-                            tall, leather chair facing away from you out the window. The air you exhale curls up in
-                            front of you from the cold, and the chair begins to slowly rotate...
+             description = """You make it to the staircase once again. Clambering up the carpeted steps, you feel a
+                            cold chill down your spine. There is an ominous wind around you and a single wooden door
+                            covered in claw-marks in front of you. The door does not appear to be locked, so you turn
+                            the handle and enter. The room has bookshelves across both walls, a great mahogany desk
+                            in the middle, and a tall, leather chair facing away from you out the window. The air you
+                            exhale curls up in front of you, and the chair begins to slowly rotate...
 
                             Piers Morgan now faces you, staring straight through you with a vacant gaze.
 
@@ -249,7 +248,7 @@ add_location("good_top_floor_shard",
                         Dom Perignon 1985 for your table, and a bowl of cereal with water, on him! You
                         have a great catch-up with your best friend and drink and chat till the early
                         hours of the evening. You end the meeting with a fist-bump and grab your jacket
-                        to leave. It's 7:30pm, now you just have to get home...
+                        to leave. It's 7:30pm, now you just have to make it back home...
                         The End. :)
                         """,
 
