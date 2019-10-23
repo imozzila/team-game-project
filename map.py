@@ -36,12 +36,12 @@ add_location("victoria_coach_station",
      name="coach station",
 
     description = """You've arrived at London Victoria Coach Station and it's a gloomy 8am.
-    As you step out of the coach, and grab your luggage, you push through the cluster of people
-    in the coach station and head outside. You have agreed to meet Kirill at the top floor of the Shard.
-    There is a huge Wetherspoons in the distance, no doubt full of responsible parents letting their
-    children drink Dark Fruits. A homeless person is dancing a little way down the road beneath
-    the sign indicating Victoria Tube Station, and there is a line of taxis outside the coach station
-    with very...reasonable rates. """,
+As you step out of the coach, and grab your luggage, you push through the cluster of people
+in the coach station and head outside. You have agreed to meet Kirill at the top floor of the Shard.
+There is a huge Wetherspoons in the distance, no doubt full of responsible parents letting their
+children drink Dark Fruits. A homeless person is dancing a little way down the road beneath
+the sign indicating Victoria Tube Station, and there is a line of taxis outside the coach station
+with very...reasonable rates. """,
 
     connected_places = {"wetherspoons":30, "taxi":5, "victoria_tube":20},
 
@@ -96,11 +96,11 @@ add_location("victoria_tube",
              name = "Victoria Tube Station",
 
              description = """You enter a humid, busy tube station and descend down the escalator,
-                            you see a sign showing different lines for the tube. There is a guy
-                            playing saxophone, giving the tube station a jazzy vibe. You check the
-                            map and it says Monument Station is the closest stop to the Shard.
-                            Besides getting the train its just a waiting game until some dodgy
-                            person tries to mug you here. """,
+you see a sign showing different lines for the tube. There is a guy
+playing saxophone, giving the tube station a jazzy vibe. You check the
+map and it says Monument Station is the closest stop to the Shard.
+Besides getting the train its just a waiting game until some dodgy
+person tries to mug you here. """,
 
              connected_places = {"monument_indoors":10},
 
@@ -116,8 +116,8 @@ add_location("monument_indoors",
         name = "Monument Underground",
 
         description="""You enter a grimy, loud and crowded station. As you hop off your carriage
-                    and look around, you get harassed by a man in a Pikachu suit. He grips you
-                    with the strength of a boulder. You struggle to escape but he won't let you go.""",
+and look around, you get harassed by a man in a Pikachu suit. He grips you
+with the strength of a boulder. You struggle to escape but he won't let you go.""",
 
         connected_places={"monument_outdoors":5, "victoria_tube":10},
 
@@ -131,10 +131,10 @@ add_location("monument_outdoors",
         name="Monument",
 
         description="""You walk outside of the station to find the iconic monument which commemorates
-                    the Great Fire of London. The area is riddled with offices and buildings, with a
-                    Boots store conveniently nearby. A stampede of Chinese tourists walk by with a tour guide.
-                    You could go and get some painkillers after the fight with that Pikachu guy, or head
-                    straight for the Shard.""",
+the Great Fire of London. The area is riddled with offices and buildings, with a
+Boots store conveniently nearby. A stampede of Chinese tourists walk by with a tour guide.
+You could go and get some painkillers after the fight with that Pikachu guy, or head
+straight for the Shard.""",
 
         connected_places={"boots":5, "first_floor_shard":10},
 
@@ -148,7 +148,7 @@ add_location("boots",
             name = "Boots",
 
             description = """You walk into the shop and instantly recognise the array of fragrances.
-                            Paracetamol are only 40p, what a bargain! Not much to do here otherwise...""",
+Paracetamol are only 40p, what a bargain! Not much to do here otherwise...""",
 
             connected_places = {"monument_outdoors":5},
 
@@ -162,11 +162,11 @@ add_location("first_floor_shard",
         name = "Shard",
 
         description="""You look up at the towering building in amazement. You feel like you're
-        almost at the end and are excited to meet your friend. You enter the building
-        to find yourself completely out of place. You're surrounded by businessmen in
-        well-attired clothing. There is a secretary you can talk to, a security guard
-        looking unhappy, the elevator is blocked by a businessman and the stairs are
-        accessible but you feel as though they may take too much time.""",
+almost at the end and are excited to meet your friend. You enter the building
+to find yourself completely out of place. You're surrounded by businessmen in
+well-attired clothing. There is a secretary you can talk to, a security guard
+looking unhappy, the elevator is blocked by a businessman and the stairs are
+accessible but you feel as though they may take too much time.""",
 
         connected_places={"casino_floor_shard":10},
 
@@ -180,12 +180,12 @@ add_location("casino_floor_shard",
              name = "Casino Floor",
 
              description="""You enter the casino floor and are immediately greeted by the smell
-                         of places where dreams come to die. There is a Honda Civic rotating on a
-                         plate as a grand prize. The sound of slot machines giving people false hope
-                         is impossible to ignore. A lady carrying champagne and food on a tray walks
-                         past in the direction of some peculiar looking stairs. You could go and give
-                         the slots a run for their money, join a roulette table, or follow the lady
-                         up the weird looking staircase.""",
+of places where dreams come to die. There is a Honda Civic rotating on a
+plate as a grand prize. The sound of slot machines giving people false hope
+is impossible to ignore. A lady carrying champagne and food on a tray walks
+past in the direction of some peculiar looking stairs. You could go and give
+the slots a run for their money, join a roulette table, or follow the lady
+up the weird looking staircase.""",
 
              connected_places = {"cannon_floor_shard":10, "first_floor_shard":10},
 
@@ -199,13 +199,13 @@ add_location("cannon_floor_shard",
              name = "Weird Floor",
 
              description = """This floor definitely has a weird feeling to it. You look around
-                            for any signs of movement. The floor has six great pillars supporting the ceiling.
-                            As you notice all the food remains scattered acorss the floor, a man holding a giant
-                            ship's cannon steps out from behind one of the pillars aiming right at you.
+for any signs of movement. The floor has six great pillars supporting the ceiling.
+As you notice all the food remains scattered acorss the floor, a man holding a giant
+ship's cannon steps out from behind one of the pillars aiming right at you.
 
-                            "YO-HO AND FIDDLY-DEE, IT'S A PIRATE'S LIFE FOR MEEE"
+"YO-HO AND FIDDLY-DEE, IT'S A PIRATE'S LIFE FOR MEEE"
 
-                            He lights the cannon fuse and laughs maniacally...""",
+He lights the cannon fuse and laughs maniacally...""",
                             #Don't know what sort of encounter we want here
              connected_places = {"casino_floor_shard":10, "cooking_floor_shard":10},
 
@@ -219,16 +219,16 @@ add_location("cooking_floor_shard",
              name = "Sizzling Floor",
 
              description = """You survived the cannon man and beeline it for the stairs again, going up
-                            another floor. You can smell the source of some fine dining and follow the scent into
-                            a huge, advanced kitchen. A woman appears in front of you before you can blink and
-                            waves her spatula at you menacingly. Her nametag says "J. Wu", and her
-                            hat is almost 60cm tall, indicating some serious cooking prestige.
+another floor. You can smell the source of some fine dining and follow the scent into
+a huge, advanced kitchen. A woman appears in front of you before you can blink and
+waves her spatula at you menacingly. Her nametag says "J. Wu", and her
+hat is almost 60cm tall, indicating some serious cooking prestige.
 
-                            "ARE YOU THE IDIOT WHO COOKED THIS SQUID?! IT'S SO RAW I CAN STILL HEAR IT
-                            TELLING SPONGEBOB TO F*** OFF! GET OUT OF MY KITCHEN!"
+"ARE YOU THE IDIOT WHO COOKED THIS SQUID?! IT'S SO RAW I CAN STILL HEAR IT
+TELLING SPONGEBOB TO F*** OFF! GET OUT OF MY KITCHEN!"
 
-                            The staircase is only a few meters away, you could get to it without being
-                            stabbed with a cooking utensil if you're fast... """,
+The staircase is only a few meters away, you could get to it without being
+stabbed with a cooking utensil if you're fast... """,
 
             connected_places = {"cannon_floor_shard":10, "piers_floor_shard":10},
 
@@ -243,15 +243,15 @@ add_location("piers_floor_shard",
 
 
              description = """You make it to the staircase once again. Clambering up the carpeted steps, you feel a
-                            cold chill down your spine. There is an ominous wind around you and a single wooden door
-                            covered in claw-marks in front of you. The door does not appear to be locked, so you turn
-                            the handle and enter. The room has bookshelves across both walls, a great mahogany desk
-                            in the middle, and a tall, leather chair facing away from you out the window. The air you
-                            exhale curls up in front of you, and the chair begins to slowly rotate...
+cold chill down your spine. There is an ominous wind around you and a single wooden door
+covered in claw-marks in front of you. The door does not appear to be locked, so you turn
+the handle and enter. The room has bookshelves across both walls, a great mahogany desk
+in the middle, and a tall, leather chair facing away from you out the window. The air you
+exhale curls up in front of you, and the chair begins to slowly rotate...
 
-                            Piers Morgan now faces you, staring straight through you with a vacant gaze.
+Piers Morgan now faces you, staring straight through you with a vacant gaze.
 
-                            "Do you eat cereal with or without water?" """,
+"Do you eat cereal with or without water?" """,
 
             connected_places = {"cooking_floor_shard":10, "top_floor_shard":10},
 
