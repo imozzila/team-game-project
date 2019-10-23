@@ -5,7 +5,7 @@ def high_lower():
     print("Guess the number between 1 and 10")
     count = 0
     win = False
-    final_num = random.randint(0, 10)
+    final_num = random.randint(1, 10)
     while not win and count < 5:
         valid_input = False
 
