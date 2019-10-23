@@ -100,13 +100,13 @@ def print_menu(connected_places, player_status, player_inventory, player_locatio
             print("BUY %s" %(items[item]["name"]))
     #ride, fight, talk
     for character in characters:
-        if (characters[character]["current_location"] == current_location) and (characters[character]["id"] != "player"):
+        if (characters[character]["current_location"] == player_location) and (characters[character]["name"] != "player"):
             if "aggressive" in characters[character]["status"]:
                 print("Fight %s" %(characters[character]["name"]))
     #This shows the player a list of characters they can fight
 
     for character in characters:
-        if (characters[character]["current_location"] == current_location) and (characters[character]["id"] != "player"):
+        if (characters[character]["current_location"] == player_location) and (characters[character]["name"] != "player"):
             if "interactable" in characters[character]["status"]:
                 print("Talk to %s" %(characters[character]["name"]))
     #This shows the player a list of characters they can talk to
@@ -330,7 +330,7 @@ def calculate_time(player_properties, inventory,connected_places, place):
     """
     time = connected_places[place]
     for item in inventory:
-        if "PLACEHOLDER" in items[item][properties]:
+        if "PLACEHOLDER" in items[item]["properties"]:
             time = time * 0.5
     if "PLACEHOLDER" in player_properties:
         time = time * 0.5
