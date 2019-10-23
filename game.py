@@ -84,7 +84,7 @@ def print_menu(connected_places, player_status, player_inventory, player_locatio
     #GO TAKE DROP GIVE RIDE BUY FIGHT TALK
 
     for place in connected_places:
-        time_taken = calculate_time(player_status, player_inventory,connected_places, place)
+        time_taken = calculate_time(player_inventory, connected_places , place)
         print("GO to %s (%s Minutes)" %(locations[place]["name"], time_taken))
     #This shows the player a list of places they can go
 
@@ -347,11 +347,18 @@ def has_modifiers(inventory):
             pass
     return valid
 
-def calculate_time(player_properties, inventory, connected_places, chosen_location):
+def calculate_time(inventory, connected_places, chosen_location):
     """This calculates how long it'll take for the player to perform an action
-        NOT FINSIHED YET
+
+        >>> calculate_time(["skateboard", "wallet"], locations["victoria_coach_station"]["connected_places"], locations["wetherspoons"]["name"])
+            15
+
+        >>> calculate_time(["wallet"], locations["victoria_coach_station"]["connected_places"], locations["wetherspoons"]["name"])
+            30
+
     """
     location_id = get_id(chosen_location, locations)
+    print(locations[location_id])
     time = connected_places[location_id]
     if has_modifiers(inventory):
         time = time * 0.5
@@ -440,7 +447,7 @@ def execute_command(command, locations, characters, time, dialogues):
             print("fight who?")
 
     elif command[0] == "help":
-        print_menu(current_location["connected_places"], player_status, player_inventory, current_location, time)
+        print_menu(current_location["connected_places"], player_inventory, current_location, time)
 
     return current_location, player_inventory
 
