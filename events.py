@@ -35,10 +35,13 @@ def listenForEvents(victorious, events_occurred, time):
         handle_bodyguard_unconscious_event(current_location)
     elif location_name == "sizzling floor":
         handle_cooking_event(current_location)
+    elif location_name=="top floor" and time > 230:
+        handle_bad_ending_event(current_location)
+    elif location_name=="top floor" and time <= 230:
+        victorious = handle_good_ending_event(current_location)
     elif location_name == "spooky_floor":
         handle_piers_event(current_location)
-    elif time > 230:
-        handle_bad_ending_event
+
     else:
         pass
     return victorious, events_occurred
@@ -101,6 +104,15 @@ def handle_piers_event(current_location):
 
 
 def handle_good_ending_event(current_location):
+    print("""You have chosen..... wisely.
+    Kirill greets you with a smile and welcomes you to the table you have reserved.
+    He was waiting for you to arrive and has ordered your favourite bottle of vintage
+    Dom Perignon 1985 for your table, and a bowl of cereal with water, on him! You
+    have a great catch-up with your best friend and drink and chat till the early
+    hours of the evening. You end the meeting with a fist-bump and grab your jacket
+    to leave. It's 7:30pm, now you just have to make it back home...
+    The End. :)
+    """)
     return True
 
 def handle_bad_ending_event(current_location):

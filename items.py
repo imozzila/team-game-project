@@ -258,6 +258,10 @@ add_item("cigarettes",
     properties=[],
     description="SMOKING KILLS.")
 
+add_item("book",
+    name="Think Python 2nd Edition",
+    properties=[],
+    description="This is really useful for learning how to code in Python!")
 
 add_item("padlock",
     name="padlock",
