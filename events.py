@@ -42,20 +42,20 @@ def listenForEvents(victorious, events_occurred, time):
         victorious = handle_casino_event(current_location)
     elif location_name == "sizzling floor" and is_valid_event("sizzling_floor", events_occurred):
         events_occurred.append("sizzling_floor")
-        handle_cooking_event(current_location)
-    elif location_name=="top floor" and time > 230:
-        handle_bad_ending_event(current_location)
-    elif location_name=="top floor" and time <= 230:
+        victorious = handle_cooking_event(current_location)
+    elif location_name=="top floor" and time > 300:
+        victorious = handle_bad_ending_event(current_location)
+    elif location_name=="top floor" and time <= 300:
         victorious = handle_good_ending_event(current_location)
     elif location_name == "spooky floor" and is_valid_event("spooky_floor", events_occurred):
         events_occurred.append("spooky_floor")
-        handle_piers_event(current_location)
+        time += handle_piers_event(current_location)
     elif location_name == "weird floor" and is_valid_event("weird_floor", events_occurred):
         events_occurred.append("weird_floor")
-        handle_weird_event(current_location)
+        victorious = handle_weird_event(current_location)
     else:
         pass
-    return victorious, events_occurred
+    return victorious, events_occurred, time
 
 def handle_pikachu_event(current_location):
     scenario = "struggle"
@@ -86,7 +86,7 @@ def handle_taxi_event(current_location):
 def handle_pikachu_unconscious_event(current_location):
     unlock_in_player(current_location)
     print("""Since the pikachu man is immobilized, you can now move on""")
-    play_music("scream.wav")
+    #play_music("scream.wav")
 
 def handle_businessman_unconscious_event(current_location):
     current_location_id = get_id(current_location['name'], locations)
@@ -138,12 +138,17 @@ def handle_good_ending_event(current_location):
     return True
 
 def handle_bad_ending_event(current_location):
-    return True
-
-def handle_arrest_ending_event(current_location):
-    return True
+    print("""You have chosen..... poorly.
+You took too long to get here and Kirill is long gone. He ordered your favourite meal,
+kale juice and pasta with hot dogs cut up into little pieces in it, but it has been cold
+for a while. He left your half of the bill with a sad face drawn on it.
+The End."""
+)
 
 def handle_cooking_event(current_location):
-    egg_flip()
+    victorious = egg_flip()
+    return not victorious
+
 def handle_weird_event(current_location):
-    cannon()
+    victorious = cannon()
+    return not victorious

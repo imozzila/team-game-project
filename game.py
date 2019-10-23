@@ -19,9 +19,6 @@ def list_of_items(item_list):
     """
     return ", ".join(item_list)
 
-def clear_screen():
-    os.system("cls")
-
 def print_location_items(location, items):
     """This takes in a location and the items dictionary.
        It then adds all the items from the location and obtains the names using the items dictionary and prints them out"""
@@ -166,8 +163,11 @@ def is_unconscious(npc_name):
         pass
     return valid
 
+def clear_screen():
+    os.system("cls")
+
 def print_time_left(time):
-    time_left = 230 - time
+    time_left = 300 - time
     print("You've got %s minutes left" %time_left)
 
 def update_status(npc):
@@ -217,7 +217,7 @@ def execute_go(new_location, current_location, locations, player_properties, inv
             time += calculate_time(inventory, current_location["connected_places"], new_location_id)
             current_location = locations[new_location_id]
 
-            play_location_sound(current_location['name'])
+            #play_location_sound(current_location['name'])
         #This moves the player, it also calculates how long the movement is going to take and adds it to the current time
     except KeyError:
         print("You can't go to", new_location)
@@ -400,7 +400,6 @@ def execute_command(command, locations, characters, time, dialogues):
 
             if check_requirements(command[1]):
                 current_location, time = execute_go(command[1], current_location, locations,  player_status, player_inventory, time)
-                print(time)
         else:
             print("Go where?")
 
@@ -463,7 +462,7 @@ def execute_command(command, locations, characters, time, dialogues):
     elif command[0] == "help":
         print_menu(current_location["connected_places"], player_inventory, current_location, time)
 
-    return current_location, player_inventory
+    return current_location, player_inventory, time
 
 
 
@@ -489,25 +488,29 @@ def main(characters, locations, items, dialogues):
     time = 0
     announced = False
     occurred_events = []
+    clear_screen()
     while not Victorious:
+
+
         player = characters["player"]
         current_location = player["current_location"]
         inventory = player["inventory"]
 
-        print_location(characters, current_location, items)
-        announced = True
+        if not announced:
+            print_location(characters, current_location, items)
+            print_time_left(time)
+            announced = True
 
-
-        Victorious, occurred_events = listenForEvents(Victorious, occurred_events, time)
+        Victorious, occurred_events, time = listenForEvents(Victorious, occurred_events, time)
         if not Victorious:
             print_inventory_items(player["inventory"], items)
             print("What will you do?\n")
 
             command = menu(current_location["connected_places"], current_location["items"], player, time) #NOT WORKING YET
-            player["current_location"], player["inventory"] = execute_command(command, locations, characters, time, dialogues)
-            clear_screen()
-
-
+            player["current_location"], player["inventory"], time = execute_command(command, locations, characters, time, dialogues)
+            if player["current_location"] != current_location:
+                announced = False
+                clear_screen()
 
 
 
