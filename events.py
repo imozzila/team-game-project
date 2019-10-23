@@ -25,6 +25,9 @@ def listenForEvents(events_occurred):
     elif 'ticket' in characters['bus_driver']['inventory'] and is_valid_event("ticket", events_occurred):
         events_occurred.append("ticket")
         handle_bus_event(current_location)
+    elif is_unconscious("pikachu") and is_valid_event("pikachu_unconscious", events_occurred):
+        events_occurred.append("pikachu_unconscious")
+        handle_pikachu_unconscious_event(current_location)
     else:
         pass
     return events_occurred
@@ -53,3 +56,7 @@ It seems as though you might be able to get to the coach station now.
 
 def handle_taxi_event(current_location):
     print()
+
+def handle_pikachu_unconscious_event(current_location):
+    unlock_in_player(current_location)
+    print("""Since the pikachu man is immobilized, you can now move on""")

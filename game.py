@@ -151,6 +151,19 @@ def is_valid_exit(connected_places, locations, chosen_location):
             valid = True
     return valid
 
+def is_unconscious(npc_name):
+    npc_id = get_id(npc_name, characters)
+    npc = characters[npc_id]
+    valid = True
+    if npc['status']['alive']:
+        valid = False
+    else:
+        pass
+    return valid
+
+def update_status(npc):
+    npc['status']['alive'] = False
+
 def get_dialogue(npc, current_location_id, dialogues, scenario="default", mood="default"):
     dialogue = dialogues[current_location_id][npc][scenario][mood]
     return dialogue
@@ -165,6 +178,11 @@ def lock_in_player(location):
     for connected_place in location['connected_places']:
         for i in range(2):
             locations[connected_place]['entry_requirements'].append('padlock')
+
+def unlock_in_player(location):
+    for connected_place in location['connected_places']:
+        for i in range(2):
+            locations[connected_place]['entry_requirements'].remove('padlock')
 
 def execute_go(new_location, current_location, locations, player_properties, inventory, time):
     """
@@ -188,8 +206,24 @@ def execute_buy():
 def execute_ride():
     pass
 
-def execute_fight():
-    pass
+def execute_fight(player, npc_name):
+
+    npc_id = get_id(npc_name, characters)
+    current_location = player['current_location']
+    if is_valid_player(characters[npc_id], current_location):
+
+        current_location_id = get_id(current_location['name'], locations)
+        dialogue = get_dialogue(npc_id, current_location_id, dialogues, "hit")
+        scenario = characters[npc_id]['status']['hit']
+
+        print(dialogue[scenario])
+
+        if dialogue[scenario] == "...":
+            print("%s has died. You're a murderer." % npc_name)
+            update_status(characters[npc_id])
+        else:
+            characters[npc_id]['status']['hit'] += 1
+
 
 def execute_talk(npc_id, current_location_id, dialogues):
 
@@ -253,7 +287,10 @@ def remove_item_from_player(item, player_inventory):
 
 def print_requirements(name, items):
     items = list_of_items(items)
-    print("%s does not have %s." % (name, items))
+    if 'padlock' in items:
+        print("You cannot escape.")
+    else:
+        print("%s does not have %s." % (name, items))
 
 def check_requirements(location):
     """This checks if the player has all the items needed in their inventory"""
@@ -280,7 +317,7 @@ def check_requirements(location):
 
             valid = True
         else:
-            #print_requirements(npc['name'],requirements[1:])
+            print_requirements(npc['name'],requirements[1:])
             pass
     else:
         valid = True
@@ -354,11 +391,13 @@ def execute_command(command, locations, characters, time, dialogues):
             current_location = execute_ride()
         else:
             print("Ride what?")
+
     elif command[0] == "buy":
         if len(command) > 1:
             player["money"], inventory = execute_buy()
         else:
             print("Buy what?")
+
     elif command[0] == "talk":
         if len(command) > 1:
             try:
@@ -370,6 +409,13 @@ def execute_command(command, locations, characters, time, dialogues):
                     print("%s is not here." % npc_id)
             except KeyError:
                 print("You cannot talk to that person")
+
+    elif command[0] == "fight":
+        if len(command) > 1:
+            execute_fight(player, command[1])
+        else:
+            print("fight who?")
+
     elif command[0] == "help":
         print_menu(current_location["connected_places"], player_status, player_inventory, current_location, time)
 

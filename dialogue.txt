@@ -56,9 +56,9 @@
 
 	[monument_indoors.pikachu.money]
 	default="THANK YOU SO MUCH. PIKA PIKA. I can buy even more fursuits with this!"
-	
+
 	[monument_indoors.pikachu.hit]
-	hit=["Ouch, what are you doing that for?", "..."]
+	default=["Ouch, what are you doing that for?", "..."]
 
 [monument_outdoors]
 	[monument_outdoors.tourist.talk]

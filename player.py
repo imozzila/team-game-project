@@ -50,7 +50,7 @@ add_character("policeman",
 
 add_character("pikachu",
     name="Pikachu",
-    status={},
+    status={"hit":0, "alive":True},
     inventory = [],
     current_location=locations["monument_indoors"])
 
