@@ -1,3 +1,4 @@
+import winsound
 from player import characters
 from map import locations
 from items import items
@@ -26,6 +27,7 @@ def listenForEvents(events_occurred):
         events_occurred.append("ticket")
         handle_bus_event(current_location)
     elif is_unconscious("pikachu") and is_valid_event("pikachu_unconscious", events_occurred):
+
         events_occurred.append("pikachu_unconscious")
         handle_pikachu_unconscious_event(current_location)
     else:
@@ -59,4 +61,5 @@ def handle_taxi_event(current_location):
 
 def handle_pikachu_unconscious_event(current_location):
     unlock_in_player(current_location)
+    winsound.PlaySound(scream.wav, winsound.SND_FILENAME)
     print("""Since the pikachu man is immobilized, you can now move on""")

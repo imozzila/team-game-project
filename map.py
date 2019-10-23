@@ -1,3 +1,4 @@
+import winsound
 from items import *
 
 locations = {}
@@ -78,6 +79,8 @@ add_location("taxi",
 
          items = [],
 
+         music="taxi.wav",
+
         entry_requirements = [])
 
 add_location("victoria_tube",
@@ -94,7 +97,7 @@ add_location("victoria_tube",
              connected_places = {"monument_indoors":10},
 
              items = ["beer", "skateboard", "cornetto", "tin foil", "milk"],
-
+             music= "tube.wav",
              entry_requirements = [])
 
 
@@ -109,7 +112,7 @@ add_location("monument_indoors",
         connected_places={"monument_outdoors":5, "victoria_tube":10},
 
         items=["money", "keys"],
-
+        music="pikachu.wav",
         entry_requirements = [])
 
 add_location("monument_outdoors",
