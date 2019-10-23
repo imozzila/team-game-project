@@ -34,5 +34,3 @@ def cannon():
         print("Well done, a flying pirate soars across the room smashing the wall.")
     else:
         print("You were too slow, the cannon malfunctions with a big bang glass flies across the room leaving you cowering in fear.")
-
-cannon()
