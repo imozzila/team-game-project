@@ -35,6 +35,8 @@ def listenForEvents(victorious, events_occurred, time):
         handle_bodyguard_unconscious_event(current_location)
     elif location_name == "sizzling floor":
         handle_cooking_event(current_location)
+    elif location_name == "spooky_floor":
+        handle_piers_event(current_location)
     elif time > 230:
         handle_bad_ending_event
     else:
@@ -75,6 +77,8 @@ def handle_pikachu_unconscious_event(current_location):
 def handle_first_floor_event(current_location):
     current_location_id = get_id(current_location['name'], locations)
     locations[current_location_id]['connected_places']["casino_floor_shard"]= 30
+
+
 
 def handle_good_ending_event(current_location):
     return True
