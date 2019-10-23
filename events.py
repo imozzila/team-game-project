@@ -50,6 +50,7 @@ def handle_bus_event(current_location):
     print("'%s'" %(dialogue))
     print()
     print("""
+
 It seems as though you might be able to get to the coach station now.
 
     """)
