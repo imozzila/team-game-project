@@ -1,22 +1,13 @@
 import random
 
-def high_lower():
+def high_lower(inventory):
     print("Welcome to higher and lower!")
     print("Guess the number between 1 and 10")
     count = 0
     win = False
     final_num = random.randint(0, 10)
     while not win and count < 5:
-        valid_input = False
-
-        while not valid_input:
-            try:
-                player_guess = int(input("Guess the number\n"))
-                valid_input = True
-            except:
-                print("Please enter a number")
-
-
+        player_guess = int(input("Guess the number\n"))
         if player_guess > final_num:
             print("Too high!")
         elif player_guess < final_num:
@@ -29,5 +20,3 @@ def high_lower():
         print("You took more than 5 turns...")
         print("You lost. Thousands of kids gather around in a circle around you can point their fingers at you laughing. You pathetic loser.")
     return win
-
-high_lower()
