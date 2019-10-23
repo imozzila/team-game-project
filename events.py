@@ -37,17 +37,21 @@ def listenForEvents(victorious, events_occurred, time):
     elif is_unconscious("businessman") and is_valid_event("businessman_unconscious", events_occurred):
         events_occurred.append("businessman_unconscious")
         handle_businessman_unconscious_event(current_location)
-    elif location_name == "casino floor":
+    elif location_name == "casino floor" and is_valid_event("casino_floor", events_occurred):
+        events_occurred.append("casino_floor")
         handle_casino_event(current_location)
-    elif location_name == "sizzling floor":
+    elif location_name == "sizzling floor" and is_valid_event("sizzling_floor", events_occurred):
+        events_occurred.append("sizzling_floor")
         handle_cooking_event(current_location)
     elif location_name=="top floor" and time > 230:
         handle_bad_ending_event(current_location)
     elif location_name=="top floor" and time <= 230:
         victorious = handle_good_ending_event(current_location)
-    elif location_name == "spooky floor":
+    elif location_name == "spooky floor" and is_valid_event("spooky_floor", events_occurred):
+        events_occurred.append("spooky_floor")
         handle_piers_event(current_location)
-    elif location_name == "weird floor":
+    elif location_name == "weird floor" and is_valid_event("weird_floor", events_occurred):
+        events_occurred.append("weird_floor")
         handle_weird_event(current_location)
     else:
         pass
