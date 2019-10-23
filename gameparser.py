@@ -21,7 +21,7 @@ key_nouns.append(key_characters)
 key_nouns.append(key_items)
 key_nouns.append(key_locations)
 
-key_verbs = [["go","move","walk", "run","wander","stroll"],
+key_verbs = [["go","move","walk", "run","wander","stroll","enter"],
             ["take","seize","obtain","get","grab","grasp","collect","capture"],
             ["drop","abandon","dump","release"],
             ["give","transfer","hand","gift","deliver"],

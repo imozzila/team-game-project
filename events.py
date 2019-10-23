@@ -62,9 +62,5 @@ def handle_taxi_event(current_location):
 
 def handle_pikachu_unconscious_event(current_location):
     unlock_in_player(current_location)
-<<<<<<< HEAD
-    winsound.PlaySound(scream.wav, winsound.SND_FILENAME)
     print("""Since the pikachu man is immobilized, you can now move on""")
-=======
     play_music("scream.wav")
->>>>>>> c35dca45a7fe690a2f90f25213235b509a6dc7e9

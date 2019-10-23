@@ -184,7 +184,16 @@ def unlock_in_player(location):
         for i in range(2):
             locations[connected_place]['entry_requirements'].remove('padlock')
 def play_music(sound_file):
-    winsound.Playsound(sound_file, winsound.SND_FILENAME)
+    winsound.PlaySound(sound_file, winsound.SND_FILENAME)
+
+def extract_music(location_name):
+    location_id = get_id(location_name, locations)
+    sound_file = locations[location_id]['music']
+    return sound_file
+
+def play_location_sound(location_name):
+    sound_file = extract_music(location_name)
+    play_music(sound_file)
 
 def execute_go(new_location, current_location, locations, player_properties, inventory, time):
     """
@@ -195,6 +204,7 @@ def execute_go(new_location, current_location, locations, player_properties, inv
         if is_valid_exit(current_location['connected_places'], locations, new_location):
             current_location_id = get_id(new_location, locations)
             current_location = locations[current_location_id]
+            play_location_sound(current_location['name'])
         #time += calculate_time(player_properties, inventory, current_location["connected_places"])
         #new_room = move(current_location["connected_places"], new_location)
         #This moves the player, it also calculates how long the movement is going to take and adds it to the current time

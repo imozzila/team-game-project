@@ -6,8 +6,8 @@ locations = {}
 
 """
 
-def add_location(id, name, description, connected_places, items, entry_requirements):
-    locations[id] = {"name":name, "description":description, "connected_places":connected_places, "items":items, "entry_requirements":entry_requirements}
+def add_location(id, name, description, connected_places, items, entry_requirements, music):
+    locations[id] = {"name":name, "description":description, "connected_places":connected_places, "items":items, "entry_requirements":entry_requirements, "music":music}
 
 add_location("coach",
 
@@ -24,7 +24,7 @@ You must give the ticket to the bus driver to board the coach to London""",
 
     items = ["wagon wheels", "tape"],
 
-    entry_requirements = []
+    entry_requirements = [],
 
     music = "tube.wav"
 )
@@ -47,7 +47,9 @@ add_location("victoria_coach_station",
 
     items = ["coffee", "luggage", "molotov", "crayons"],
 
-    entry_requirements = ["bus driver","ticket"]
+    entry_requirements = ["bus driver","ticket"],
+
+    music = ""
 )
 
 add_location("wetherspoons",
@@ -65,7 +67,9 @@ serve alcohol at any time of day here. """,
 
          items = ["beer", "whiskey", "coffee", "egg", "lamb"],
 
-         entry_requirements = []
+         entry_requirements = [],
+
+         music = ""
 
          )
 
@@ -81,9 +85,11 @@ add_location("taxi",
 
          items = [],
 
-         music="taxi.wav",
 
-        entry_requirements = [])
+        entry_requirements = [],
+
+        music="taxi.wav",
+        )
 
 add_location("victoria_tube",
 
@@ -99,8 +105,10 @@ add_location("victoria_tube",
              connected_places = {"monument_indoors":10},
 
              items = ["beer", "skateboard", "cornetto", "tin foil", "milk"],
-             music= "tube.wav",
-             entry_requirements = [])
+
+             entry_requirements = [],
+
+             music= "tube.wav",)
 
 
 add_location("monument_indoors",
@@ -114,8 +122,9 @@ add_location("monument_indoors",
         connected_places={"monument_outdoors":5, "victoria_tube":10},
 
         items=["money", "keys"],
-        music="pikachu.wav",
-        entry_requirements = [])
+
+        entry_requirements = [],
+        music ="pikachu.wav",)
 
 add_location("monument_outdoors",
 
@@ -131,7 +140,8 @@ add_location("monument_outdoors",
 
         items=["steel ball", "pen", "gift card", "laces"],
 
-        entry_requirements = [])
+        entry_requirements = [],
+        music="")
 
 add_location("boots",
 
@@ -144,7 +154,8 @@ add_location("boots",
 
             items = [],
 
-            entry_requirements = [])
+            entry_requirements = [],
+            music="")
 
 add_location("first_floor_shard",
 
@@ -160,7 +171,8 @@ add_location("first_floor_shard",
 
         items=["pen", "paper", "coffee", "lego yoda", "tissue box", "fan"],
 
-        entry_requirements = [])
+        entry_requirements = [],
+        music="")
 
 add_location("casino_floor_shard",
 
@@ -178,7 +190,8 @@ add_location("casino_floor_shard",
 
              items = ["Honda Civic", "whiskey", "beer", "phone", "cigarettes"],
 
-             entry_requirements = [])
+             entry_requirements = [],
+             music="")
 
 add_location("cannon_floor_shard",
 
@@ -197,7 +210,8 @@ add_location("cannon_floor_shard",
 
              items = ["salmon", "steel ball", "weetabix", "cornflakes", "milk", "teapot", "tissue box", "racket"],
 
-             entry_requirements = [])
+             entry_requirements = [],
+             music="")
 
 add_location("cooking_floor_shard",
 
@@ -219,7 +233,8 @@ add_location("cooking_floor_shard",
 
              items = ["tin foil", "salmon", "pan", "egg", "lamb", "butter", "jar", "lime"],
 
-             entry_requirements = [])
+             entry_requirements = [],
+             music="")
 
 add_location("piers_floor_shard",
 
@@ -241,7 +256,8 @@ add_location("piers_floor_shard",
 
              items = [],
 
-             entry_requirements = [])
+             entry_requirements = [],
+             music="")
 
 add_location("good_top_floor_shard",
 
@@ -261,7 +277,8 @@ add_location("good_top_floor_shard",
 
             items = [],
 
-            entry_requirements = [])
+            entry_requirements = [],
+            music="")
 
 add_location("bad_top_floor_shard",
 
@@ -278,4 +295,5 @@ add_location("bad_top_floor_shard",
 
             items = [],
 
-            entry_requirements = [])
+            entry_requirements = [],
+            music="")
