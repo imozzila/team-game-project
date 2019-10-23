@@ -25,6 +25,8 @@ You must give the ticket to the bus driver to board the coach to London""",
     items = ["wagon wheels", "tape"],
 
     entry_requirements = []
+
+    music = "tube.wav"
 )
 
 
