@@ -247,10 +247,11 @@ def execute_take(item_id, current_location, player_inventory):
     """
     SOMEWHAT DONE
     """
-
+    item_id = get_id(item_id,items)
     item_picked_up = False
+
     for item in current_location['items']:
-        print(item, current_location['items'])
+        print(item,items[item_id]['name'])
         if item == items[item_id]['name']:
             #if calculate_mass(inventory, item):
             item_picked_up = True

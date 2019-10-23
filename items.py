@@ -262,3 +262,5 @@ add_item("padlock",
     name="padlock",
     properties=[],
     description="")
+
+print(items['cornetto']['name'])
