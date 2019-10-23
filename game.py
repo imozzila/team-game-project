@@ -7,6 +7,7 @@ from gameparser import *
 from figlet import f
 from fileparser import dialogues
 from events import *
+import os
 
 def list_of_items(item_list):
     """An empty list is created, and all the item names are added to it
@@ -17,6 +18,9 @@ def list_of_items(item_list):
 
     """
     return ", ".join(item_list)
+
+def clear_screen():
+    os.system("cls")
 
 def print_location_items(location, items):
     """This takes in a location and the items dictionary.
@@ -487,9 +491,8 @@ def main(characters, locations, items, dialogues):
         current_location = player["current_location"]
         inventory = player["inventory"]
 
-        if not announced:
-            print_location(characters, current_location, items)
-            announced = True
+        print_location(characters, current_location, items)
+        announced = True
 
         Victorious, occurred_events = listenForEvents(Victorious, occurred_events, time)
         if not Victorious:
@@ -498,8 +501,8 @@ def main(characters, locations, items, dialogues):
 
             command = menu(current_location["connected_places"], current_location["items"], player, time) #NOT WORKING YET
             player["current_location"], player["inventory"] = execute_command(command, locations, characters, time, dialogues)
-            if player["current_location"] != current_location:
-                announced = False
+            clear_screen()
+
 
 
 
