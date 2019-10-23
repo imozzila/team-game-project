@@ -47,6 +47,7 @@ def filter_nouns(words, key_nouns, filtered_words):
                 word = " ".join(words[:length]) #converts the list of words into a sentence
                 if word in nouns_list: #checks if the sentence is in the nouns_list
                     filtered_words.append(word)
+                    break
                 else:
                     pass
                 length -= 1

@@ -415,6 +415,7 @@ def main(characters, locations, items, dialogues):
         print("What will you do?\n")
 
         command = menu(current_location["connected_places"], current_location["items"], player, time) #NOT WORKING YET
+        print(command)
         player["current_location"], player["inventory"] = execute_command(command, locations, characters, time, dialogues)
         if player["current_location"] != current_location:
             announced = False

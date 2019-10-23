@@ -10,7 +10,7 @@ def add_location(id, name, description, connected_places, items, entry_requireme
 
 add_location("coach",
 
-    name="Coach to London",
+    name="Coach",
 
     description = """You are in a run-down, dusty bus that looks like it could break down at any moment.
 The driver is staring down at you with beady eyes awaiting your ticket.
