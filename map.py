@@ -201,7 +201,7 @@ add_location("cooking_floor_shard",
              description = """You survived the cannon man and beeline it for the stairs again, going up
                             another floor. You can smell the source of some fine dining and follow the scent into
                             a huge, advanced kitchen. A woman appears in front of you before you can blink and
-                            waves her spatula in front of you menacingly. Her nametag says "J. Wu", and her
+                            waves her spatula at you menacingly. Her nametag says "J. Wu", and her
                             hat is almost 60cm tall, indicating some serious cooking prestige.
 
                             "ARE YOU THE IDIOT WHO COOKED THIS SQUID?! IT'S SO RAW I CAN STILL HEAR IT
@@ -221,13 +221,12 @@ add_location("piers_floor_shard",
              name = "Spooky Floor",
 
 
-             description = """Stained with eggs, meat juices, flour and other assorted foods, you make it to the
-                            staircase once again. Clambering up the carpeted steps, you feel a cold chill down your
-                            spine. There is an ominous wind around you and a single wooden door covered in claw-marks
-                            in front of you. The door does not appear to be locked, so you turn the handle and enter.
-                            The room has bookshelves across both walls, a great mahogany desk in the middle, and a
-                            tall, leather chair facing away from you out the window. The air you exhale curls up in
-                            front of you from the cold, and the chair begins to slowly rotate...
+             description = """You make it to the staircase once again. Clambering up the carpeted steps, you feel a
+                            cold chill down your spine. There is an ominous wind around you and a single wooden door
+                            covered in claw-marks in front of you. The door does not appear to be locked, so you turn
+                            the handle and enter. The room has bookshelves across both walls, a great mahogany desk
+                            in the middle, and a tall, leather chair facing away from you out the window. The air you
+                            exhale curls up in front of you, and the chair begins to slowly rotate...
 
                             Piers Morgan now faces you, staring straight through you with a vacant gaze.
 
@@ -249,7 +248,7 @@ add_location("good_top_floor_shard",
                         Dom Perignon 1985 for your table, and a bowl of cereal with water, on him! You
                         have a great catch-up with your best friend and drink and chat till the early
                         hours of the evening. You end the meeting with a fist-bump and grab your jacket
-                        to leave. It's 7:30pm, now you just have to get home...
+                        to leave. It's 7:30pm, now you just have to make it back home...
                         The End. :)
                         """,
 
