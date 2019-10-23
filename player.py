@@ -43,7 +43,7 @@ add_character("waiter",
 
 add_character("policeman",
     name="Policeman",
-    status = {"hit":0, "alive":True, "killable":False, "hittable":True},
+    status = {"hit":0, "alive":True, "killable":False, "hittable":False},
     inventory = [],
     current_location = locations["wetherspoons"]
 )

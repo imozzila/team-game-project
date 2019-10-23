@@ -85,7 +85,6 @@ def print_menu(connected_places, player_inventory, player_location, time):
     #GO TAKE DROP GIVE RIDE BUY FIGHT TALK
 
     for place in connected_places:
-        print(player_inventory)
         time_taken = calculate_time(player_inventory, connected_places , place)
         print("GO to %s (%s Minutes)" %(locations[place]["name"], time_taken))
     #This shows the player a list of places they can go
@@ -103,8 +102,10 @@ def print_menu(connected_places, player_inventory, player_location, time):
     #ride, fight, talk
     for character in characters:
         if (characters[character]["current_location"] == player_location) and (characters[character]["name"] != "player"):
-            if "aggressive" in characters[character]["status"]:
+            print("GIVE %s an ITEM" % (characters[character]["name"]))
+            if is_hittable(characters[character]["name"]):
                 print("Fight %s" %(characters[character]["name"]))
+
     #This shows the player a list of characters they can fight
 
     for character in characters:
@@ -219,7 +220,7 @@ def execute_go(new_location, current_location, locations, player_properties, inv
 
             #play_location_sound(current_location['name'])
         #This moves the player, it also calculates how long the movement is going to take and adds it to the current time
-    except KeyError:
+    except:
         print("You can't go to", new_location)
     return current_location, time
 
@@ -233,6 +234,7 @@ def is_hittable(npc_name):
         return False
 
 def execute_fight(player, npc_name):
+
     if is_hittable(npc_name):
         npc_id = get_id(npc_name, characters)
         current_location = player['current_location']
@@ -251,6 +253,7 @@ def execute_fight(player, npc_name):
                 characters[npc_id]['status']['hit'] += 1
     else:
         print("You cannot attack them.")
+
 
 def execute_talk(npc_id, current_location_id, dialogues):
 
@@ -353,8 +356,6 @@ def check_requirements(location):
 
 def has_modifiers(inventory):
     valid = False
-    print("inventory: \n\n")
-    print(inventory)
     for item in inventory:
         item_id = get_id(item,items)
         if 'fast' in items[item_id]['properties']:
@@ -397,15 +398,20 @@ def execute_command(command, locations, characters, time, dialogues):
 
     elif command[0] == "go":
         if len(command) > 1:
-
-            if check_requirements(command[1]):
-                current_location, time = execute_go(command[1], current_location, locations,  player_status, player_inventory, time)
+            try:
+                if check_requirements(command[1]):
+                    current_location, time = execute_go(command[1], current_location, locations,  player_status, player_inventory, time)
+            except:
+                print("You cannot go there.")
         else:
             print("Go where?")
 
     elif command[0] == "take":
         if len(command) > 1:
-                current_location, player_inventory = execute_take(command[1], current_location, player_inventory)
+                try:
+                    current_location, player_inventory = execute_take(command[1], current_location, player_inventory)
+                except:
+                    print("You cannot take that")
         else:
             print("Take what?")
 
@@ -417,29 +423,20 @@ def execute_command(command, locations, characters, time, dialogues):
 
     elif command[0] == "give":
         if len(command) > 2:
-            command = convert_command(command, current_location)
-            item_id = get_id(command[1], items)
-            npc_id = get_id(command[2], characters)
-            npc_inventory = characters[npc_id]['inventory']
-            if is_valid_item(items[item_id]['name'], player_inventory) and is_valid_player(characters[npc_id], current_location):
-                player_inventory, npc_inventory = execute_give(items[item_id]['name'], player_inventory, npc_inventory)
-                print("You have given %s your %s" %(characters[npc_id]["name"],command[1]))
-            else:
-                print("You cannot give that.")
+            try:
+                command = convert_command(command, current_location)
+                item_id = get_id(command[1], items)
+                npc_id = get_id(command[2], characters)
+                npc_inventory = characters[npc_id]['inventory']
+                if is_valid_item(items[item_id]['name'], player_inventory) and is_valid_player(characters[npc_id], current_location):
+                    player_inventory, npc_inventory = execute_give(items[item_id]['name'], player_inventory, npc_inventory)
+                    print("You have given %s your %s" %(characters[npc_id]["name"],command[1]))
+                else:
+                    print("You cannot give that.")
+            except :
+                print("You cannot give that")
         else:
             print("Give what?")
-
-    elif command[0] == "ride":
-        if len(command) > 1:
-            current_location = execute_ride()
-        else:
-            print("Ride what?")
-
-    elif command[0] == "buy":
-        if len(command) > 1:
-            player["money"], inventory = execute_buy()
-        else:
-            print("Buy what?")
 
     elif command[0] == "talk":
         if len(command) > 1:
@@ -450,17 +447,23 @@ def execute_command(command, locations, characters, time, dialogues):
                     execute_talk(npc_id, current_location_id, dialogues)
                 else:
                     print("%s is not here." % npc_id)
-            except KeyError:
-                print("You cannot talk to that person")
+            except:
+                print("You cannot talk to that.")
 
     elif command[0] == "fight":
-        if len(command) > 1:
-            execute_fight(player, command[1])
-        else:
-            print("fight who?")
+        try:
+            if len(command) > 1:
+                execute_fight(player, command[1])
+            else:
+                print("fight who?")
+        except:
+            print("You can't fight that")
 
     elif command[0] == "help":
-        print_menu(current_location["connected_places"], player_inventory, current_location, time)
+        try:
+            print_menu(current_location["connected_places"], player_inventory, current_location, time)
+        except:
+            print()
 
     return current_location, player_inventory, time
 

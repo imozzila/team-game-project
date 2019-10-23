@@ -101,18 +101,18 @@ def handle_piers_event(current_location):
     print("A: I'll go with water.")
     print("B: Milk all the way!")
     print("C: I prefer the cereal on its own.")
-    playerInput = input("Pick A B or C to try and convince piers to let you up.")
+    playerInput = input("Pick A B or C to try and convince piers to let you up.\n")
     valid = False
     while not valid:
-        if (playerInput == "A" or "a"):
+        if (playerInput == "A" or playerInput == "a"):
             print("Good choice. He gets up off of his chair. 'Congratulations' A circle of people come out of the shadow and start applauding.")
             time = 0
             valid = True
-        elif (playerInput == "B" or "b"):
+        elif (playerInput == "B" or playerInput == "b"):
             print("What. Get out. You walk away in shame.")
             time = 20
             valid = True
-        elif (playerInput == "C" or "c"):
+        elif (playerInput == "C" or playerInput == "c"):
             print("Hmmmm. I'll let you pass. But you have wait 5 minutes.")
             time = 5
             valid = True

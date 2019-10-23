@@ -43,7 +43,7 @@ children drink Dark Fruits. A homeless person is dancing a little way down the r
 the sign indicating Victoria Tube Station, and there is a line of taxis outside the coach station
 with very...reasonable rates. """,
 
-    connected_places = {"wetherspoons":30, "taxi":5, "victoria_tube":20},
+    connected_places = {"wetherspoons":30, "victoria_tube":20},
 
     items = ["coffee", "luggage", "molotov", "crayons"],
 
@@ -73,23 +73,6 @@ serve alcohol at any time of day here. """,
 
          )
 
-add_location("taxi",
-
-         name = "Taxi",
-
-         description = """You call for a Taxi, a cab driver stops for you.
-
-                        £5 for the fare, that's the best deal you'll get.""",
-
-         connected_places = {"victoria_coach_station":5},
-
-         items = [],
-
-
-        entry_requirements = [],
-
-        music="taxi.wav",
-        )
 
 add_location("victoria_tube",
 

@@ -38,7 +38,7 @@
 	alcohol = ["Seriously? Fine. Promise you won't have another drink.", "WHAT IS WRONG WITH YOU? Okay, sure this is your last drink though.", "Nope, get out. I've had it with you."]
 
 	[wetherspoons.waiter.hit]
-	hit = ["Woah, what are you doing? I just got surgery!",	"Oww. My nose is bleeding.", "..."]
+	default = ["Woah, what are you doing? I just got surgery!",	"Oww. My nose is bleeding.", "..."]
 
 
 
