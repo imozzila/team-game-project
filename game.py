@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-
+import winsound
 from map import locations
 from player import characters
 from items import items
