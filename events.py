@@ -30,6 +30,9 @@ def listenForEvents(events_occurred):
 
         events_occurred.append("pikachu_unconscious")
         handle_pikachu_unconscious_event(current_location)
+    elif location_name == "first floor":
+        handle_first_floor_event(current_location)
+
     else:
         pass
     return events_occurred
@@ -64,3 +67,6 @@ def handle_pikachu_unconscious_event(current_location):
     unlock_in_player(current_location)
     print("""Since the pikachu man is immobilized, you can now move on""")
     play_music("scream.wav")
+
+def handle_first_floor_event(current_location):
+        current_location['connected_places']["casino_floor_shard"]= 30

@@ -161,6 +161,7 @@ def is_unconscious(npc_name):
         pass
     return valid
 
+
 def update_status(npc):
     npc['status']['alive'] = False
 
@@ -375,7 +376,7 @@ def execute_command(command, locations, characters, time, dialogues):
 
     elif command[0] == "take":
         if len(command) > 1:
-            current_location, player_inventory = execute_take(command[1], current_location, player_inventory)
+                current_location, player_inventory = execute_take(command[1], current_location, player_inventory)
         else:
             print("Take what?")
 
@@ -474,7 +475,6 @@ def main(characters, locations, items, dialogues):
         print("What will you do?\n")
 
         command = menu(current_location["connected_places"], current_location["items"], player, time) #NOT WORKING YET
-        print(command)
         player["current_location"], player["inventory"] = execute_command(command, locations, characters, time, dialogues)
         if player["current_location"] != current_location:
             announced = False

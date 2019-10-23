@@ -62,4 +62,13 @@
 
 [monument_outdoors]
 	[monument_outdoors.tourist.talk]
-	default=""
+	default="Hewwo, I have just been to the Shard. It's so busy there, it's filled with all these businesmen. I couldn't even find the next set of stairs!"
+
+	[monument_outdoors.tourist.hit]
+	default=["Ow, what you doing?", "..."]
+[first_floor_shard]
+	[first_floor_shard.secretary.talk]
+	default="What do you want? I'm trying to get through this crowd of people. I'm so frustrated that I could punch one of these goons."
+
+	[first_floor_shard.bodyguard.talk]
+	default="Welcome to the shard. There elevator is on the other side, you can get to it if you can somehow get through this crowd. The stairs could work, but it'll take a lot longer."
