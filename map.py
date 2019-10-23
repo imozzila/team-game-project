@@ -252,45 +252,21 @@ add_location("piers_floor_shard",
 
                             "Do you eat cereal with or without water?" """,
 
-            connected_places = {"cooking_floor_shard":10, "good_top_floor_shard":10},
+            connected_places = {"cooking_floor_shard":10, "top_floor_shard":10},
 
              items = [],
 
              entry_requirements = [],
              music="")
 
-add_location("good_top_floor_shard",
 
-            name = "Good Top Floor",
-
-            description = """You have chosen..... wisely.
-                        Kirill greets you with a smile and welcomes you to the table you have reserved.
-                        He was waiting for you to arrive and has ordered your favourite bottle of vintage
-                        Dom Perignon 1985 for your table, and a bowl of cereal with water, on him! You
-                        have a great catch-up with your best friend and drink and chat till the early
-                        hours of the evening. You end the meeting with a fist-bump and grab your jacket
-                        to leave. It's 7:30pm, now you just have to make it back home...
-                        The End. :)
-                        """,
-
-            connected_places = {},
-
-            items = [],
-
-            entry_requirements = [],
-            music="")
-add_location("bad_top_floor_shard",
+add_location("top_floor_shard",
 
             name = "Top Floor",
 
-            description = """You have chosen..... poorly.
-                        You took too long to get here and Kirill is long gone. He ordered your favourite meal,
-                        kale juice and pasta with hot dogs cut up into little pieces in it, but it has been cold
-                        for a while. He left your half of the bill with a sad face drawn on it.
-                        The End. :(
-                        """,
+            description = "",
 
-            connected_places = {},
+            connected_places = {"good_top_floor_shard":0,"bad_top_floor_shard":0},
 
             items = [],
 

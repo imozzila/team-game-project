@@ -202,10 +202,12 @@ def execute_go(new_location, current_location, locations, player_properties, inv
     """
 
     try:
+
         if is_valid_exit(current_location['connected_places'], locations, new_location):
             time += calculate_time(player_properties, inventory, current_location["connected_places"], new_location)
             current_location_id = get_id(new_location, locations)
             current_location = locations[current_location_id]
+
             play_location_sound(current_location['name'])
         #This moves the player, it also calculates how long the movement is going to take and adds it to the current time
     except KeyError:
@@ -216,26 +218,24 @@ def execute_go(new_location, current_location, locations, player_properties, inv
 def execute_buy():
     pass
 
-def execute_ride():
-    pass
 
 def execute_fight(player, npc_name):
+    if is_killable(npc_name):
+        npc_id = get_id(npc_name, characters)
+        current_location = player['current_location']
+        if is_valid_player(characters[npc_id], current_location):
 
-    npc_id = get_id(npc_name, characters)
-    current_location = player['current_location']
-    if is_valid_player(characters[npc_id], current_location):
+            current_location_id = get_id(current_location['name'], locations)
+            dialogue = get_dialogue(npc_id, current_location_id, dialogues, "hit")
+            scenario = characters[npc_id]['status']['hit']
 
-        current_location_id = get_id(current_location['name'], locations)
-        dialogue = get_dialogue(npc_id, current_location_id, dialogues, "hit")
-        scenario = characters[npc_id]['status']['hit']
+            print(dialogue[scenario])
 
-        print(dialogue[scenario])
-
-        if dialogue[scenario] == "...":
-            print("%s has died. You're a murderer." % npc_name)
-            update_status(characters[npc_id])
-        else:
-            characters[npc_id]['status']['hit'] += 1
+            if dialogue[scenario] == "...":
+                print("%s has died. You're a murderer." % npc_name)
+                update_status(characters[npc_id])
+            else:
+                characters[npc_id]['status']['hit'] += 1
 
 
 def execute_talk(npc_id, current_location_id, dialogues):
@@ -478,14 +478,14 @@ def main(characters, locations, items, dialogues):
             announced = True
 
         Victorious, occurred_events = listenForEvents(Victorious, occurred_events, time)
+        if not Victorious:
+            print_inventory_items(player["inventory"], items)
+            print("What will you do?\n")
 
-        print_inventory_items(player["inventory"], items)
-        print("What will you do?\n")
-
-        command = menu(current_location["connected_places"], current_location["items"], player, time) #NOT WORKING YET
-        player["current_location"], player["inventory"] = execute_command(command, locations, characters, time, dialogues)
-        if player["current_location"] != current_location:
-            announced = False
+            command = menu(current_location["connected_places"], current_location["items"], player, time) #NOT WORKING YET
+            player["current_location"], player["inventory"] = execute_command(command, locations, characters, time, dialogues)
+            if player["current_location"] != current_location:
+                announced = False
 
 
 
