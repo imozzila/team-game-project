@@ -183,6 +183,8 @@ def unlock_in_player(location):
     for connected_place in location['connected_places']:
         for i in range(2):
             locations[connected_place]['entry_requirements'].remove('padlock')
+def play_music(sound_file):
+    winsound.Playsound(sound_file, winsound.SND_FILENAME)
 
 def execute_go(new_location, current_location, locations, player_properties, inventory, time):
     """
@@ -251,8 +253,7 @@ def execute_take(item_id, current_location, player_inventory):
     item_picked_up = False
 
     for item in current_location['items']:
-        print(item,items[item_id]['name'])
-        if item == items[item_id]['name']:
+        if item == item_id:
             #if calculate_mass(inventory, item):
             item_picked_up = True
             player_inventory.append(item)

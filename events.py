@@ -59,4 +59,4 @@ def handle_taxi_event(current_location):
 
 def handle_pikachu_unconscious_event(current_location):
     unlock_in_player(current_location)
-    print("""Since the pikachu man is immobilized, you can now move on""")
+    play_music("scream.wav")
