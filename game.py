@@ -203,13 +203,13 @@ def execute_go(new_location, current_location, locations, player_properties, inv
 
     try:
         if is_valid_exit(current_location['connected_places'], locations, new_location):
+            time += calculate_time(player_properties, inventory, current_location["connected_places"], new_location)
             current_location_id = get_id(new_location, locations)
             current_location = locations[current_location_id]
             play_location_sound(current_location['name'])
-        #time += calculate_time(player_properties, inventory, current_location["connected_places"])
-        #new_room = move(current_location["connected_places"], new_location)
         #This moves the player, it also calculates how long the movement is going to take and adds it to the current time
     except KeyError:
+        print(KeyError)
         print("You can't go to", new_location)
     return current_location, time
 
@@ -337,17 +337,25 @@ def check_requirements(location):
         valid = True
     return valid
 
+def has_modifiers(inventory):
+    valid = False
+    for item in inventory:
+        item_id = get_id(item,items)
+        if 'fast' in items[item_id]['properties']:
+            valid = True
+        else:
+            pass
+    return valid
 
-def calculate_time(player_properties, inventory,connected_places, place):
+def calculate_time(player_properties, inventory, connected_places, chosen_location):
     """This calculates how long it'll take for the player to perform an action
         NOT FINSIHED YET
     """
-    time = connected_places[place]
-    for item in inventory:
-        if "PLACEHOLDER" in items[item]["properties"]:
-            time = time * 0.5
-    if "PLACEHOLDER" in player_properties:
+    location_id = get_id(chosen_location, locations)
+    time = connected_places[location_id]
+    if has_modifiers(inventory):
         time = time * 0.5
+
     return time
 
 def execute_command(command, locations, characters, time, dialogues):
@@ -371,6 +379,7 @@ def execute_command(command, locations, characters, time, dialogues):
 
             if check_requirements(command[1]):
                 current_location, time = execute_go(command[1], current_location, locations,  player_status, player_inventory, time)
+                print(time)
         else:
             print("Go where?")
 
@@ -452,7 +461,6 @@ def menu(exits, room_items, player, time):
     return normalised_user_input
 
 
-
 # This is the entry point of our program
 def main(characters, locations, items, dialogues):
     # Main game loop
@@ -469,7 +477,7 @@ def main(characters, locations, items, dialogues):
             print_location(characters, current_location, items)
             announced = True
 
-        occurred_events = listenForEvents(occurred_events)
+        Victorious, occurred_events = listenForEvents(Victorious, occurred_events, time)
 
         print_inventory_items(player["inventory"], items)
         print("What will you do?\n")
@@ -479,7 +487,6 @@ def main(characters, locations, items, dialogues):
         if player["current_location"] != current_location:
             announced = False
 
-        #Victorious = check_victory(current_location, Victorious)
 
 
 
