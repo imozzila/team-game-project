@@ -13,7 +13,7 @@ def is_valid_event(event, events_occurred):
         valid = True
     return valid
 
-def listenForEvents(events_occurred):
+def listenForEvents(victorious, events_occurred, time):
     player = characters['player']
     current_location = player['current_location']
     location_name = current_location['name'].lower()
@@ -27,15 +27,19 @@ def listenForEvents(events_occurred):
         events_occurred.append("ticket")
         handle_bus_event(current_location)
     elif is_unconscious("pikachu") and is_valid_event("pikachu_unconscious", events_occurred):
-
         events_occurred.append("pikachu_unconscious")
         handle_pikachu_unconscious_event(current_location)
-    elif location_name == "first floor":
+    elif location_name == "shard":
         handle_first_floor_event(current_location)
-
+    elif is_unconscious("bodyguard") and is_valid_event("bodyguard_unconscious", events_occurred):
+        handle_bodyguard_unconscious_event(current_location)
+    elif location_name == "sizzling floor":
+        handle_cooking_event(current_location)
+    elif time > 230:
+        handle_bad_ending_event
     else:
         pass
-    return events_occurred
+    return victorious, events_occurred
 
 def handle_pikachu_event(current_location):
     scenario = "struggle"
@@ -69,4 +73,17 @@ def handle_pikachu_unconscious_event(current_location):
     play_music("scream.wav")
 
 def handle_first_floor_event(current_location):
-        current_location['connected_places']["casino_floor_shard"]= 30
+    current_location_id = get_id(current_location['name'], locations)
+    locations[current_location_id]['connected_places']["casino_floor_shard"]= 30
+
+def handle_good_ending_event(current_location):
+    return True
+
+def handle_bad_ending_event(current_location):
+    return True
+
+def handle_arrest_ending_event(current_location):
+    return True
+
+def handle_cooking_event(current_location):
+    return True

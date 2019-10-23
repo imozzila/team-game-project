@@ -11,7 +11,7 @@ add_character("player",
     status = {},
     inventory = ["wallet", "luggage", "ticket"],
     #current_location = locations["coach"]
-    current_location = locations["monument_outdoors"]
+    current_location = locations["piers_floor_shard"]
     )
 
 add_character("bus_driver",
@@ -57,13 +57,13 @@ add_character("pikachu",
 
 add_character("secretary",
     name="Secretary",
-    status={},
+    status={"hit":0, "alive":True, type:"unkillable"},
     inventory = [],
     current_location=locations['first_floor_shard'])
 
 add_character("bodyguard",
     name="Bodyguard",
-    status={},
+    status={"hit":0, "alive":True, type:"unkillable"},
     inventory = [],
     current_location=locations['first_floor_shard'])
 
@@ -99,7 +99,7 @@ add_character("pirate",
 
 add_character("cashier",
     name="Cashier",
-    status={},
+    status={"hit":0, "alive":True, type:"unkillable"},
     inventory=[],
     current_location=locations['boots'])
 

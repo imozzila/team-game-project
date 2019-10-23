@@ -159,7 +159,7 @@ add_location("boots",
 
 add_location("first_floor_shard",
 
-        name = "First Floor",
+        name = "Shard",
 
         description="""You look up at the towering building in amazement. You feel like you're
                     almost at the end and are excited to meet your friend. You enter the building
@@ -252,7 +252,7 @@ add_location("piers_floor_shard",
 
                             "Do you eat cereal with or without water?" """,
 
-            connected_places = {"cooking_floor_shard":10, "top_floor_shard":10},
+            connected_places = {"cooking_floor_shard":10, "good_top_floor_shard":10},
 
              items = [],
 
@@ -261,7 +261,7 @@ add_location("piers_floor_shard",
 
 add_location("good_top_floor_shard",
 
-            name = "Top Floor",
+            name = "Good Top Floor",
 
             description = """You have chosen..... wisely.
                         Kirill greets you with a smile and welcomes you to the table you have reserved.
@@ -278,8 +278,7 @@ add_location("good_top_floor_shard",
             items = [],
 
             entry_requirements = [],
-            music="applause.wav")
-
+            music="")
 add_location("bad_top_floor_shard",
 
             name = "Top Floor",
