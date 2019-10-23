@@ -250,6 +250,7 @@ def execute_take(item_id, current_location, player_inventory):
 
     item_picked_up = False
     for item in current_location['items']:
+        print(item, current_location['items'])
         if item == items[item_id]['name']:
             #if calculate_mass(inventory, item):
             item_picked_up = True
