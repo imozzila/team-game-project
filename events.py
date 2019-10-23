@@ -29,10 +29,12 @@ def listenForEvents(victorious, events_occurred, time):
     elif is_unconscious("pikachu") and is_valid_event("pikachu_unconscious", events_occurred):
         events_occurred.append("pikachu_unconscious")
         handle_pikachu_unconscious_event(current_location)
-    elif location_name == "shard":
+    elif location_name == "shard" and is_valid_event("shard", events_occurred):
+        events_occurred.append("shard")
         handle_first_floor_event(current_location)
-    elif is_unconscious("bodyguard") and is_valid_event("bodyguard_unconscious", events_occurred):
-        handle_bodyguard_unconscious_event(current_location)
+    elif is_unconscious("businessman") and is_valid_event("businessman_unconscious", events_occurred):
+        events_occurred.append("businessman_unconscious")
+        handle_businessman_unconscious_event(current_location)
     elif location_name == "sizzling floor":
         handle_cooking_event(current_location)
     elif location_name=="top floor" and time > 230:
@@ -76,6 +78,10 @@ def handle_pikachu_unconscious_event(current_location):
     unlock_in_player(current_location)
     print("""Since the pikachu man is immobilized, you can now move on""")
     play_music("scream.wav")
+
+def handle_businessman_unconscious_event(current_location):
+    current_location_id = get_id(current_location['name'], locations)
+    locations[current_location_id]['connected_places']["casino_floor_shard"]= 10
 
 def handle_first_floor_event(current_location):
     current_location_id = get_id(current_location['name'], locations)

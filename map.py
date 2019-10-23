@@ -162,10 +162,11 @@ add_location("first_floor_shard",
         name = "Shard",
 
         description="""You look up at the towering building in amazement. You feel like you're
-                    almost at the end and are excited to meet your friend. You enter the building
-                    to find yourself completely out of place. You're surrounded by businessmen in
-                    well-attired clothing. There is a secretary you can talk to, a security guard
-                    looking unhappy, and a busy elevator that can take you to the next floor.""",
+        almost at the end and are excited to meet your friend. You enter the building
+        to find yourself completely out of place. You're surrounded by businessmen in
+        well-attired clothing. There is a secretary you can talk to, a security guard
+        looking unhappy, the elevator is blocked by a businessman and the stairs are
+        accessible but you feel as though they may take too much time.""",
 
         connected_places={"casino_floor_shard":10},
 

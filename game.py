@@ -175,6 +175,7 @@ def get_id(object, objects):
             return object_id
         else:
             pass
+
 def lock_in_player(location):
     for connected_place in location['connected_places']:
         for i in range(2):
@@ -211,16 +212,20 @@ def execute_go(new_location, current_location, locations, player_properties, inv
             play_location_sound(current_location['name'])
         #This moves the player, it also calculates how long the movement is going to take and adds it to the current time
     except KeyError:
-        print(KeyError)
         print("You can't go to", new_location)
     return current_location, time
 
 def execute_buy():
     pass
-
+def is_hittable(npc_name):
+    npc_id = get_id(npc_name, characters)
+    if characters[npc_id]['status']['hittable']:
+        return True
+    else:
+        return False
 
 def execute_fight(player, npc_name):
-    if is_killable(npc_name):
+    if is_hittable(npc_name):
         npc_id = get_id(npc_name, characters)
         current_location = player['current_location']
         if is_valid_player(characters[npc_id], current_location):
@@ -236,7 +241,8 @@ def execute_fight(player, npc_name):
                 update_status(characters[npc_id])
             else:
                 characters[npc_id]['status']['hit'] += 1
-
+    else:
+        print("You cannot attack them.")
 
 def execute_talk(npc_id, current_location_id, dialogues):
 
