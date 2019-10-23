@@ -30,3 +30,4 @@ def high_lower():
         print("You lost. Thousands of kids gather around in a circle around you can point their fingers at you laughing. You pathetic loser.")
         print("Due to the embarrassment of your loss. You just go back home to Cardiff, drinking away with some VKs. You were never the same again.")
     return win
+    
