@@ -417,7 +417,10 @@ def execute_command(command, locations, characters, time, dialogues):
 
     elif command[0] == "drop":
         if len(command) > 1:
-            current_location, player_inventory = execute_drop(command[1], current_location, player_inventory)
+            try:
+                current_location, player_inventory = execute_drop(command[1], current_location, player_inventory)
+            except:
+                print("you cannot drop that")
         else:
             print("Drop what?")
 
