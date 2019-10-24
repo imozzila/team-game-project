@@ -31,7 +31,7 @@
 	[wetherspoons.waiter.talk]
 	default="Hello, what would you like to have today?"
 
-	[wetherspoons.waiter.order_taken]
+	[wetherspoons.waiter.buy]
 	beer = "Beer? Really? At this time? Uh.. sure. Here you go. That's gonna slow you down for the day."
 	coffee = "Good choice, gets you energised for the morning."
 	whiskey = "Hah, good one. Oh.. you meant it? I'll grab it for you. Don't drink too much of it though."
@@ -42,7 +42,7 @@
 
 
 
-	[wetherspoons.policeman.waiter_death]
+	[wetherspoons.policeman.waiter.give]
 	arrest ="Sir, I'm going to have to arrest you for the murder of the waiter over there."
 	escape ="How dare you escape? I'll hunt you down."
 

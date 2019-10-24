@@ -125,6 +125,7 @@ def is_valid_player(npc, current_location):
 def is_valid_item(item_chosen, inventory):
     valid = False
     for item in inventory:
+        item = items[item]['name']
         if item_chosen == item:
             valid = True
         else:
@@ -263,7 +264,7 @@ def execute_talk(npc_id, current_location_id, dialogues):
 
 def execute_give(item_name, player_inventory, npc_inventory):
     """Gives an item from your inventory to an npc's inventory"""
-
+    item_name = get_id(item_name, items)
     player_inventory.remove(item_name)
     npc_inventory.append(item_name)
 
@@ -299,7 +300,7 @@ def execute_drop(item_id, current_location, player_inventory):
     It first checks whether the item is inside the player's inventory.
     If it is, then the item is removed from the player's inventory and is placed inside the current location's item list.
     """
-
+    item_id = get_id(item_id, items)
     item_exists = False
     for item in player_inventory:
         if item == item_id:
@@ -357,8 +358,7 @@ def check_requirements(location):
 def has_modifiers(inventory):
     valid = False
     for item in inventory:
-        item_id = get_id(item,items)
-        if 'fast' in items[item_id]['properties']:
+        if 'fast' in items[item]['properties']:
             valid = True
         else:
             pass
@@ -433,8 +433,9 @@ def execute_command(command, locations, characters, time, dialogues):
                     print("You have given %s your %s" %(characters[npc_id]["name"],command[1]))
                 else:
                     print("You cannot give that.")
-            except :
+            except:
                 print("You cannot give that")
+
         else:
             print("Give what?")
 
